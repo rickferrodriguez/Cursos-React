@@ -8,10 +8,7 @@ const Title = (props) => {
 }
 
 const Parra = ({parte}) => {
-    const {laParte, ejercicio} = parte
-    console.log(laParte, ejercicio)
-    const part = parte.name
-    const exercise = parte.exercises
+    const {name: part, exercises : exercise} = parte
     return (
         <p>
             {part} {exercise}
