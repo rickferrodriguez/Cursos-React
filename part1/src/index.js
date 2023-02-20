@@ -17,7 +17,8 @@ const Parra = ({parte}) => {
 }
 
 const Total = ({exer1, exer2, exer3}) => {
-    const exercise1 = exer1.exercises
+    // const exercise1 = exer1.exercises
+    const { exercises: exercise1} = exer1
     const exercise2 = exer2.exercises
     const exercise3 = exer3.exercises
     return (
