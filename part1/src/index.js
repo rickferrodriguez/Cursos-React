@@ -8,6 +8,8 @@ const Title = (props) => {
 }
 
 const Parra = ({parte}) => {
+    const {laParte, ejercicio} = parte
+    console.log(laParte, ejercicio)
     const part = parte.name
     const exercise = parte.exercises
     return (
@@ -45,36 +47,68 @@ function Otro () {
     )
 }
 
-
 const App = () => {
-    const course = 'Half Stack application development'
-    const parts = [
-        {
-            name: 'Fundamentals of React',
-            exercises: 10
-        },
-        {
-            name: 'Using props to pass data',
-            exercises: 7
-        },
-        {
-            name: 'State of a component',
-            exercises: 14
-        }
-    ]
+    const course = {
+        name: 'Half Stack application development',
+        parts: [
+            {
+                name: 'Fundamentals of React',
+                exercises: 10
+            },
+            {
+                name: 'Using props to pass data',
+                exercises: 7
+            },
+            {
+                name: 'State of a component',
+                exercises: 14
+            }
+        ]
+    }
 
     return (
         <div>
-            <Title course={course}/>
-            <Parra parte={parts[0]} />
-            <Parra parte={parts[1]}  />
-            <Parra parte={parts[2]}  />
+            <Title course={course.name}/>
+            <Parra parte={course.parts[0]} />
+            <Parra parte={course.parts[1]}  />
+            <Parra parte={course.parts[2]}  />
 
-            <Total exer1={parts[0]} exer2={parts[1]} exer3={parts[2]}/>
+            <Total exer1={course.parts[0]} exer2={course.parts[1]} exer3={course.parts[2]}/>
             <Recorrido />
         </div>
     )
 }
+
+// usando objetos
+// const App = () => {
+//     const course = 'Half Stack application development'
+//     const parts = [
+//         {
+//             name: 'Fundamentals of React',
+//             exercises: 10
+//         },
+//         {
+//             name: 'Using props to pass data',
+//             exercises: 7
+//         },
+//         {
+//             name: 'State of a component',
+//             exercises: 14
+//         }
+//     ]
+//
+//     return (
+//         <div>
+//             <Title course={course}/>
+//             <Parra parte={parts[0]} />
+//             <Parra parte={parts[1]}  />
+//             <Parra parte={parts[2]}  />
+//
+//             <Total exer1={parts[0]} exer2={parts[1]} exer3={parts[2]}/>
+//             <Recorrido />
+//         </div>
+//     )
+// }
 
 ReactDOM.render(<App />, document.getElementById('root'))
 ReactDOM.render(<Otro />, document.getElementById('form'))

@@ -1,6 +1,5 @@
 
 export default function Form ({nombre}) {
-    console.log({nombre})
     return (
         <form>
             <label>{nombre}: 
