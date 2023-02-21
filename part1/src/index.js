@@ -46,6 +46,7 @@ function Otro () {
 }
 
 const App = () => {
+    console.log('Helo form component')
     const course = {
         name: 'Half Stack application development',
         parts: [
