@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Mensaje from './mensaje';
+import Ejercicio2 from './ejercicio2.js';
 
 const Hola = () => {
     return (
@@ -46,7 +46,7 @@ const App = () => {
             <Total ex1={exercises1} ex2={exercises2} ex3={exercises3} />
 
             <h1> Ejercicio 2 </h1>
-
+            <Ejercicio2 color='red' mensaje= 'hola que hace'/>
         </div>
     )
 }
