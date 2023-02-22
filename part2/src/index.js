@@ -4,20 +4,35 @@ import ReactDOM from 'react-dom/client';
 import './index.css'
 // import App from './App';
 
-const App = () => {
-    const [left, updateLeft] = useState(0)
-    const [right, updateRight] = useState(0)
+function App () {
+    // const [left, updateLeft] = useState(0)
+    // const [right, updateRight] = useState(0)
+
+    const [counters, updateCounters] = useState({
+        left: 0,
+        right: 0
+    })
+
+    const handleClickLeft = () => {
+        updateCounters({
+            left: counters.left + 1,
+            right: counters.right
+        })
+    }
+
+    const handleClickRight = () => {
+        updateCounters({
+            left: counters.left,
+            right: counters.right + 1
+        })
+    }
 
     return (
         <div>
-            {left}
-            <button onClick={() => updateLeft(left + 1)}>
-            left
-            </button>
-            <button onClick={() => updateRight(right + 1)}>
-            right
-            </button>
-            {right}
+            {counters.left}
+            <button onClick={handleClickLeft}>left</button>
+            <button onClick={handleClickRight}>right</button>
+            {counters.right}
         </div>
     )
 }
