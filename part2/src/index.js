@@ -10,20 +10,31 @@ function App () {
 
     const [counters, updateCounters] = useState({
         left: 0,
-        right: 0
+        right: 0,
+        mensaje: 'Mensaje desde el useState'
     })
 
+    const [clicks, updateClicks] = useState([])
+
     const handleClickLeft = () => {
-        updateCounters({
+        const newCounterState = {
+            ...counters,
             left: counters.left + 1,
-            right: counters.right
+        }
+        updateCounters(newCounterState)
+        updateClicks(prevClicks => {
+            return [...prevClicks, 'L']
         })
     }
 
     const handleClickRight = () => {
-        updateCounters({
-            left: counters.left,
-            right: counters.right + 1
+        const newCounterState = {
+            ...counters,
+            right: counters.right + 1,
+        }
+        updateCounters(newCounterState)
+        updateClicks(prevClicks => {
+            return [...prevClicks, 'R']
         })
     }
 
@@ -33,6 +44,9 @@ function App () {
             <button onClick={handleClickLeft}>left</button>
             <button onClick={handleClickRight}>right</button>
             {counters.right}
+            <p>Click totales: {clicks.length}</p>
+            <p>Mensaje: {counters.mensaje}</p>
+            <p>{clicks}</p>
         </div>
     )
 }
