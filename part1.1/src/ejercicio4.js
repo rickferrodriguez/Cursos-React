@@ -20,6 +20,19 @@ const Total = ({partes}) => {
     return <p>Number of exercises: {suma}</p>
 }
 
+const TotalEntries = ({partes}) => {
+    let suma = 0
+    Object.entries(partes).forEach((entry) => {
+        const [key, value] = entry
+        if(key === 'parts') {
+            value.map((val) => (
+                suma += val.exercises
+            ))
+        }
+    }) 
+    return <p>Number of exercises: {suma}</p>
+}
+
 
 const Ejercicio4 = () => {
     const course = {
@@ -44,6 +57,7 @@ const Ejercicio4 = () => {
             <Header course={course.name}/>
             <Content partes={course} />
             <Total partes={course} />
+            <TotalEntries partes={course}/>
         </div>
     )
 }
