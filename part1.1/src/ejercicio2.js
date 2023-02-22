@@ -18,7 +18,7 @@ const Total = ({ex1, ex2, ex3}) => {
     )
 }
 
-const Ejercicio2 = (props) => {
+const Ejercicio2 = () => {
     const course = 'Half Stack application development'
     const part1 = {
         nombre: 'Fundamentals of React',
