@@ -17,15 +17,17 @@ function ListOfClicks ({clicks}) {
     )
 }
 
+const INITIAL_STATE = {
+    left: 2,
+    right: 1,
+    mensaje: 'mensaje constante inicial'
+}
+
 function App () {
     // const [left, updateLeft] = useState(0)
     // const [right, updateRight] = useState(0)
 
-    const [counters, updateCounters] = useState({
-        left: 0,
-        right: 0,
-        mensaje: 'mensaje en el estado'
-    })
+    const [counters, updateCounters] = useState(INITIAL_STATE)
 
     const [clicks, updateClicks] = useState([])
 
@@ -51,6 +53,11 @@ function App () {
         })
     }
 
+    const handleReset = () => {
+        updateCounters(INITIAL_STATE)
+        updateClicks([])
+    }
+
     return (
         <div>
             {counters.left}
@@ -62,6 +69,7 @@ function App () {
                 ? <WarningNotUsed />
                 : <ListOfClicks clicks={clicks}/>
             }
+            <button onClick={handleReset}> Reset</button>
             <div>
                 <h1>Old Index</h1>
                 <OldIndex />
