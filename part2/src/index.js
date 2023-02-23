@@ -4,6 +4,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css'
 import OldIndex from './oldindex.js';
 
+function WarningNotUsed () {
+    return <h3>Todavía no se ha usado el contador</h3>
+}
+
+function ListOfClicks ({clicks}) {
+    return (
+        <div>
+            <p> Clicks totales: {clicks.length}</p>
+            <p> Clicks del array : {clicks}</p>
+        </div>
+    )
+}
+
 function App () {
     // const [left, updateLeft] = useState(0)
     // const [right, updateRight] = useState(0)
@@ -11,44 +24,48 @@ function App () {
     const [counters, updateCounters] = useState({
         left: 0,
         right: 0,
-        mensaje: 'Mensaje desde el useState'
+        mensaje: 'mensaje en el estado'
     })
 
     const [clicks, updateClicks] = useState([])
 
-    const handleClickLeft = () => {
+    const handleLeft = () => {
         const newCounterState = {
             ...counters,
             left: counters.left + 1,
         }
         updateCounters(newCounterState)
-        updateClicks(prevClicks => {
-            return [...prevClicks, 'L']
+        updateClicks((prevClicks) => {
+            return [...prevClicks ,'L']
         })
     }
 
-    const handleClickRight = () => {
+    const handleRight = () => {
         const newCounterState = {
             ...counters,
             right: counters.right + 1,
         }
         updateCounters(newCounterState)
-        updateClicks(prevClicks => {
-            return [...prevClicks, 'R']
+        updateClicks((prevClicks) => {
+            return [...prevClicks ,'R']
         })
     }
 
     return (
         <div>
             {counters.left}
-            <button onClick={handleClickLeft}>left</button>
-            <button onClick={handleClickRight}>right</button>
-            {counters.right}
-            <p>Click totales: {clicks.length}</p>
-            <p>Mensaje: {counters.mensaje}</p>
-            <p>{clicks}</p>
-            <h1>Old index</h1>
-            <OldIndex />
+            <button onClick={handleLeft}> Left</button>
+            <button onClick={handleRight}> Right</button>
+            {counters.right} <br />
+            {counters.mensaje}
+            {clicks.length === 0
+                ? <WarningNotUsed />
+                : <ListOfClicks clicks={clicks}/>
+            }
+            <div>
+                <h1>Old Index</h1>
+                <OldIndex />
+            </div>
         </div>
     )
 }
