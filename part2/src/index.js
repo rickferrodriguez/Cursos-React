@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react'
 import ReactDOM from 'react-dom/client';
 import './index.css'
-// import App from './App';
+import OldIndex from './oldindex.js';
 
 function App () {
     // const [left, updateLeft] = useState(0)
@@ -47,6 +47,8 @@ function App () {
             <p>Click totales: {clicks.length}</p>
             <p>Mensaje: {counters.mensaje}</p>
             <p>{clicks}</p>
+            <h1>Old index</h1>
+            <OldIndex />
         </div>
     )
 }
