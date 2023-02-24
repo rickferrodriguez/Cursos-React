@@ -8,6 +8,17 @@ let updatedValue = {
     total: 0,
     porcentajePositivos: 0
 }
+
+function Statistics ({valor}) {
+    return (
+        <>
+            <p>Suma: {valor.suma} </p>
+            <p>Promedio: {valor.total} </p>
+            <p>porcentaje: {valor.porcentajePositivos} </p>
+        </>
+    )
+}
+
 function Ejercicio1 () {
 
     const [good, setGood] = useState(0)
@@ -63,9 +74,7 @@ function Ejercicio1 () {
             <p>Good: {good} </p>
             <p>Neutral: {neutral} </p>
             <p>Bad: {bad}</p>
-            <p>Suma: {updatedValue.suma} </p>
-            <p>Promedio: {updatedValue.total} </p>
-            <p>porcentaje: {updatedValue.porcentajePositivos} </p>
+            <Statistics valor={updatedValue}/>
         </>
     )
 }
