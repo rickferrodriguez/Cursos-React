@@ -10,6 +10,14 @@ let updatedValue = {
 }
 
 function Statistics ({valor}) {
+    const {good, neutral, bad} = updatedValue
+    let sum = (good * 1) + (neutral * 0) + (bad * -1)
+    let sumado = good + neutral + bad
+    let division = 3 / sum
+    let porcentaje = good / sumado
+    updatedValue.total = division 
+    updatedValue.suma = sumado 
+    updatedValue.porcentajePositivos = porcentaje 
     return (
         <>
             <p>Suma: {valor.suma} </p>
@@ -29,6 +37,17 @@ function SingleFeedback ({g,n,b}) {
     )
 }
 
+function ButtonFeedback ({handler, btnName}) {
+    return (
+        // <button onClick={handleGood}>good</button>
+        // <button onClick={handleNeutral}>Neutral</button>
+        // <button onClick={handleBad}>Bad</button>
+        <>
+            <button onClick={handler}>{btnName}</button>
+        </>
+    )
+}
+
 function Ejercicio1 () {
 
     const [good, setGood] = useState(0)
@@ -37,7 +56,6 @@ function Ejercicio1 () {
 
     const total = () => {
         const {good, neutral, bad} = updatedValue
-        console.log(good, neutral, bad)
         let sum = (good * 1) + (neutral * 0) + (bad * -1)
         let sumado = good + neutral + bad
         let division = 3 / sum
@@ -77,9 +95,9 @@ function Ejercicio1 () {
     return (
         <>
             <h3>Give Feedback</h3>
-            <button onClick={handleGood}>good</button>
-            <button onClick={handleNeutral}>Neutral</button>
-            <button onClick={handleBad}>Bad</button>
+            <ButtonFeedback handler={handleGood} btnName={'Good'} />
+            <ButtonFeedback handler={handleNeutral} btnName={'Neutral'} />
+            <ButtonFeedback handler={handleBad} btnName={'Bad'} />
             {updatedValue.suma > 0 
                 ? <SingleFeedback g={good} b={bad} n={neutral} />
                 : ''
