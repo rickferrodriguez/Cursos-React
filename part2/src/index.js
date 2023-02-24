@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css'
 import OldIndex from './oldindex.js';
 import Repaso1 from './repasoClase1.js'
+import Ejercicio1 from './ejercicio1.js'
 
 function WarningNotUsed () {
     return <h3>Todavía no se ha usado el contador</h3>
@@ -76,8 +77,12 @@ function App () {
                 <OldIndex />
             </div>
             <div>
-                <h1>Ejercicio 1 </h1>
+                <h1>Repaso con ejercicio 1 </h1>
                 <Repaso1 />
+            </div>
+            <div>
+                <h2> Ejercicio 2 </h2>
+                <Ejercicio1 />
             </div>
         </div>
     )
