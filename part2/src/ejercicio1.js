@@ -19,6 +19,16 @@ function Statistics ({valor}) {
     )
 }
 
+function SingleFeedback ({g,n,b}) {
+    return (
+        <>
+            <p>Good: {g} </p>
+            <p>Neutral: {n} </p>
+            <p>Bad: {b}</p>
+        </>
+    )
+}
+
 function Ejercicio1 () {
 
     const [good, setGood] = useState(0)
@@ -63,7 +73,6 @@ function Ejercicio1 () {
         setBad(updatedValue.bad)
         total()
     }
-    
 
     return (
         <>
@@ -71,10 +80,14 @@ function Ejercicio1 () {
             <button onClick={handleGood}>good</button>
             <button onClick={handleNeutral}>Neutral</button>
             <button onClick={handleBad}>Bad</button>
-            <p>Good: {good} </p>
-            <p>Neutral: {neutral} </p>
-            <p>Bad: {bad}</p>
-            <Statistics valor={updatedValue}/>
+            {updatedValue.suma > 0 
+                ? <SingleFeedback g={good} b={bad} n={neutral} />
+                : ''
+            }
+            <h3>Statistics</h3>
+            {good > 0 && neutral > 0 && bad > 0 
+                ? <Statistics valor={updatedValue} /> 
+                : 'No feedback given'}
         </>
     )
 }
