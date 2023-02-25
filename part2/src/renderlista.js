@@ -1,26 +1,5 @@
 import {useState} from 'react'
 
-const notes = [
-    {
-        id: 1,
-        content: 'HTML is easy',
-        date: '2019-05-30T17:30:31.098Z',
-        important: true,
-    },
-    {
-        id: 2,
-        content: 'Browser can execute only JavaScript',
-        date: '2019-05-30T18:39:34.091Z',
-        important: false,
-    },
-    {
-        id: 3,
-        content: 'GET and POST are the most important methods of HTTP protocol',
-        date: '2019-05-30T19:20:14.298Z',
-        important: true,
-    },
-]
-
 function Note ({content, date}) {
     return (
         <li>
@@ -32,15 +11,48 @@ function Note ({content, date}) {
     )
 }
 
-export default function RenderLista () {
+export default function RenderLista (props) {
     // if(typeof notes === 'undefined' || notes.length === 0 || notes === null) {
     //     return 'No tenemos notas que mostrar'
     // }
+    const [notes, setNotes] = useState(props.notes)
+    const [newNote, setNewNote] = useState('')
+    const handleChanges = (event) => {
+        setNewNote(event.target.value) 
+    }
+
+    const handleClick = (event) => {
+        console.log('crear nota')
+        console.log(newNote)
+        const noteToAddToState = {
+            id: notes.length + 1,
+            content: newNote,
+            date: new Date().toISOString(),
+            important: Math.random() < 0.5
+        }
+        setNotes((prevNote) => {
+            return [...prevNote, noteToAddToState]
+        })
+        setNewNote('')
+        // {
+        //     id: 3,
+        //     content: 'GET and POST are the most important methods of HTTP protocol',
+        //     date: '2019-05-30T19:20:14.298Z',
+        //     important: true,
+        // },
+    }
     return (
-        <ol>
-            {notes.map((note) => {
-                return   <Note key={note.id} content={note.content} date={note.date} />
-            })}
-        </ol>
+        <div>
+            <h1>Notes</h1>
+            <ol>
+                {notes.map((note) => {
+                    return   <Note key={note.id} content={note.content} date={note.date} />
+                })}
+            </ol>
+            <div>
+                <input type="text" onChange={handleChanges} value={newNote}/>
+                <button onClick={handleClick}> Crear Nota </button>
+            </div>
+        </div>
     )
 }
