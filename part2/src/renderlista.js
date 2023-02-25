@@ -17,6 +17,8 @@ export default function RenderLista (props) {
     // }
     const [notes, setNotes] = useState(props.notes)
     const [newNote, setNewNote] = useState('')
+    const [importantNote, setImportantNote] = useState(true)
+
     const handleChanges = (event) => {
         setNewNote(event.target.value) 
     }
@@ -34,20 +36,27 @@ export default function RenderLista (props) {
         })
         // limpiar el input text
         setNewNote('')
-        // {
-        //     id: 3,
-        //     content: 'GET and POST are the most important methods of HTTP protocol',
-        //     date: '2019-05-30T19:20:14.298Z',
-        //     important: true,
-        // },
     }
+
+    const handleImportant = () => {
+        setImportantNote(() => !importantNote)
+    }
+
     return (
         <div>
             <h1>Notes</h1>
+            <button onClick={handleImportant}>
+                {importantNote ? 'Mostrar Importantes' : 'Mostrar todas'}
+            </button>
             <ol>
-                {notes.map((note) => {
-                    return   <Note key={note.id} content={note.content} date={note.date} />
-                })}
+                {notes
+                    .filter((note) => {
+                        if(importantNote === true) return true
+                        return note.important === true
+                    })
+                    .map((note) => {
+                        return   <Note key={note.id} content={note.content} date={note.date} />
+                    })}
             </ol>
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={handleChanges} value={newNote}/>
