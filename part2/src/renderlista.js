@@ -21,9 +21,8 @@ export default function RenderLista (props) {
         setNewNote(event.target.value) 
     }
 
-    const handleClick = (event) => {
-        console.log('crear nota')
-        console.log(newNote)
+    const handleSubmit = (event) => {
+        event.preventDefault()
         const noteToAddToState = {
             id: notes.length + 1,
             content: newNote,
@@ -33,6 +32,7 @@ export default function RenderLista (props) {
         setNotes((prevNote) => {
             return [...prevNote, noteToAddToState]
         })
+        // limpiar el input text
         setNewNote('')
         // {
         //     id: 3,
@@ -49,10 +49,10 @@ export default function RenderLista (props) {
                     return   <Note key={note.id} content={note.content} date={note.date} />
                 })}
             </ol>
-            <div>
+            <form onSubmit={handleSubmit}>
                 <input type="text" onChange={handleChanges} value={newNote}/>
-                <button onClick={handleClick}> Crear Nota </button>
-            </div>
+                <button > Crear Nota </button>
+            </form>
         </div>
     )
 }
