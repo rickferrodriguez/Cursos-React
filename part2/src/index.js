@@ -5,6 +5,7 @@ import './index.css'
 import OldIndex from './oldindex.js';
 import Repaso1 from './repasoClase1.js'
 import Ejercicio1 from './ejercicio1.js'
+import Anectdotas from './anecdotas.js'
 
 function WarningNotUsed () {
     return <h3>Todavía no se ha usado el contador</h3>
@@ -83,6 +84,10 @@ function App () {
             <div>
                 <h2> Ejercicio 2 </h2>
                 <Ejercicio1 />
+            </div>
+            <div>
+                <h2> Anectdotas Exercise </h2>
+                <Anectdotas  />
             </div>
         </div>
     )
