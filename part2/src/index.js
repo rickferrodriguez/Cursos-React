@@ -2,10 +2,11 @@ import React from 'react';
 import {useState} from 'react'
 import ReactDOM from 'react-dom/client';
 import './index.css'
-import OldIndex from './oldindex.js';
-import Repaso1 from './repasoClase1.js'
-import Ejercicio1 from './ejercicio1.js'
-import Anectdotas from './anecdotas.js'
+// import OldIndex from './oldindex.js';
+// import Repaso1 from './repasoClase1.js'
+// import Ejercicio1 from './ejercicio1.js'
+// import Anectdotas from './anecdotas.js'
+import RenderLista from './renderlista.js'
 
 function WarningNotUsed () {
     return <h3>Todavía no se ha usado el contador</h3>
@@ -62,34 +63,35 @@ function App () {
     }
 
     return (
-        <div>
-            {counters.left}
-            <button onClick={handleLeft}> Left</button>
-            <button onClick={handleRight}> Right</button>
-            {counters.right} <br />
-            {counters.mensaje}
-            {clicks.length === 0
-                ? <WarningNotUsed />
-                : <ListOfClicks clicks={clicks}/>
-            }
-            <button onClick={handleReset}> Reset</button>
-            <div>
-                <h1>Old Index</h1>
-                <OldIndex />
-            </div>
-            <div>
-                <h1>Repaso con ejercicio 1 </h1>
-                <Repaso1 />
-            </div>
-            <div>
-                <h2> Ejercicio 2 </h2>
-                <Ejercicio1 />
-            </div>
-            <div>
-                <h2> Anectdotas Exercise </h2>
-                <Anectdotas  />
-            </div>
-        </div>
+        // <div>
+        //     {counters.left}
+        //     <button onClick={handleLeft}> Left</button>
+        //     <button onClick={handleRight}> Right</button>
+        //     {counters.right} <br />
+        //     {counters.mensaje}
+        //     {clicks.length === 0
+        //         ? <WarningNotUsed />
+        //         : <ListOfClicks clicks={clicks}/>
+        //     }
+        //     <button onClick={handleReset}> Reset</button>
+        //     <div>
+        //         <h1>Old Index</h1>
+        //         <OldIndex />
+        //     </div>
+        //     <div>
+        //         <h1>Repaso con ejercicio 1 </h1>
+        //         <Repaso1 />
+        //     </div>
+        //     <div>
+        //         <h2> Ejercicio 2 </h2>
+        //         <Ejercicio1 />
+        //     </div>
+        //     <div>
+        //         <h2> Anectdotas Exercise </h2>
+        //         <Anectdotas  />
+        //     </div>
+        // </div>
+<RenderLista />
     )
 }
 
