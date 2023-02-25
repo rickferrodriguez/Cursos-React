@@ -1,29 +1,18 @@
 import {useState} from 'react'
 
 let updatedValue = {
-    good:0,
-    neutral:0,
-    bad:0,
     suma: 0,
     total: 0,
     porcentajePositivos: 0
 }
 
 function Statistics ({valor}) {
-    const {good, neutral, bad} = updatedValue
-    let sum = (good * 1) + (neutral * 0) + (bad * -1)
-    let sumado = good + neutral + bad
-    let division = 3 / sum
-    let porcentaje = good / sumado
-    updatedValue.total = division 
-    updatedValue.suma = sumado 
-    updatedValue.porcentajePositivos = porcentaje 
     return (
-        <>
-            <p>Suma: {valor.suma} </p>
-            <p>Promedio: {valor.total} </p>
-            <p>porcentaje: {valor.porcentajePositivos} </p>
-        </>
+        <table>
+            <td>Suma: {valor.suma} </td>
+            <td>Promedio: {valor.total} </td>
+            <td>porcentaje: {valor.porcentajePositivos} </td>
+        </table>
     )
 }
 
@@ -39,9 +28,6 @@ function SingleFeedback ({g,n,b}) {
 
 function ButtonFeedback ({handler, btnName}) {
     return (
-        // <button onClick={handleGood}>good</button>
-        // <button onClick={handleNeutral}>Neutral</button>
-        // <button onClick={handleBad}>Bad</button>
         <>
             <button onClick={handler}>{btnName}</button>
         </>
@@ -55,7 +41,6 @@ function Ejercicio1 () {
     const [bad, setBad] = useState(0)
 
     const total = () => {
-        const {good, neutral, bad} = updatedValue
         let sum = (good * 1) + (neutral * 0) + (bad * -1)
         let sumado = good + neutral + bad
         let division = 3 / sum
