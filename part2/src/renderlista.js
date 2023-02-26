@@ -45,6 +45,7 @@ export default function RenderLista (props) {
     return (
         <div>
             <h1>Notes</h1>
+            <h1>Notes</h1>
             <button onClick={handleImportant}>
                 {importantNote ? 'Mostrar Importantes' : 'Mostrar todas'}
             </button>
