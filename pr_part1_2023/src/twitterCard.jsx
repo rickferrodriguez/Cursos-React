@@ -1,8 +1,19 @@
 import {useState} from 'react'
 
-export default function TwitterCard ({userName, name, isFollowing}) {
-  const follow = isFollowing ? 'Siguiendo' : 'Seguir'
+export default function TwitterCard ({children, userName, initialIsFollowing}) {
   const imgUrl = `https://unavatar.io/${userName}`
+
+  const [follow, setFollow] = useState(initialIsFollowing)
+
+  const text = follow ? 'Siguiendo' : 'Seguir'
+  const buttonClassName = follow 
+    ? 'btn-follow is-following' 
+    : 'btn-follow'
+
+  const handleClick = () => {
+    setFollow(!follow)
+  }
+
 
   return (
     <article className="tw-card">
@@ -11,10 +22,17 @@ export default function TwitterCard ({userName, name, isFollowing}) {
           <img className="tw-avatar" src={imgUrl} alt=""></img>
         </picture>
         <div className="tw-group-name">
-          <strong>{name}</strong>
+          <strong>{children}</strong>
           <span>@{userName}</span>
         </div>
-        <button className="btn-follow" type="button">{follow}</button>
+        <button 
+          onClick={handleClick}
+          className={buttonClassName} 
+          type="button"
+        >
+          <span className="tw-follow-text">{text}</span>
+          <span className="stopFollowing">Dejar de Seguir</span>
+        </button>
       </div>
     </article>
   )

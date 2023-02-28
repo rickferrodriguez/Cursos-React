@@ -39,7 +39,37 @@
   cursor: pointer;
 }
 
+.tw-follow-text {
+  display: block;
+}
+
 .btn-follow:hover {
   background-color: #bbb;
   transition: .3s ease-out;
+}
+
+.btn-follow.is-following{
+  border: 1px solid #bbb;
+  background: transparent;
+  color: #fff;
+  width: 140px;
+}
+.btn-follow.is-following:hover {
+  background-color: rgba(255, 0, 0, 0.178);
+  color: red;
+  border: 1px solid red;
+  transition: .3s ease-out;
+}
+
+
+.btn-follow.is-following:hover .tw-follow-text {
+  display: none;
+}
+
+.btn-follow.is-following:hover .stopFollowing{
+  display: block;
+}
+
+.stopFollowing {
+  display: none;
 }
