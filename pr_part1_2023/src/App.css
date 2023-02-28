@@ -1,0 +1,45 @@
+.tw-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.tw-card h3 {
+  text-align:left;
+}
+
+.tw-profile {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.tw-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%
+}
+
+.tw-group-name {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  text-align:left;
+}
+
+.tw-group-name span {
+  font-weight:lighter;
+}
+
+.btn-follow {
+  padding: 0.5rem 1.4rem;
+  border: none;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: .9em;
+  cursor: pointer;
+}
+
+.btn-follow:hover {
+  background-color: #bbb;
+  transition: .3s ease-out;
+}

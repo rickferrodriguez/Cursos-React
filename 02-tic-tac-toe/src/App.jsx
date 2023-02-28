@@ -22,7 +22,7 @@ const Square = ({children, isSelected, updateBoard, index}) => {
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null))
 
-  const [turn, setTurn] = useState(TURNS.x)
+  const [turn, setTurn] = useState(TURNS.X)
 
   const updateBoard = () => {
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
@@ -30,7 +30,7 @@ function App() {
   }
   return (
     <main className="board">
-      <h1>Tic Tac Toe </h1>
+      <h1>Tic Tac Toe</h1>
       <section className="game">
         {
           board.map((_, index) => {
@@ -47,7 +47,7 @@ function App() {
         }
       </section>
       <section className='turn'>
-        <Square isSelected={turn === TURNS.X} >{TURNS.X}</Square>
+        <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
     </main>
