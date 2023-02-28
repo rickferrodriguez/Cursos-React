@@ -11,15 +11,20 @@ const anecdotes = [
 ]
 
 export default function RandomList () {
+  const [anecdote, setAnecdote] = useState(0)
+
+  const handleClick = () => {
+    return setAnecdote(anecdote + 1)
+  }
   return (
     <section>
-      {
-        anecdotes.map(an => {
-          return (
-            <p>{an}</p>
-          )
-        })
-      }
+      <p>{anecdotes[anecdote]}</p>
+      <button 
+        onClick={handleClick}
+        type="button"
+      >
+        New anecdotes
+      </button>
     </section>
   )
 }
