@@ -18,12 +18,17 @@
 body {
   margin: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
   min-width: 320px;
   min-height: 100vh;
   background-color: #bbb;
+  padding: 1rem;
 
+}
+
+#root {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+  gap: 1em;
 }
 
 
