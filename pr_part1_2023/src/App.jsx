@@ -11,7 +11,12 @@ const users = [
     nombre: 'Ibai Llanos',
     userName: 'IbaiLlanos',
     isFollowing : false
-  }
+  },
+  {
+    nombre: 'Elon Musk',
+    userName: 'elonmusk',
+    isFollowing : false
+  },
 ]
 
 function App() {

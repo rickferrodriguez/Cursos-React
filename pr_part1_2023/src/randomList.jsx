@@ -14,12 +14,15 @@ export default function RandomList () {
   const [anecdote, setAnecdote] = useState(0)
 
   const handleClick = () => {
-    return setAnecdote(anecdote + 1)
+    const random = Math.floor(Math.random() * anecdotes.length)
+    return setAnecdote(random)
   }
+
   return (
-    <section>
+    <section className="random-card">
       <p>{anecdotes[anecdote]}</p>
       <button 
+        className='btn-random'
         onClick={handleClick}
         type="button"
       >

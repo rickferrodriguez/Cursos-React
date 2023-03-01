@@ -73,3 +73,16 @@
 .stopFollowing {
   display: none;
 }
+
+.random-card {
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: #16181C;
+}
+
+.btn-random {
+  border: none;
+  width: 140px;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
