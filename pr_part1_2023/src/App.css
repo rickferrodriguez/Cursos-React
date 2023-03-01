@@ -80,9 +80,14 @@
   background-color: #16181C;
 }
 
-.btn-random {
+.btn {
   border: none;
   width: 140px;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
+}
+
+.random-btn-groug {
+  display: flex;
+  gap: 0.5rem
 }
