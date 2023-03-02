@@ -1,8 +1,9 @@
-function Curso ({curso, parte}) {
+function Curso ({curso, parte, suma}) {
   return (
   <div>
       <h3>{curso}</h3>
       {parte}
+      {suma}
   </div>
   )
 }
@@ -30,10 +31,25 @@ const course = {
 }
 
 export const Ejercicio1 = () => {
+  const mappedParts = course.parts.map(p => {
+    return (
+        <p key={p.id}>{p.name}: <span>{p.exercises}</span> </p>
+    )
+  })
 
-  const mappedParts = course.parts.map(p => <p key={p.id} >{p.name} <span>p.exercises</span> </p>)
+  const mappedSuma = () => {
+    let suma = 0
+    course.parts.map( p => {
+      suma += p.exercises
+    })
+    return (
+    <p>{suma}</p>
+    )
+  }
+
+
   return (
-    <Curso curso={course.name} parte={mappedParts}/>
+    <Curso curso={course.name} parte={mappedParts} suma={mappedSuma()}/>
   )
 
 }
