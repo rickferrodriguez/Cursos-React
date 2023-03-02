@@ -25,7 +25,7 @@ const notes = [
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <ul>
         {notes.map(note => {
           return (

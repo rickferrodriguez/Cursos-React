@@ -1,10 +1,12 @@
+import './App.css'
+
 function Curso ({curso, parte, suma}) {
   return (
-  <div>
+    <div>
       <h3>{curso}</h3>
       {parte}
       {suma}
-  </div>
+    </div>
   )
 }
 
@@ -33,7 +35,7 @@ const course = {
 export const Ejercicio1 = () => {
   const mappedParts = course.parts.map(p => {
     return (
-        <p key={p.id}>{p.name}: <span>{p.exercises}</span> </p>
+      <p key={p.id}>{p.name}: <span>{p.exercises}</span> </p>
     )
   })
 
@@ -43,13 +45,14 @@ export const Ejercicio1 = () => {
       suma += p.exercises
     })
     return (
-    <p>{suma}</p>
+      <p>{suma}</p>
     )
   }
 
-
   return (
-    <Curso curso={course.name} parte={mappedParts} suma={mappedSuma()}/>
+    <div className="app">
+      <Curso curso={course.name} parte={mappedParts} suma={mappedSuma()}/>
+    </div>
   )
 
 }
