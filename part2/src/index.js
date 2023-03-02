@@ -108,7 +108,7 @@ function App () {
         //         <h2> Ejercicio 2 </h2>
         //         <Ejercicio1 />
         //     </div>
-            <div>
+            <div className="anecdotes">
                 <h2> Anectdotas Exercise </h2>
                 <Anectdotas  />
             </div>

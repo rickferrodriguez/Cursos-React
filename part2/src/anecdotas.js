@@ -9,13 +9,22 @@ const anecdotes = [
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
 
-const votesAnecdotes = {0: 0}
+function Button ({fun, children}) {
+  return (
+  <button onClick={fun} >{children}</button>
+  )
+}
+
+function RenderText ({children}) {
+  return (
+  <p>{children}</p>
+  )
+}
+
 function LoopAnecdotes () {
 
   const [anecdote, setAnecdote] = useState(0)
-  const [votes, setvotes] = useState(votesAnecdotes[0])
-  console.log(votes)
-
+  const [vote, setVote] = useState(Array(anecdotes.length).fill(0))
 
   const randomAnecdote = () => {
     let max = anecdotes.length
@@ -23,25 +32,23 @@ function LoopAnecdotes () {
     setAnecdote(numeroRandom)
   }
 
-  const updateVote = () => {
-    votesAnecdotes[anecdote] ??= 0
-    votesAnecdotes[anecdote] ++
-    console.log(votesAnecdotes)
+  const handleVote = () => {
+    const votesCopy = [...vote]
+    votesCopy[anecdote] += 1
+    setVote(votesCopy)
+    console.log(votesCopy)
   }
+  const renderVote = (vote[anecdote] > 0 )
+    ? `existe un numero de votos: ${vote[anecdote]}`
+    : 'no hay votos'
+
+  
   return (
     <div>
-      <p>{anecdotes[anecdote]}</p>
-      <button
-        onClick={randomAnecdote}
-      >
-        Next anecdotes
-      </button>
-      <button
-        onClick={updateVote}
-      >
-        Vote
-      </button>
-      <p>Votos: {votes}</p>
+      <RenderText className='anecdote-text'>{anecdotes[anecdote]}</RenderText>
+      <Button fun={randomAnecdote}>Nex anecdote</Button>
+      <Button fun={handleVote}> Vote</Button>
+      <RenderText> Votos: {renderVote}</RenderText>
     </div>
   )
 }

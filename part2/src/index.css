@@ -4,6 +4,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     padding: 2rem;
+    display: flex;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -11,4 +12,16 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.anecdotes {
+  border: 1px solid red;
+  width: 400px;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.anecdote-text {
+  height: 100%;
+  border: 1px solid red;
 }
