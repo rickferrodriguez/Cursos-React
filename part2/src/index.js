@@ -5,8 +5,8 @@ import './index.css'
 // import OldIndex from './oldindex.js';
 // import Repaso1 from './repasoClase1.js'
 // import Ejercicio1 from './ejercicio1.js'
-// import Anectdotas from './anecdotas.js'
-import RenderLista from './renderlista.js'
+import Anectdotas from './anecdotas.js'
+// import RenderLista from './renderlista.js'
 
 
 const notes = [
@@ -108,12 +108,12 @@ function App () {
         //         <h2> Ejercicio 2 </h2>
         //         <Ejercicio1 />
         //     </div>
-        //     <div>
-        //         <h2> Anectdotas Exercise </h2>
-        //         <Anectdotas  />
-        //     </div>
+            <div>
+                <h2> Anectdotas Exercise </h2>
+                <Anectdotas  />
+            </div>
         // </div>
-<RenderLista notes={notes}/>
+// <RenderLista notes={notes}/>
     )
 }
 
