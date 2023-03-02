@@ -42,6 +42,8 @@ function LoopAnecdotes () {
     ? `existe un numero de votos: ${vote[anecdote]}`
     : 'no hay votos'
 
+  const mostVotes = vote.indexOf(Math.max(...vote))
+
   
   return (
     <div>
@@ -49,6 +51,8 @@ function LoopAnecdotes () {
       <Button fun={randomAnecdote}>Nex anecdote</Button>
       <Button fun={handleVote}> Vote</Button>
       <RenderText> Votos: {renderVote}</RenderText>
+      <h3>Anecdote with most votes</h3>
+      <p>{anecdotes[mostVotes]}</p>
     </div>
   )
 }
