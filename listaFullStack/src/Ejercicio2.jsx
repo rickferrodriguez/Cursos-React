@@ -72,6 +72,7 @@ export const Ejercicio2 = () => {
       </div>
     )
   })
+
   return (
     <div className="app">
       <div>{valor}</div>
