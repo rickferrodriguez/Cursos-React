@@ -36,21 +36,19 @@ function App() {
 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
-
-
   }
 
   return (
     <main className="board">
       <section className="game">
         {
-          board.map((_, index) => (
+          board.map((bo, index) => (
             <Square 
               key={index}
               index={index}
               updateBoard = {updateBoard}
             >
-              {board[index]}
+              {bo}
             </Square>
           ))
         }
