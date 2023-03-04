@@ -91,7 +91,7 @@ function App() {
         </Square>
       </section>
 
-      <WinnerModal resetGame={resetGameStorage} winner={winner}/>
+      <WinnerModal resetGame={resetGame} winner={winner}/>
 
     </main>
   )
