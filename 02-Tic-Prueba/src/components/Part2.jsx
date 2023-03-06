@@ -30,11 +30,14 @@ export function Part2 () {
           boardToCheck[a] === boardToCheck[b] &&
           boardToCheck[a] === boardToCheck[c]
       ){
-        console.log(`el ganador es ${boardToCheck[a]}`)
         return boardToCheck[a]
       }
     }
     return null
+  }
+
+  const checkEndGame = (newBoard) => {
+    return newBoard.every((square) => square !== null)
   }
 
   const updateBoard = (index) => {
@@ -52,7 +55,15 @@ export function Part2 () {
     const newWinner = updateWinner(newBoard)
     if(newWinner){
       setWinner(newWinner)
+    } else if( checkEndGame(newBoard)){
+      setWinner(false)
     }
+  }
+
+  const resetGame = () => {
+    setWinner(null)
+    setBoard(Array(9).fill(null))
+    setTurns(TURNS.X)
   }
 
 
@@ -76,6 +87,29 @@ export function Part2 () {
         <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
+      {
+        winner !== null && (
+          <section className="winner">
+            <div className="text">
+              <h2>
+                {
+                  winner === false
+                    ? "empate"
+                    : "Ganó"
+                }
+              </h2>
+
+              <header className="win">
+                {winner && <Square>{winner}</Square>}
+              </header>
+
+              <footer>
+                <button onClick={resetGame}>Reset Game</button>
+              </footer>
+            </div>
+          </section>
+        )
+      }
   </article>
   )
 }
