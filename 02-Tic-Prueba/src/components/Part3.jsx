@@ -82,13 +82,21 @@ export function Part3 () {
       {
         winner !== null && (
         <section className="winner">
-            <p className="text">
-              {winner 
-                ? 'Ha ganado' 
-                : 'Empate' }
-            </p>
-            <Square>{winner}</Square>
-            <button onClick={resetGame}>Reset Game</button>
+            <div className="text">
+              <h2>
+                {
+                  winner === false
+                    ? 'Empate' 
+                    : 'Ganó' 
+                }
+              </h2>
+              <header className="win">
+                {winner && <Square>{winner}</Square>}
+              </header>
+              <footer>
+                <button onClick={resetGame}>Reset Game</button>
+              </footer>
+            </div>
           </section>
         )
       }
