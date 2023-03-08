@@ -1,4 +1,4 @@
-import { TURNS } from '../constants.js'
+import { TURNS, WINNER_COMBOS } from '../constants.js'
 import { useState} from 'react'
 const Square = ({children, index, isSelected, updateTurn}) => {
   const className = `square ${isSelected ? 'is-selected': ''}`
@@ -17,9 +17,28 @@ const Square = ({children, index, isSelected, updateTurn}) => {
 export function Part3 () {
   const [board, setBoard] = useState(Array(9).fill(null))
   const [turn, setTurn] = useState(TURNS.X)
+  const [winner, setWinner] = useState(null)
+
+  const updateWinner = (boardToCheck) => {
+    for(const combo of WINNER_COMBOS) {
+      const [a,b,c] = combo
+      if(
+        boardToCheck[a] &&
+          boardToCheck[a] === boardToCheck[b] &&
+          boardToCheck[a] === boardToCheck[c] 
+      ){
+        return boardToCheck[a]
+      }
+    }
+    return false
+  }
+
+  const checkWinner = (array) => {
+    return array.every(square => square !== null)
+  }
 
   const updateTurn = (index) => {
-    if(board[index]) return
+    if(board[index] || winner !== null) return
 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
@@ -27,6 +46,19 @@ export function Part3 () {
     const newBoard = [...board]
     newBoard[index] = turn
     setBoard(newBoard)
+
+    const newWinner = updateWinner(newBoard)
+    if(newWinner) {
+      setWinner(newWinner)
+    } else if(checkWinner(newBoard)){
+      setWinner(false)
+    }
+  }
+
+  const resetGame = () => {
+    setBoard(Array(9).fill(null))
+    setTurn(TURNS.X)
+    setWinner(null)
   }
   return (
     <section className="board">
@@ -47,6 +79,19 @@ export function Part3 () {
         <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
+      {
+        winner !== null && (
+        <section className="winner">
+            <p className="text">
+              {winner 
+                ? 'Ha ganado' 
+                : 'Empate' }
+            </p>
+            <Square>{winner}</Square>
+            <button onClick={resetGame}>Reset Game</button>
+          </section>
+        )
+      }
     </section>
   )
 }
