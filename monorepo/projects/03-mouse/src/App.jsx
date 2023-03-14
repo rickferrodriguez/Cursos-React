@@ -8,6 +8,7 @@ const FollowMouse = () => {
     return setEnable(!enable)
   }
 
+  // efecto para el mouse
   useEffect(() => {
     console.log('efecto', { enable })
 
@@ -26,6 +27,15 @@ const FollowMouse = () => {
       window.removeEventListener('pointermove', handleMove)
     }
   }, [enable])
+
+  // efecto para el cursor
+  useEffect(() => {
+    document.body.classList.toggle('no-cursor', enable)
+
+    return () => {
+      document.body.classList.remove('no-cursor')
+    }
+  })
 
   return (
     <main>
