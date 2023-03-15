@@ -1,0 +1,15 @@
+main {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 1rem;
+}
+.card-cat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-card {
+  max-width: 300px;
+}
