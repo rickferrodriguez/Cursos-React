@@ -1,0 +1,23 @@
+main{
+  display:grid;
+  place-items: center;
+}
+
+.card-cat {
+  display:grid;
+  place-items: center;
+  gap: 1rem;
+  max-width: 550px;
+}
+
+.flex-card-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cat-img {
+  width: 300px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
