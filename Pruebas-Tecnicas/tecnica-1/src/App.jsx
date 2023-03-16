@@ -4,8 +4,8 @@ const CAT_API_FACT = 'https://catfact.ninja/fact'
 const prefixImageUrl = 'https://cataas.com'
 
 export function App () {
-  const [fact, setFact] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
+  const [fact, setFact] = useState()
+  const [imageUrl, setImageUrl] = useState()
 
   useEffect(() => {
     fetch(CAT_API_FACT)
@@ -13,23 +13,28 @@ export function App () {
       .then(data => {
         const { fact } = data
         setFact(fact)
-
-        const threeWords = fact.split(' ', 3).join(' ')
-
-        fetch(`https://cataas.com/cat/says/${threeWords}?size=50&color=red&json=true`)
-          .then(response => response.json())
-          .then(dat => {
-            const { url } = dat
-            setImageUrl(url)
-          })
       })
   }, [])
 
+  useEffect(() => {
+    if (!fact) return
+
+    const firstThreeWords = fact.split(' ').slice(0, 3).join(' ')
+    console.log(firstThreeWords)
+
+    fetch(`https://cataas.com/cat/says/${firstThreeWords}?size=50&color=red&json=true`)
+      .then(response => response.json())
+      .then(dat => {
+        const { url } = dat
+        setImageUrl(url)
+      })
+  }, [fact])
+
   return (
     <main>
-      <h1>App de gatitos</h1>
-      <p>{fact}</p>
-      <img src={`${prefixImageUrl}${imageUrl}`} alt='' />
+      <h1>Api de Gatos</h1>
+      {fact && <p>{fact}</p>}
+      {imageUrl && <img src={`${prefixImageUrl}${imageUrl}`} alt={`Random cat image based on ${fact}`} />}
     </main>
   )
 }
