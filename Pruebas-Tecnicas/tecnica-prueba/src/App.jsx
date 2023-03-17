@@ -1,25 +1,13 @@
-import { useEffect, useState } from 'react'
 import './App.css'
 import { getNewFact } from './logic/getNewFact.js'
 import { useCustomFact } from './hooks/useCustomFact.js'
+import { useImageCatFact } from './hooks/useImageCatFact.js'
 
 const prefixUrl = 'https://cataas.com/'
 
 export function App () {
   const { fact, setFact } = useCustomFact()
-  const [imageUrl, setImageUrl] = useState()
-
-  useEffect(() => {
-    if (!fact) return
-
-    const firstThreeWords = fact.split(' ').slice(0, 3).join(' ')
-    fetch(`https://cataas.com/cat/says/${firstThreeWords}?size=50&color=red&json=true`)
-      .then(response => response.json())
-      .then(dat => {
-        const { url } = dat
-        setImageUrl(url)
-      })
-  }, [fact])
+  const { imageUrl } = useImageCatFact({ fact })
 
   const handleClick = async () => {
     const newFact = await getNewFact()
