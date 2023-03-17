@@ -1,0 +1,25 @@
+main {
+  display:grid;
+  place-items: center;
+}
+
+.cat-card {
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card-group {
+  display:flex;
+  justify-content:center;
+  gap: 1rem;
+  align-items: center;
+}
+
+.img-cat {
+  width: 400px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
