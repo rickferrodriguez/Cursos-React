@@ -1,17 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { getNewFact } from './logic/getNewFact.js'
+import { useCustomFact } from './hooks/useCustomFact.js'
 
 const prefixUrl = 'https://cataas.com/'
-
-const useCustomFact = () => {
-  const [fact, setFact] = useState()
-
-  useEffect(() => {
-    getNewFact().then(newFact => setFact(newFact))
-  }, [])
-  return { fact, setFact }
-}
 
 export function App () {
   const { fact, setFact } = useCustomFact()
@@ -41,7 +33,12 @@ export function App () {
         <button onClick={handleClick}>Get new Fact</button>
         <section className='card-group'>
           {fact && <p>{fact}</p>}
-          {imageUrl && <img className='img-cat' src={`${prefixUrl}${imageUrl}`} alt='' />}
+          {imageUrl &&
+            <img
+              className='img-cat'
+              src={`${prefixUrl}${imageUrl}`}
+              alt={`random cat image with ${fact}`}
+            />}
         </section>
       </article>
     </main>
