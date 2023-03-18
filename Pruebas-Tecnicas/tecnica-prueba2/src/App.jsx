@@ -1,33 +1,13 @@
-import { useEffect, useState } from 'react'
 import './App.css'
-import { getRandomFact } from './logic/getRandomFact.js'
-
-const PREFIX_URL = 'https://cataas.com/'
+import { useGetRandomFact } from './hooks/useGetRandomFact.jsx'
+import { useGetCatImage } from './hooks/useGetCatImage.jsx'
 
 export function App () {
-  const [fact, setFact] = useState()
-  const [urlImage, setUrlImage] = useState()
-
-  useEffect(() => {
-    getRandomFact().then(res => setFact(res))
-  }, [])
-
-  useEffect(() => {
-    if (!fact) return
-
-    const firstThreeWords = fact.split(' ').slice(0, 3).join(' ')
-    console.log(firstThreeWords)
-
-    fetch(`https://cataas.com/cat/says/${firstThreeWords}?json=true`)
-      .then(res => res.json())
-      .then(response => {
-        const { url } = response
-        setUrlImage(url)
-      })
-  }, [fact])
+  const { fact, setFactState } = useGetRandomFact()
+  const { urlImage } = useGetCatImage({ fact })
 
   const handleClick = () => {
-    getRandomFact().then(res => setFact(res))
+    setFactState()
   }
 
   return (
@@ -44,7 +24,7 @@ export function App () {
           {urlImage &&
             <img
               className='cat-img'
-              src={`${PREFIX_URL}${urlImage}`}
+              src={urlImage}
               alt={`random cat image with the fact that: ${fact}`}
             />}
         </section>
