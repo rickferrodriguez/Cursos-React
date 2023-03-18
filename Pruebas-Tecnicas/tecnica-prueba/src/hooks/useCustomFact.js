@@ -4,8 +4,11 @@ import { getNewFact } from '../logic/getNewFact.js'
 export const useCustomFact = () => {
   const [fact, setFact] = useState()
 
-  useEffect(() => {
+  const refreshFact = () => {
     getNewFact().then(newFact => setFact(newFact))
-  }, [])
-  return { fact, setFact }
+  }
+
+  useEffect(refreshFact, [])
+
+  return { fact, refreshFact }
 }

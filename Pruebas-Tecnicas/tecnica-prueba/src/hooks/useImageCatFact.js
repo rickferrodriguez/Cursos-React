@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+const prefixUrl = 'https://cataas.com/'
+
 export const useImageCatFact = ({ fact }) => {
   const [imageUrl, setImageUrl] = useState()
 
@@ -14,5 +16,5 @@ export const useImageCatFact = ({ fact }) => {
         setImageUrl(url)
       })
   }, [fact])
-  return { imageUrl }
+  return { imageUrl: `${prefixUrl}${imageUrl}` }
 }

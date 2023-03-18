@@ -1,17 +1,13 @@
 import './App.css'
-import { getNewFact } from './logic/getNewFact.js'
 import { useCustomFact } from './hooks/useCustomFact.js'
 import { useImageCatFact } from './hooks/useImageCatFact.js'
 
-const prefixUrl = 'https://cataas.com/'
-
 export function App () {
-  const { fact, setFact } = useCustomFact()
+  const { fact, refreshFact } = useCustomFact()
   const { imageUrl } = useImageCatFact({ fact })
 
   const handleClick = async () => {
-    const newFact = await getNewFact()
-    setFact(newFact)
+    refreshFact()
   }
 
   return (
@@ -24,7 +20,7 @@ export function App () {
           {imageUrl &&
             <img
               className='img-cat'
-              src={`${prefixUrl}${imageUrl}`}
+              src={`${imageUrl}`}
               alt={`random cat image with ${fact}`}
             />}
         </section>
