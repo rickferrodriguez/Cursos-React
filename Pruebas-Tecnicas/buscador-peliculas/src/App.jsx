@@ -1,11 +1,9 @@
 import './App.css'
-import responseMovies from './mocks/with-results.json'
-import { ListOfMovies } from './components/Movies.jsx'
-// import withOutResults from './mocks/no-results.json'
+import { Movies } from './components/Movies.jsx'
+import { useMovies } from './hooks/useMovies.js'
 
 function App () {
-  const movies = responseMovies.Search
-  const hasMovies = movies?.length > 0
+  const { movies } = useMovies()
   return (
     <div className='page'>
       <header>
@@ -17,13 +15,7 @@ function App () {
       </header>
 
       <main>
-        {
-          hasMovies
-            ? <ListOfMovies movies={movies} />
-            : (
-              <p>no se encotraron peliculas</p>
-              )
-        }
+        <Movies movies={movies} />
       </main>
     </div>
   )
