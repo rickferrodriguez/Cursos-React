@@ -1,4 +1,3 @@
-
 export function ListOfMovies ({ movies }) {
   return (
     <ul>
