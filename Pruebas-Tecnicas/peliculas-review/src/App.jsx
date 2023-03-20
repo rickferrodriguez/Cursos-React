@@ -4,19 +4,14 @@ import withResults from './mocks/with-results.json'
 export function App () {
   const movies = withResults.Search
   const hasMovies = movies?.length > 0
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const movieName = Object.fromEntries(event)
-  }
   return (
     <div className='page'>
 
       <header>
         <h1>Buscador de Películas</h1>
-        <form className='form' onSubmit={handleSubmit}>
-          <input type='text' name='movie' placeholder='Avengers, Harry Potter, The Matrix, ...' />
-          <button type='submit'>Search</button>
+        <form action='' className='form'>
+          <input type='text' name='movie-name' />
+          <button type='submit'>Buscar</button>
         </form>
       </header>
 
@@ -25,18 +20,19 @@ export function App () {
           {
             hasMovies
               ? movies.map(movie => (
-                <li key={movie.imdbID} className='movie'>
+                <li key={movie.imdbID}>
                   <img src={movie.Poster} alt={movie.Title} />
                   <h3>{movie.Title}</h3>
                   <p>{movie.Year}</p>
                 </li>
               ))
               : (
-                <p>no existe esta película</p>
+                <p>No hay resultados para esta película</p>
                 )
           }
         </ul>
       </main>
+
     </div>
   )
 }
