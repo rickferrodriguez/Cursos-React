@@ -12,13 +12,17 @@ export function Movies () {
 
 function MappedMovies ({ movies }) {
   return (
-    movies.map(movie => (
-      <li key={movie.imdbID}>
-        <img src={movie.Poster} alt={movie.Title} />
-        <h3>{movie.Title}</h3>
-        <p>{movie.Year}</p>
-      </li>
-    ))
+    <ul className='movies'>
+      {
+        movies.map(movie => (
+          <li key={movie.imdbID}>
+            <img src={movie.Poster} alt={movie.Title} />
+            <h3>{movie.Title}</h3>
+            <p>{movie.Year}</p>
+          </li>
+        ))
+      }
+    </ul>
   )
 }
 
