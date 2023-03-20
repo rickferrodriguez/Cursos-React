@@ -1,24 +1,13 @@
-import withResults from '../mocks/with-results.json'
-
-export function Movies () {
-  const movies = withResults.Search
-  const hasMovies = movies?.length > 0
-  return (
-    hasMovies
-      ? <MappedMovies movies={movies} />
-      : <MovieNotFound />
-  )
-}
 
 function MappedMovies ({ movies }) {
   return (
     <ul className='movies'>
       {
         movies.map(movie => (
-          <li key={movie.imdbID}>
-            <img src={movie.Poster} alt={movie.Title} />
-            <h3>{movie.Title}</h3>
-            <p>{movie.Year}</p>
+          <li key={movie.id}>
+            <h3>{movie.title}</h3>
+            <p>{movie.year}</p>
+            <img src={movie.poster} alt={movie.title} />
           </li>
         ))
       }
@@ -29,5 +18,14 @@ function MappedMovies ({ movies }) {
 function MovieNotFound () {
   return (
     <p>No hay resultados para esta película</p>
+  )
+}
+
+export function Movies ({ movies }) {
+  const hasMovies = movies?.length > 0
+  return (
+    hasMovies
+      ? <MappedMovies movies={movies} />
+      : <MovieNotFound />
   )
 }
