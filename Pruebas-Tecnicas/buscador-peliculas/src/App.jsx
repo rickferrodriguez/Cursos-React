@@ -1,59 +1,39 @@
 import './App.css'
-import { useEffect, useState } from 'react'
 import { Movies } from './components/Movies.jsx'
 import { useMovies } from './hooks/useMovies.js'
+import { useSearch } from './hooks/useSearch.jsx'
 
 function App () {
-  const { movies } = useMovies()
-  const [query, setQuery] = useState('')
-  const [error, setError] = useState(null)
+  const { mappedMovies } = useMovies()
+  const { search, setSearch, error } = useSearch()
+  // const firstTimeInput = useRef(true)
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log({ query })
+    console.log(search)
   }
 
   const handleChange = (event) => {
-    const newQuery = event.target.value
-    if (newQuery.startsWith(' ')) return
-    setQuery(event.target.value)
+    const newSearch = event.target.value
+    if (newSearch.startsWith(' ')) return
+    setSearch(newSearch)
   }
-
-  useEffect(() => {
-    if (query === '') {
-      setError('No se puede buscar una película vacía')
-      return
-    }
-
-    if (query.match(/^\d+$/)) {
-      setError('No se puede buscar una película con un número')
-      return
-    }
-
-    if (query.length < 3) {
-      setError('la búsqueda debe tener al menos 3 caracteres')
-      return
-    }
-
-    setError(null)
-  }, [query])
 
   return (
     <div className='page'>
 
       <header>
-        <h1>Buscador de películas</h1>
+        <h1>Buscador Películas</h1>
         <form className='form' onSubmit={handleSubmit}>
-          <input onChange={handleChange} value={query} name='query' type='text' placeholder='Avengers, StarWars, The Matrix, ...' />
+          <input onChange={handleChange} type='text' name='search' value={search} placeholder='Movie Name' />
           <button type='submit'>Buscar</button>
         </form>
-        {error && <p style={{ color: 'red' }}> {error}</p>}
+        <p className='error'>{error}</p>
       </header>
 
       <main>
-        <Movies movies={movies} />
+        <Movies movies={mappedMovies} />
       </main>
-
     </div>
   )
 }

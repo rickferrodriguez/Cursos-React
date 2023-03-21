@@ -1,15 +1,14 @@
-import responseMovies from '../mocks/with-results.json'
-// import withOutResults from './mocks/no-results.json'
+import withResults from '../mocks/with-results.json'
 
 export function useMovies () {
-  const movies = responseMovies.Search
+  const movies = withResults.Search
 
   const mappedMovies = movies?.map(movie => ({
     id: movie.imdbID,
     title: movie.Title,
     year: movie.Year,
+    type: movie.Type,
     poster: movie.Poster
   }))
-
-  return { movies: mappedMovies }
+  return { mappedMovies }
 }
