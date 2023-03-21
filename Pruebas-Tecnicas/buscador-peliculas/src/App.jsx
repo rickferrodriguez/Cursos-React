@@ -6,7 +6,6 @@ import { useSearch } from './hooks/useSearch.jsx'
 function App () {
   const { mappedMovies } = useMovies()
   const { search, setSearch, error } = useSearch()
-  // const firstTimeInput = useRef(true)
 
   const handleSubmit = (event) => {
     event.preventDefault()

@@ -35,6 +35,14 @@ form {
   gap: 32px;
 }
 
+.top-card {
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .movie {
   text-align: center;
 }
@@ -46,4 +54,6 @@ form {
 .movie img {
   border-radius: 8px;
   margin-top: 16px;
+  aspect-ratio: 3/4;
+  object-fit: contain;
 }
