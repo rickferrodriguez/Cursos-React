@@ -1,3 +1,7 @@
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -18,6 +22,40 @@ form {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.movies {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.title-movie {
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  height: 100px;
+  text-align: center;
+}
+
+.movie img {
+  aspect-ratio:3/4;
+  object-fit: contain;
+}
+
+.movie h3, .movie p {
+  margin: 0;
 }
 
 .error {

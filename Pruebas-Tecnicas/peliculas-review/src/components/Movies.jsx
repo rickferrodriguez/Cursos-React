@@ -5,8 +5,10 @@ function ListOfMovies ({ mappedMovies }) {
         mappedMovies.map(movie => (
           <li key={movie.id} className='movie'>
             <article>
-              <h3>{movie.title}</h3>
-              <p>{movie.year}</p>
+              <section className='title-movie'>
+                <h3>{movie.title}</h3>
+                <p>{movie.year}</p>
+              </section>
               <img src={movie.poster} alt={movie.title} />
             </article>
           </li>
