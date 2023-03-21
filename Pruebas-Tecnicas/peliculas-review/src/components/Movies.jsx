@@ -1,13 +1,14 @@
-
-function MappedMovies ({ movies }) {
+function ListOfMovies ({ mappedMovies }) {
   return (
     <ul className='movies'>
       {
-        movies.map(movie => (
-          <li key={movie.id}>
-            <h3>{movie.title}</h3>
-            <p>{movie.year}</p>
-            <img src={movie.poster} alt={movie.title} />
+        mappedMovies.map(movie => (
+          <li key={movie.id} className='movie'>
+            <article>
+              <h3>{movie.title}</h3>
+              <p>{movie.year}</p>
+              <img src={movie.poster} alt={movie.title} />
+            </article>
           </li>
         ))
       }
@@ -15,9 +16,9 @@ function MappedMovies ({ movies }) {
   )
 }
 
-function MovieNotFound () {
+function NoMovies () {
   return (
-    <p>No hay resultados para esta película</p>
+    <p>no hay películas</p>
   )
 }
 
@@ -25,7 +26,7 @@ export function Movies ({ movies }) {
   const hasMovies = movies?.length > 0
   return (
     hasMovies
-      ? <MappedMovies movies={movies} />
-      : <MovieNotFound />
+      ? <ListOfMovies mappedMovies={movies} />
+      : <NoMovies />
   )
 }

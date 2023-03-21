@@ -1,21 +1,19 @@
 import './App.css'
-
-import { useMovies } from './hooks/useMovies.js'
 import { Movies } from './components/Movies.jsx'
-import { useSearch } from './hooks/useSearch.js'
+import { useMovies } from './hooks/useMovies.js'
+import { useSearch } from './hooks/useSearch.jsx'
 
 export function App () {
-  const { mappedMovies } = useMovies()
-  const { error, search, setSearch } = useSearch()
+  const { search, setSearch, error } = useSearch()
+  const { mappedMovies, searchMovies } = useMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(search)
+    searchMovies()
   }
 
   const handleChange = (event) => {
     const newSearch = event.target.value
-    if (newSearch.startsWith(' ')) return
     setSearch(newSearch)
   }
 
@@ -23,10 +21,10 @@ export function App () {
     <div className='page'>
 
       <header>
-        <h1>Buscador de Películas</h1>
+        <h1>Movie Finder</h1>
         <form action='' className='form' onSubmit={handleSubmit}>
-          <input onChange={handleChange} type='text' value={search} name='query' placeholder='Nombre Película' />
-          <button type='submit'>Buscar</button>
+          <input onChange={handleChange} value={search} type='text' placeholder='Search for Movie' />
+          <button type='submit'>Search</button>
         </form>
         {error && <p className='error'>{error}</p>}
       </header>
