@@ -1,32 +1,12 @@
 import { useState } from 'react'
-// import withResults from '../mocks/with-results.json'
-import withOutResults from '../mocks/no-results.json'
-
-const PELI_ENDPOINT = 'http://www.omdbapi.com/?apikey=5a03f14a'
+import { searchMovies } from '../services/searchMovies.js'
 
 export function useMovies ({ search }) {
-  const [responseMovies, setResponseMovies] = useState([])
-  const movies = responseMovies.Search
+  const [movies, setMovies] = useState([])
 
-  const mappedMovies = movies?.map(movie => ({
-    id: movie.imdbID,
-    title: movie.Title,
-    year: movie.Year,
-    type: movie.Type,
-    poster: movie.Poster
-  }))
-
-  const getMovies = () => {
-    if (search) {
-      // setResponseMovies(getMoviesFromName)
-      fetch(`${PELI_ENDPOINT}&s=${search}`)
-        .then(res => res.json())
-        .then(data => {
-          setResponseMovies(data)
-        })
-    } else {
-      setResponseMovies(withOutResults)
-    }
+  const getMovies = async () => {
+    const newMovies = await searchMovies({ search })
+    setMovies(newMovies)
   }
-  return { movies: mappedMovies, getMovies }
+  return { movies, getMovies }
 }
