@@ -5,11 +5,11 @@ import { useSearch } from './hooks/useSearch.jsx'
 
 export function App () {
   const { search, setSearch, error } = useSearch()
-  const { mappedMovies, searchMovies } = useMovies({ search })
+  const { movies, getMovies } = useMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    searchMovies()
+    getMovies()
   }
 
   const handleChange = (event) => {
@@ -30,7 +30,7 @@ export function App () {
       </header>
 
       <main>
-        <Movies movies={mappedMovies} />
+        <Movies movies={movies} />
       </main>
 
     </div>
