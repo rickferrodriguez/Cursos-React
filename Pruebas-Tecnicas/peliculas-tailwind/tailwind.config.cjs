@@ -8,6 +8,10 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ['Inter', 'sans-serif']
+      },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        fit: 'repeat(auto-fit, minmax(200px, 1fr))'
       }
     }
   },
