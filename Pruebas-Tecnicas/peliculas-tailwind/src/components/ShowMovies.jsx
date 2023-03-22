@@ -24,7 +24,7 @@ function ListOfMovies ({ mappedMovies }) {
 
 function NotFoundMovies () {
   return (
-    <p className='text-center'>No hay películas para mostrar</p>
+    <p className='text-center text-red-400'>No hay películas para mostrar</p>
   )
 }
 
