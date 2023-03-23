@@ -3,7 +3,7 @@ import { getMovies } from '../services/getMovies.js'
 
 export function useGetMovies ({ search, sort }) {
   const [movies, setResponseMovies] = useState([])
-  const [error, setError] = useState(null)
+  const [, setError] = useState(null)
   const lastMovieSearched = useRef(search)
 
   const responseMovies = useCallback(async ({ search }) => {
@@ -19,13 +19,15 @@ export function useGetMovies ({ search, sort }) {
   }, [])
 
   const sortedMovies = useMemo(() => {
-    const sorted = [...movies].sort((a, b) => a.title.localeCompare(b.title))
     if (sort) {
-      return sorted
+      return [...movies].sort((a, b) => a.title.localeCompare(b.title))
+    } else {
+      return movies
     }
-
-    return movies
+    // return sort
+    //   ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+    //   : movies
   }, [sort, movies])
 
-  return { movies: sortedMovies, responseMovies, error }
+  return { movies: sortedMovies, responseMovies }
 }
