@@ -9,6 +9,7 @@ function ListOfMovies ({ mappedMovies }) {
               <p>{movie.year}</p>
             </section>
             <img src={movie.poster} alt={movie.title} />
+            <p>{movie.type}</p>
           </li>
         ))
       }

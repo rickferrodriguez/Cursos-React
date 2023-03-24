@@ -5,9 +5,10 @@ import { useConditionalForm } from './hooks/useConditionalForm.jsx'
 import { useState } from 'react'
 
 export function App () {
-  const [check, setCheck] = useState(false)
+  const [sort, setSort] = useState(false)
+  const [onlyMovies, setOnlyMovies] = useState(false)
   const { search, setSearch, error } = useConditionalForm()
-  const { movies, searchMovies } = useGetMovies({ search, check })
+  const { movies, searchMovies, loading } = useGetMovies({ search, sort, onlyMovies })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -16,14 +17,17 @@ export function App () {
 
   const handleChange = (event) => {
     const newSearch = event.target.value
-
     if (newSearch.startsWith(' ')) return
 
     setSearch(newSearch)
   }
 
   const handleCheck = () => {
-    setCheck(!check)
+    setSort(!sort)
+  }
+
+  const handleOnlyMovies = () => {
+    setOnlyMovies(!onlyMovies)
   }
 
   return (
@@ -33,14 +37,27 @@ export function App () {
         <h1>Movie Finder</h1>
         <form className='form' onSubmit={handleSubmit}>
           <input onChange={handleChange} value={search} type='text' placeholder='Movie Name' />
-          <input type='checkbox' onChange={handleCheck} value={check} />
+          <section className='filter'>
+            <div>
+              <span>Sort A-Z</span>
+              <input type='checkbox' onChange={handleCheck} value={sort} />
+            </div>
+            <div>
+              <span>movies</span>
+              <input type='checkbox' onChange={handleOnlyMovies} value={onlyMovies} />
+            </div>
+          </section>
           <button type='submit'>Buscar</button>
         </form>
-        {error && <p className='error'>{error}</p>}
+        {
+          error && <p className='error'>{error}</p>
+        }
       </header>
 
       <main>
-        <Movies movies={movies} />
+        {
+          loading ? <p>Cargando...</p> : <Movies movies={movies} />
+        }
       </main>
     </div>
   )
