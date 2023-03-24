@@ -3,7 +3,7 @@ import noResults from '../mocks/noResults.json'
 
 const PREFIX_MOVIES = 'http://www.omdbapi.com/?apikey=5a03f14a'
 
-export const useGetMovies = ({ search }) => {
+export const useGetMovies = ({ search, check }) => {
   const [responseMovies, setResponseMovies] = useState([])
   const movies = responseMovies.Search
   const mappedMovies = movies?.map(movie => ({
@@ -26,5 +26,9 @@ export const useGetMovies = ({ search }) => {
     }
   }
 
-  return { mappedMovies, searchMovies }
+  const sortMovies = check
+    ? [...mappedMovies].sort((a, b) => a.title.localeCompare(b.title))
+    : mappedMovies
+
+  return { mappedMovies: sortMovies, check, searchMovies }
 }
