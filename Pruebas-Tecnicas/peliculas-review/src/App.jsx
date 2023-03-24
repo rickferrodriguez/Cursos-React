@@ -2,13 +2,21 @@ import './App.css'
 import { Movies } from './components/Movies.jsx'
 import { useGetMovies } from './hooks/useGetMovies.js'
 import { useConditionalForm } from './hooks/useConditionalForm.jsx'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
+import debounce from 'just-debounce-it'
 
 export function App () {
   const [sort, setSort] = useState(false)
   const [onlyMovies, setOnlyMovies] = useState(false)
   const { search, setSearch, error } = useConditionalForm()
   const { movies, searchMovies, loading } = useGetMovies({ search, sort, onlyMovies })
+
+  const debouncedGetmovies = useCallback(
+    debounce(search => {
+      console.log('search')
+      searchMovies({ search })
+    }, 300)
+    , [searchMovies])
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -21,6 +29,7 @@ export function App () {
 
     setSearch(newSearch)
     searchMovies({ search: newSearch })
+    debouncedGetmovies(newSearch)
   }
 
   const handleCheck = () => {
