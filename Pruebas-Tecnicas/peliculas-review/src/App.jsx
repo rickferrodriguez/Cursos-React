@@ -12,7 +12,7 @@ export function App () {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    searchMovies()
+    searchMovies({ search })
   }
 
   const handleChange = (event) => {
@@ -20,6 +20,7 @@ export function App () {
     if (newSearch.startsWith(' ')) return
 
     setSearch(newSearch)
+    searchMovies({ search: newSearch })
   }
 
   const handleCheck = () => {

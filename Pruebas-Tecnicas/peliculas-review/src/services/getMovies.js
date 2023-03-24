@@ -1,7 +1,7 @@
 const PREFIX_MOVIES = 'http://www.omdbapi.com/?apikey=5a03f14a'
 
 export const getMovies = async ({ search }) => {
-  if (search === '') return null
+  if (search === ' ') return null
 
   try {
     const response = await fetch(`${PREFIX_MOVIES}&s=${search}`)
