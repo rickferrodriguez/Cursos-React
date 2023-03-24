@@ -7,7 +7,7 @@ import { useState } from 'react'
 export function App () {
   const [check, setCheck] = useState(false)
   const { search, setSearch, error } = useConditionalForm()
-  const { mappedMovies, searchMovies } = useGetMovies({ search, check })
+  const { movies, searchMovies } = useGetMovies({ search, check })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -40,7 +40,7 @@ export function App () {
       </header>
 
       <main>
-        <Movies movies={mappedMovies} />
+        <Movies movies={movies} />
       </main>
     </div>
   )
