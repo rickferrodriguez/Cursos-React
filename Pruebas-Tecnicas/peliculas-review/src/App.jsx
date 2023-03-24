@@ -4,12 +4,12 @@ import { useGetMovies } from './hooks/useGetMovies.js'
 import { useConditionalForm } from './hooks/useConditionalForm.jsx'
 
 export function App () {
-  const { mappedMovies } = useGetMovies()
   const { search, setSearch, error } = useConditionalForm()
+  const { mappedMovies, searchMovies } = useGetMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(search)
+    searchMovies()
   }
 
   const handleChange = (event) => {
