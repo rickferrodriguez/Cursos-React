@@ -1,11 +1,13 @@
 function ListOfMovies ({ mappedMovies }) {
   return (
-    <ul>
+    <ul className='movies'>
       {
         mappedMovies.map(movie => (
-          <li key={movie.id}>
-            <h1>{movie.title}</h1>
-            <p>{movie.year}</p>
+          <li className='movie' key={movie.id}>
+            <section className='title-movie'>
+              <h3>{movie.title}</h3>
+              <p>{movie.year}</p>
+            </section>
             <img src={movie.poster} alt={movie.title} />
           </li>
         ))
