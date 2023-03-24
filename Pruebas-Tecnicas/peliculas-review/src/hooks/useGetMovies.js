@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import withResults from '../mocks/withResults.json'
 import noResults from '../mocks/noResults.json'
+
+const PREFIX_MOVIES = 'http://www.omdbapi.com/?apikey=5a03f14a'
 
 export const useGetMovies = ({ search }) => {
   const [responseMovies, setResponseMovies] = useState([])
@@ -15,7 +16,11 @@ export const useGetMovies = ({ search }) => {
 
   const searchMovies = () => {
     if (search) {
-      setResponseMovies(withResults)
+      fetch(`${PREFIX_MOVIES}&s=${search}`)
+        .then(response => response.json())
+        .then(data => {
+          setResponseMovies(data)
+        })
     } else {
       setResponseMovies(noResults)
     }
