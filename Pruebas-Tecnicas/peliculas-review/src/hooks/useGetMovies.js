@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { getMovies } from '../services/getMovies.js'
+import { filteredMovies } from '../logic/filteredMovies.js'
 
 export function useGetMovies ({ search, sort, onlyMovies }) {
   const [movies, setMovies] = useState([])
@@ -26,23 +27,4 @@ export function useGetMovies ({ search, sort, onlyMovies }) {
   }, [sort, onlyMovies, movies])
 
   return { movies: sortMovies, searchMovies, loading }
-}
-
-function filteredMovies ({ movies, sort, onlyMovies }) {
-  if (movies === undefined) return
-
-  const sortedMovies = [...movies]?.sort((a, b) => a.title.localeCompare(b.title))
-  if (sort === true && onlyMovies === true) {
-    return [...sortedMovies].filter(movie => movie.type === 'movie')
-  }
-
-  if (sort) {
-    return sortedMovies
-  }
-
-  if (onlyMovies) {
-    return [...movies].filter(movie => movie.type === 'movie')
-  }
-
-  return movies
 }
