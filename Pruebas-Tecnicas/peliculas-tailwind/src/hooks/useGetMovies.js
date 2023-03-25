@@ -1,27 +1,27 @@
 // import withResults from '../mocks/withResults.json'
-import noResults from '../mocks/noResults.json'
-import { useState } from 'react'
+import { useState, useMemo, useCallback, useRef } from 'react'
 import { searchMovies } from '../services/searchMovies.js'
+import { filteredMovies } from '../logic/filteredMovies.js'
 
-export function useGetMovies ({ search, sort }) {
+export function useGetMovies ({ search, sort, onlyMovies }) {
   const [movies, setMovies] = useState([])
+  const previousSearch = useRef(search)
+  const [, setError] = useState(null)
 
-  const getMovies = async () => {
-    if (search) {
+  const getMovies = useCallback(async ({ search }) => {
+    if (search === previousSearch.current) return
+
+    try {
+      previousSearch.current = search
       const newMovies = await searchMovies({ search })
       setMovies(newMovies)
-    } else {
-      setMovies(noResults)
+    } catch (e) {
+      setError(e.message)
     }
-  }
+  }, [])
+  const sortedMovies = useMemo(() => {
+    return filteredMovies({ sort, movies, onlyMovies })
+  }, [sort, movies, onlyMovies])
 
-  const sortedMovies = () => {
-    if (sort) {
-      return [...movies].sort((a, b) => a.title.localeCompare(b.title))
-    } else {
-      return movies
-    }
-  }
-
-  return { movies: sortedMovies(), getMovies }
+  return { movies: sortedMovies, getMovies }
 }

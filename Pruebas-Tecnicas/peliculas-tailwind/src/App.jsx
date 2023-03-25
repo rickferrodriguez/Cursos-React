@@ -1,16 +1,26 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Movies } from './components/Movies.jsx'
+import { FormFilter } from './components/FormFilter.jsx'
 import { useGetMovies } from './hooks/useGetMovies.js'
 import { useSearchConditionals } from './hooks/useSearchConditionals.jsx'
+import debounce from 'just-debounce-it'
 
 export function App () {
-  const { search, setSearch, error } = useSearchConditionals()
   const [sort, setSort] = useState(false)
-  const { movies, getMovies } = useGetMovies({ search, sort })
+  const [onlyMovies, setOnlyMovies] = useState(false)
+  const { search, setSearch, error } = useSearchConditionals()
+  const { movies, getMovies } = useGetMovies({ search, sort, onlyMovies })
+
+  const debouncedGetMovies = useCallback(
+    debounce(search => {
+      getMovies({ search })
+    }, 300)
+    , []
+  )
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    getMovies()
+    getMovies({ search })
   }
 
   const handleChange = (event) => {
@@ -18,10 +28,15 @@ export function App () {
     if (newSearch.startsWith(' ')) return
 
     setSearch(newSearch)
+    debouncedGetMovies(newSearch)
   }
 
   const handleSort = () => {
     setSort(!sort)
+  }
+
+  const handleOnlyMovies = () => {
+    setOnlyMovies(!onlyMovies)
   }
 
   return (
@@ -29,15 +44,11 @@ export function App () {
 
       <header className='text-center w-full'>
         <h1>Movie Finder</h1>
-        <form className='flex gap-4 justify-center' onSubmit={handleSubmit}>
-          <input
-            className='p-2'
-            onChange={handleChange} value={search}
-            type='text' placeholder='Movie Name'
-          />
-          <input type='checkbox' onChange={handleSort} value={sort} />
-          <button className='bg-sky-400 border-none px-4 rounded' type='submit'>Search</button>
-        </form>
+        <FormFilter
+          handleSubmit={handleSubmit} handleChange={handleChange}
+          handleSort={handleSort} handleOnlyMovies={handleOnlyMovies} sort={sort}
+          onlyMovies={onlyMovies} search={search}
+        />
         {error && <p className='text-red-500'>{error}</p>}
       </header>
 
