@@ -8,8 +8,9 @@ import debounce from 'just-debounce-it'
 export function App () {
   const [sort, setSort] = useState(false)
   const [onlyMovies, setOnlyMovies] = useState(false)
+  const [series, setSeries] = useState(false)
   const { search, setSearch, error } = useSearchConditionals()
-  const { movies, getMovies } = useGetMovies({ search, sort, onlyMovies })
+  const { movies, getMovies } = useGetMovies({ search, sort, onlyMovies, series })
 
   const debouncedGetMovies = useCallback(
     debounce(search => {
@@ -39,6 +40,10 @@ export function App () {
     setOnlyMovies(!onlyMovies)
   }
 
+  const handleSeries = () => {
+    setSeries(!series)
+  }
+
   return (
     <div className='w-[1200px] flex flex-col items-center text-gray-100 gap-4'>
 
@@ -47,7 +52,8 @@ export function App () {
         <FormFilter
           handleSubmit={handleSubmit} handleChange={handleChange}
           handleSort={handleSort} handleOnlyMovies={handleOnlyMovies} sort={sort}
-          onlyMovies={onlyMovies} search={search}
+          onlyMovies={onlyMovies} search={search} handleSeries={handleSeries}
+          onlySeries={series}
         />
         {error && <p className='text-red-500'>{error}</p>}
       </header>
