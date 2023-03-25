@@ -8,12 +8,12 @@ function ListOfMovies ({ mappedMovies }) {
             border-solid border-cyan-400 rounded'
             key={movie.id}
           >
-            <section className='flex flex-col gap-4  h-[80px]'>
-              <h3 className='p-0 m-0 h-[40px]'>{movie.title}</h3>
+            <section className='flex flex-col gap-4'>
+              <h3 className='p-0 m-0 h-[50px]'>{movie.title}</h3>
               <p className='p-0 m-0'>{movie.year}</p>
             </section>
             <img
-              className='w-[180px] aspect-[3/4] object-contain'
+              className='w-[250px] aspect-[3/4] object-contain'
               src={movie.poster} alt={movie.title}
             />
             <p className='m-0'>{movie.type}</p>
