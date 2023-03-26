@@ -47,7 +47,9 @@ export function App () {
   return (
     <div className='w-full max-w-[1200px] flex flex-col gap-4 text-gray-100'>
 
-      <header className='text-center w-full'>
+      <header className='text-center w-full
+        max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center'
+      >
         <h1 className='text-[42px]'>Movie Finder</h1>
         <FormFilter
           handleSubmit={handleSubmit} handleChange={handleChange}

@@ -1,25 +1,31 @@
 function ListOfMovies ({ mappedMovies }) {
   return (
-    <ul className='grid w-full grid-cols-fit text-center list-none gap-4 p-0'>
+    <ul className='grid w-full grid-cols-fit list-none gap-6 p-0
+      max-sm:w-auto max-sm:gap-[2rem]'
+    >
       {
         mappedMovies.map(movie => (
           <li
-            className=' flex flex-col overflow-hidden justify-center items-center
-            border-solid border-cyan-400 rounded'
+            className='w-full rounded-[1rem]
+            max-sm:w-[290px]'
             key={movie.id}
           >
-            <div className='relative'>
-              <span className='flex justify-center items-center p-0 m-0 w-[90px] font-bold text-[16px] bg-sky-600 rounded-full drop-shadow-xl h-[22px]
-                absolute bottom-2 right-20 z-[3]'
+            <div className='relative overflow-hidden flex flex-col rounded-[1rem]  justify-center items-center '>
+              <span className='flex justify-center items-center p-0 m-0 w-[90px] font-bold text-[16px] bg-sky-600
+                rounded-full drop-shadow-2xl h-[22px]
+                absolute bottom-2 right-2 z-[3]'
               >{movie.year}
               </span>
               <img
-                className='overflow-hidden w-[350px] aspect-square object-contain'
+                className='overflow-hidden w-[350px] aspect-square object-contain drop-shadow-xl
+                max-sm:w-[500px]'
                 src={movie.poster} alt={movie.title}
               />
             </div>
-            <h3 className='flex items-center m-0 h-[55px]'>{movie.title}</h3>
-            <p className='text-[16px] m-2'>{movie.type}</p>
+            <section className='p-2'>
+              <h3 className='m-0 truncate overflow-hidden'>{movie.title}</h3>
+              <p className='text-[16px] text-sky-500 font-bold m-0'>{movie.type}</p>
+            </section>
           </li>
         ))
       }

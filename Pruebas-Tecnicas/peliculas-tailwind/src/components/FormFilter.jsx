@@ -5,7 +5,10 @@ export function FormFilter ({
   handleOnlyMovies, sort, onlyMovies, search, handleSeries, onlySeries
 }) {
   return (
-    <form className='flex gap-4  justify-center' onSubmit={handleSubmit}>
+    <form
+      className='flex gap-4  justify-center
+      max-sm:flex max-sm:flex-col' onSubmit={handleSubmit}
+    >
       <input
         className='p-2 h-[15px] text-[16px] rounded border-transparent'
         onChange={handleChange} value={search}
