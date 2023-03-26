@@ -1,4 +1,4 @@
-const PREFIX_MOVIES = 'http://www.omdbapi.com/?apikey=5a03f14a'
+const PREFIX_MOVIES = 'https://www.omdbapi.com/?apikey=5a03f14a'
 
 export async function searchMovies ({ search }) {
   if (search === ' ') return null
