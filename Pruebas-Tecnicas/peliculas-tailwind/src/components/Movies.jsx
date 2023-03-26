@@ -4,19 +4,22 @@ function ListOfMovies ({ mappedMovies }) {
       {
         mappedMovies.map(movie => (
           <li
-            className='flex flex-col gap-4 justify-center items-center
+            className=' flex flex-col overflow-hidden justify-center items-center
             border-solid border-cyan-400 rounded'
             key={movie.id}
           >
-            <h3 className='p-2 m-0 h-[35px]'>{movie.title}</h3>
-            <img
-              className='overflow-hidden w-full aspect-[4/3] object-contain'
-              src={movie.poster} alt={movie.title}
-            />
-            <section className='flex items-center gap-2'>
-              <p className='m-2'>{movie.type}</p>
-              <p className='p-0 m-0'>{movie.year}</p>
-            </section>
+            <div className='relative'>
+              <span className='flex justify-center items-center p-0 m-0 w-[90px] font-bold text-[16px] bg-sky-600 rounded-full drop-shadow-xl h-[22px]
+                absolute bottom-2 right-20 z-[3]'
+              >{movie.year}
+              </span>
+              <img
+                className='overflow-hidden w-[350px] aspect-square object-contain'
+                src={movie.poster} alt={movie.title}
+              />
+            </div>
+            <h3 className='flex items-center m-0 h-[55px]'>{movie.title}</h3>
+            <p className='text-[16px] m-2'>{movie.type}</p>
           </li>
         ))
       }

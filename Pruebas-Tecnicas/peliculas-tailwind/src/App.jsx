@@ -45,10 +45,10 @@ export function App () {
   }
 
   return (
-    <div className='w-full max-w-[1200px] flex flex-col text-gray-100'>
+    <div className='w-full max-w-[1200px] flex flex-col gap-4 text-gray-100'>
 
       <header className='text-center w-full'>
-        <h1>Movie Finder</h1>
+        <h1 className='text-[42px]'>Movie Finder</h1>
         <FormFilter
           handleSubmit={handleSubmit} handleChange={handleChange}
           handleSort={handleSort} handleOnlyMovies={handleOnlyMovies} sort={sort}
