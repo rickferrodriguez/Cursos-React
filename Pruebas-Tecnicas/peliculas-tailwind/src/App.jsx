@@ -45,7 +45,7 @@ export function App () {
   }
 
   return (
-    <div className='w-[1200px] flex flex-col items-center text-gray-100 gap-4'>
+    <div className='w-full max-w-[1200px] flex flex-col text-gray-100'>
 
       <header className='text-center w-full'>
         <h1>Movie Finder</h1>
@@ -58,7 +58,7 @@ export function App () {
         {error && <p className='text-red-500'>{error}</p>}
       </header>
 
-      <main className='w-full'>
+      <main className='w-full flex justify-center items-center'>
         <Movies movies={movies} />
       </main>
     </div>
