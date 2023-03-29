@@ -8,15 +8,18 @@ export function Products ({ products }) {
         {
           products.slice(0, 10).map(product => (
             <li key={product.id}>
-              <img src={product.thumbnail} alt={product.title} />
-              <div>
-                <strong>{product.title}</strong> - ${product.price}
-              </div>
-              <div>
-                <button type='button'>
-                  <AddToCartIcon />
-                </button>
-              </div>
+              <article>
+                <img src={product.thumbnail} alt={product.title} />
+                <section>
+                  <h3>{product.title}</h3> - ${product.price}
+                </section>
+
+                <section>
+                  <button>
+                    <AddToCartIcon />
+                  </button>
+                </section>
+              </article>
             </li>
           ))
         }
