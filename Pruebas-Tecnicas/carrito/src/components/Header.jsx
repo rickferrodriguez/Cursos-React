@@ -1,10 +1,10 @@
 import { Filters } from './Filters.jsx'
 
-export function Header () {
+export function Header ({ filters }) {
   return (
-    <header>
+    <>
       <h1>React Products</h1>
-      <Filters />
-    </header>
+      <Filters filters={filters} />
+    </>
   )
 }
