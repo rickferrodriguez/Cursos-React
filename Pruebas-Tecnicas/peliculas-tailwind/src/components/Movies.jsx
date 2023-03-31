@@ -1,19 +1,20 @@
 function ListOfMovies ({ mappedMovies }) {
   return (
     <ul className='grid w-full grid-cols-fit list-none gap-6 p-0
-      max-sm:w-auto max-sm:gap-[2rem]'
+      max-md:w-auto max-md:gap-[2rem] max-md:grid-cols-1'
     >
       {
         mappedMovies.map(movie => (
           <li
             className='w-full rounded-[1rem]
-            max-sm:w-[290px]'
+            max-md:w-[290px]'
             key={movie.id}
           >
             <div className='relative overflow-hidden flex flex-col rounded-[1rem]  justify-center items-center '>
               <span className='flex justify-center items-center p-0 m-0 w-[90px] font-bold text-[16px] bg-sky-600
                 rounded-full drop-shadow-2xl h-[22px]
-                absolute bottom-2 right-2 z-[3]'
+                absolute bottom-2 right-2 z-[3]
+                max-md:right-9 max-md:bottom-4'
               >{movie.year}
               </span>
               <img
