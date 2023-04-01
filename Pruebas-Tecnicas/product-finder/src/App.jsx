@@ -2,7 +2,9 @@ import './App.css'
 
 function App () {
   return (
-    <p>hola desde App</p>
+    <main>
+      <p>hola desde App</p>
+    </main>
   )
 }
 
