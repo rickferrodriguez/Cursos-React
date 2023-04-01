@@ -1,14 +1,14 @@
 import { Products } from './components/Products.jsx'
+import { useGetSearch } from './hooks/useGetSearch.jsx'
 import { useSearchValidations } from './hooks/useSearchValidations.jsx'
-import withResults from './mocks/withResults.json'
 
 function App () {
-  const products = withResults
   const { search, setSearch, error } = useSearchValidations()
+  const { products, getProducts } = useGetSearch({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(search)
+    getProducts()
   }
 
   const handleChange = (event) => {
@@ -19,7 +19,7 @@ function App () {
   }
 
   return (
-    <main className='w-full bg-slate-600 '>
+    <main className='w-full bg-slate-600 h-screen'>
       <header className='flex flex-col gap-4 items-center'>
         <h1 className='text-3xl text-center font-bold text-white'>
           List of Products
