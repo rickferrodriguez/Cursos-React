@@ -14,6 +14,7 @@ export const getProduct = ({ search }) => {
     .then(data => {
       const { result } = data
       const resultList = getResultList({ result })
+      console.log(resultList)
       const item = getItem(resultList)
       return item
     })
@@ -40,7 +41,8 @@ function getItem (resultList) {
     return {
       id: item.itemId,
       title: item.title,
-      image: item.image
+      image: item.image,
+      price: item.sku.def.promotionPrice
     }
   })
 }

@@ -19,7 +19,7 @@ function App () {
   }
 
   return (
-    <main className='w-full bg-slate-600 h-screen'>
+    <main className='w-full bg-slate-600 h-full'>
       <header className='flex flex-col gap-4 items-center'>
         <h1 className='text-3xl text-center font-bold text-white'>
           List of Products
