@@ -14,8 +14,9 @@ export const getProduct = ({ search }) => {
     .then(data => {
       const { result } = data
       const resultList = getResultList({ result })
-      console.log(resultList)
       const item = getItem(resultList)
+      console.log(resultList)
+      console.log(item)
       return item
     })
     .catch(err => console.error(err))
@@ -37,12 +38,14 @@ function getResultList ({ result }) {
 
 function getItem (resultList) {
   return resultList.map(res => {
-    const { item } = res
+    const { item, delivery } = res
+    console.log(delivery)
     return {
       id: item.itemId,
       title: item.title,
       image: item.image,
-      price: item.sku.def.promotionPrice
+      price: item.sku.def.promotionPrice,
+      shipping: delivery.shippingDisplay
     }
   })
 }

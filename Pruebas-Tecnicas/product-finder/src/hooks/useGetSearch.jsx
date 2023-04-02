@@ -1,20 +1,23 @@
-import { useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { getProduct } from '../services/getProduct.js'
 // import withResults from '../mocks/withResults.json'
 
 export function useGetSearch ({ search }) {
   const [products, setProducs] = useState([])
+  const lastSearch = useRef(search)
 
-  const getProducts = async () => {
-    if (search === ' ') return null
+  const getProducts = useMemo(() => {
+    return async ({ search }) => {
+      if (lastSearch.current === search) return
 
-    try {
-      const games = await getProduct({ search })
-      setProducs(games)
-    } catch (err) {
-      setProducs(err)
+      try {
+        lastSearch.current = search
+        const items = await getProduct({ search })
+        setProducs(items)
+      } catch (err) {
+        setProducs(err)
+      }
     }
-  }
-
+  }, [])
   return { products, getProducts }
 }
