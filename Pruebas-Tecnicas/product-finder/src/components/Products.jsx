@@ -4,14 +4,14 @@ export function Products ({ products }) {
       {
         products.map(product => (
           <li
-            className='bg-white border rounded-[1rem] border-sky-400 flex flex-col justify-center items-center gap-4'
+            className='bg-sky-950 rounded-[1rem] aspect-[4/3] flex flex-col justify-center items-center gap-4'
             key={product.id}
           >
             <h3 className='flex items-center h-[80px] text-center'>
-              {product.title}
+              {splitProductTitle(product.title)}
             </h3>
             <img
-              className='w-[250px] aspect-square object-contain'
+              className=' w-[240px] aspect-[4/3] object-contain'
               src={product.image} alt={product.title}
             />
           </li>
@@ -19,4 +19,12 @@ export function Products ({ products }) {
       }
     </ul>
   )
+}
+
+function splitProductTitle (title) {
+  if (title.startsWith('$')) {
+    return title.split(' ').slice(2, 5).join(' ')
+  } else {
+    return title.split(' ').slice(0, 3).join(' ')
+  }
 }

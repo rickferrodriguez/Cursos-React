@@ -36,7 +36,7 @@ function App () {
             value={search}
           />
           <button
-            className='border text-white font-bold bg-sky-700 border-sky-400 px-2 py-1'
+            className='border rounded text-white font-bold bg-sky-700 border-sky-400 px-2 py-1'
             type='submit'
           >
             Buscar
