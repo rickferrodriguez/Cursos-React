@@ -4,6 +4,7 @@ import { getProduct } from '../services/getProduct.js'
 
 export function useGetSearch ({ search }) {
   const [products, setProducs] = useState([])
+  const [loading, setLoading] = useState(null)
   const lastSearch = useRef(search)
 
   const getProducts = useMemo(() => {
@@ -12,12 +13,15 @@ export function useGetSearch ({ search }) {
 
       try {
         lastSearch.current = search
+        setLoading(true)
         const items = await getProduct({ search })
         setProducs(items)
       } catch (err) {
         setProducs(err)
+      } finally {
+        setLoading(false)
       }
     }
   }, [])
-  return { products, getProducts }
+  return { products, getProducts, loading }
 }

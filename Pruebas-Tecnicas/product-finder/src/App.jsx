@@ -4,7 +4,7 @@ import { useSearchValidations } from './hooks/useSearchValidations.jsx'
 
 function App () {
   const { search, setSearch, error } = useSearchValidations()
-  const { products, getProducts } = useGetSearch({ search })
+  const { products, getProducts, loading } = useGetSearch({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -44,6 +44,9 @@ function App () {
         </form>
         <p className='text-red-500'>{error}</p>
       </header>
+      {loading && (
+        <p className='text-center text-white font-bold'>Cargando...</p>
+      )}
       <Products products={products} />
     </main>
   )
