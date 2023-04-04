@@ -1,9 +1,13 @@
+
 export function Products ({ products }) {
   return (
     <ul className='p-8 gap-6 grid grid-cols-1'>
       {products.map((product) => (
         <li className='flex justify-center' key={product.id}>
-          <article className='w-[320px] h-[400px] rounded-[1rem] overflow-hidden flex flex-col justify-center items-center gap-4 '>
+          <a
+            href=''
+            className='w-[320px] h-[400px] rounded-[1rem] overflow-hidden flex flex-col justify-center items-center gap-4 '
+          >
             <figure className='relative rounded-[1rem] overflow-hidden'>
               <img
                 src={product.image}
@@ -23,7 +27,7 @@ export function Products ({ products }) {
               </h3>
               <p>$ {product.price}</p>
             </footer>
-          </article>
+          </a>
         </li>
       ))}
     </ul>
