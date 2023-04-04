@@ -39,7 +39,6 @@ function getResultList ({ result }) {
 function getItem (resultList) {
   return resultList.map(res => {
     const { item, delivery } = res
-    console.log(delivery)
     return {
       id: item.itemId,
       title: item.title,

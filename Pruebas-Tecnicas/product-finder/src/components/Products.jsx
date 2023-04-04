@@ -1,11 +1,14 @@
+import { useItemDetails } from '../hooks/useItemDetails'
 
 export function Products ({ products }) {
+  const { getItemDetails } = useItemDetails()
   return (
     <ul className='p-8 gap-6 grid grid-cols-1'>
       {products.map((product) => (
         <li className='flex justify-center' key={product.id}>
           <a
             href=''
+            onClick={getItemDetails(product)}
             className='w-[320px] h-[400px] rounded-[1rem] overflow-hidden flex flex-col justify-center items-center gap-4 '
           >
             <figure className='relative rounded-[1rem] overflow-hidden'>
