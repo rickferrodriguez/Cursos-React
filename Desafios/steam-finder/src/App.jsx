@@ -1,7 +1,11 @@
-const withResults = './mocks/withResults.json'
+import withResults from './mocks/withResults.json'
 
 function App () {
   const hasGames = withResults?.length > 0
+  const mappedGames = withResults?.map(game => ({
+    id: game.appId,
+    title: game.title
+  }))
   return (
     <div className='w-full p-4 gap-4 flex flex-col items-center'>
       <h1 className='text-2xl font-bold'>STEAM FINDER</h1>
@@ -19,9 +23,17 @@ function App () {
       <main>
         {
         hasGames && (
-          <p>hay juegos</p>
+          <ul>
+            {
+            mappedGames.map(game => (
+              <li key={game.id}>
+                <p>{game.title}</p>
+              </li>
+            ))
+            }
+          </ul>
         )
-      }
+        }
       </main>
     </div>
   )
