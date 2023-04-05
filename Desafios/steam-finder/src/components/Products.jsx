@@ -1,13 +1,11 @@
-import { useGetProducts } from '../hooks/useGetProducts.js'
 
-export function Products () {
-  const { mappedGames } = useGetProducts()
-  const hasGames = mappedGames?.length > 0
+export function Products ({ games }) {
+  const hasGames = games?.length > 0
   return (
     hasGames && (
       <ul className='flex flex-col gap-1 list-none bg-sky-950 text-gray-200'>
         {
-            mappedGames.map(game => (
+            games.map(game => (
               <li
                 key={game.id}
                 className='border-gray-400 border-t-[1px]  px-2 hover:bg-sky-800'

@@ -1,28 +1,20 @@
-import { useEffect, useState } from 'react'
 import { Products } from './components/Products.jsx'
+import { useGetProducts } from './hooks/useGetProducts.js'
+import { useSearchFilters } from './hooks/useSearchFilters.jsx'
 
 function App () {
-  const [search, setSearch] = useState('')
-  const [error, setError] = useState(null)
+  const { search, setSearch, error } = useSearchFilters()
+  const { games, getSteamGames, loading } = useGetProducts({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(search)
+    getSteamGames()
   }
 
   const handleChange = (event) => {
     const newSearch = event.target.value
     setSearch(newSearch)
   }
-
-  useEffect(() => {
-    if (search === '') {
-      setError('Please enter a search')
-      return
-    }
-
-    setError(null)
-  }, [search])
 
   return (
     <div className='w-full py-4 gap-4 flex flex-col p-2'>
@@ -39,7 +31,7 @@ function App () {
             type='text'
           />
           <button
-            className='bg-sky-300 px-4 py-1 rounded font-semibold'
+            className='bg-sky-300 px-4 py-1 rounded font-semibold hover:bg-sky-700'
             type='submit'
           >
             Search
@@ -48,7 +40,8 @@ function App () {
         <p className='text-red-500 text-center'>{error}</p>
       </header>
       <main>
-        <Products />
+        {loading === true ? (<p>Loading...</p>) : ''}
+        <Products games={games} />
       </main>
     </div>
   )
