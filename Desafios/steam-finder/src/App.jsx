@@ -40,8 +40,9 @@ function App () {
         <p className='text-red-500 text-center'>{error}</p>
       </header>
       <main>
-        {loading === true ? (<p>Loading...</p>) : ''}
-        <Products games={games} />
+        {
+          loading ? <p>Loading...</p> : <Products games={games} />
+        }
       </main>
     </div>
   )
