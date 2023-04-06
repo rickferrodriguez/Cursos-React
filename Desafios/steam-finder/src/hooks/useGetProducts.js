@@ -11,13 +11,11 @@ export function useGetProducts ({ search }) {
     try {
       const newGames = await getGames(search)
       setLoading(true)
-      console.log('loading..')
       setGames(newGames)
     } catch (error) {
       throw new Error(error)
     } finally {
       setLoading(false)
-      console.log('finished loading..')
     }
   }
 

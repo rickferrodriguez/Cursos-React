@@ -41,7 +41,7 @@ function App () {
       </header>
       <main>
         {
-          loading ? <p>Loading...</p> : <Products games={games} />
+          loading ? <p className='text-red-200'>Loading...</p> : <Products games={games} />
         }
       </main>
     </div>
