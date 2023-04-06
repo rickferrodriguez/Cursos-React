@@ -10,7 +10,8 @@ export function getGames (search) {
   return fetch(`https://steam2.p.rapidapi.com/search/${search}/page/1`, options)
     .then(response => response.json())
     .then(data => {
-      return data?.map(game => ({
+      const noUndefinedGames = data.filter(game => game.appId !== undefined)
+      return noUndefinedGames?.map(game => ({
         id: game.appId,
         title: game.title,
         image: game.imgUrl,
