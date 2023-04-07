@@ -1,8 +1,15 @@
-import './App.css'
+import { Products } from './components/Products'
+import withResults from './mocks/withResults.json'
 
 function App () {
   return (
-    <h1>hello from App</h1>
+    <div>
+      <h1>Shopping cart 🛒</h1>
+
+      <main>
+        <Products products={withResults.products} />
+      </main>
+    </div>
   )
 }
 
