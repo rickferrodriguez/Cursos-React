@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Products } from './components/Products.jsx'
-import { useGetProducts } from './hooks/useGetProducts.js'
+import { useGetProducts } from './hooks/useGetProducts.jsx'
 import { useSearchFilters } from './hooks/useSearchFilters.jsx'
 
 function App () {
@@ -10,12 +10,13 @@ function App () {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    getSteamGames()
+    getSteamGames({ search })
   }
 
   const handleChange = (event) => {
     const newSearch = event.target.value
     setSearch(newSearch)
+    getSteamGames({ search: newSearch })
   }
 
   const handleFilter = () => {

@@ -1,11 +1,11 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { getGames } from '../services/getGames'
 
 export function useGetProducts ({ search, filter }) {
   const [games, setGames] = useState([])
   const [loading, setLoading] = useState(false)
 
-  const getSteamGames = async () => {
+  const getSteamGames = useCallback(async ({ search }) => {
     if (search === '') return null
 
     try {
@@ -17,7 +17,7 @@ export function useGetProducts ({ search, filter }) {
     } finally {
       setLoading(false)
     }
-  }
+  }, [])
 
   const filteredGames = useMemo(() => {
     if (filter) {
