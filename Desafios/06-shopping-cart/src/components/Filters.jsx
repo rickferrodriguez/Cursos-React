@@ -5,6 +5,7 @@ import { FiltersContext } from '../context/filters'
 
 export function Filters () {
   const { filters, setFilters } = useContext(FiltersContext)
+
   const minPriceFilterId = useId()
   const categoryFilterId = useId()
 
