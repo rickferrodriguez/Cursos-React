@@ -6,12 +6,12 @@ import { products as initialProducts } from './mocks/withResults.json'
 
 function App () {
   const [products, setProducts] = useState(initialProducts)
-  const { filterProducts, setFilters } = useFilters()
+  const { filterProducts } = useFilters()
   const filteredProducts = filterProducts({ products })
 
   return (
     <>
-      <Header handleFilter={setFilters} />
+      <Header />
       <Products products={filteredProducts} />
     </>
   )
