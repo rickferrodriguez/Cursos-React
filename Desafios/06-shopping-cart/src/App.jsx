@@ -20,7 +20,6 @@ function App () {
   }
 
   const filteredProducts = filterProducts({ products })
-  console.log(filterProducts)
 
   return (
     <>
