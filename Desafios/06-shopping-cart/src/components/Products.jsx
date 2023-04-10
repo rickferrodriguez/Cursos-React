@@ -1,10 +1,11 @@
-import { useContext } from 'react'
-import { CartContext } from '../context/cartContext'
+// import { useContext } from 'react'
+// import { CartContext } from '../context/cartContext'
+import { useCart } from '../hooks/useCart'
 import { AddToCartIcon } from './Icons'
 import './Products.css'
 
 export function Products ({ products }) {
-  const { addToCart } = useContext(CartContext)
+  const { addToCart } = useCart()
   const hasProducts = products?.length > 0
   return (
     <main className='products'>

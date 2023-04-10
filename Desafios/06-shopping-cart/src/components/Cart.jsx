@@ -1,10 +1,11 @@
-import { useContext } from 'react'
-import { CartContext } from '../context/cartContext'
+// import { useContext } from 'react'
+// import { CartContext } from '../context/cartContext'
+import { useCart } from '../hooks/useCart'
 import './Cart.css'
-import { CartIcon } from './Icons'
+import { CartIcon, RemoveFromCartIcon } from './Icons'
 
 export function Cart () {
-  const { cart, addToCart } = useContext(CartContext)
+  const { cart, addToCart } = useCart()
   return (
     <>
       <label className='cart-button' htmlFor='cart'>
@@ -33,6 +34,9 @@ export function Cart () {
             ))
           }
         </ul>
+        <button>
+          <RemoveFromCartIcon />
+        </button>
       </aside>
     </>
   )
