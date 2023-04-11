@@ -1,16 +1,34 @@
-// import { useContext } from 'react'
-// import { CartContext } from '../context/cartContext'
 import { useId } from 'react'
 import { useCart } from '../hooks/useCart'
 import './Cart.css'
-import { CartIcon, RemoveFromCartIcon } from './Icons'
+import { CartIcon, ClearCartIcon } from './Icons'
+
+function CartItem ({ id, thumbnail, title, quantity, price, addToCart }) {
+  return (
+    <li key={id}>
+      <img
+        src={thumbnail}
+        alt={title}
+      />
+      <div>
+        <strong>{title}</strong> - ${price}
+      </div>
+
+      <footer>
+        <button onClick={addToCart}>-</button>
+        <small>{quantity}</small>
+        <button onClick={addToCart}>+</button>
+      </footer>
+    </li>
+  )
+}
 
 export function Cart () {
   const cartCheckboxId = useId()
-  const { cart, addToCart } = useCart()
+  const { cart, addToCart, clearCart } = useCart()
   return (
     <>
-      <label className='cart-button' htmlFor='cart'>
+      <label className='cart-button' htmlFor={cartCheckboxId}>
         <CartIcon />
       </label>
       <input type='checkbox' id={cartCheckboxId} hidden />
@@ -19,25 +37,16 @@ export function Cart () {
         <ul>
           {
             cart.map((item) => (
-              <li key={item.id}>
-                <img
-                  src={item.thumbnail}
-                  alt={item.title}
-                />
-                <div>
-                  <strong>{item.title}</strong> - ${item.price}
-                </div>
-
-                <footer>
-                  <small>{item.quantity}</small>
-                  <button onClick={() => addToCart(item)}>+</button>
-                </footer>
-              </li>
+              <CartItem
+                key={item.id}
+                addToCart={() => addToCart(item)}
+                {...item}
+              />
             ))
           }
         </ul>
-        <button>
-          <RemoveFromCartIcon />
+        <button onClick={clearCart}>
+          <ClearCartIcon />
         </button>
       </aside>
     </>

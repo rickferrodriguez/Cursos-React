@@ -45,3 +45,22 @@
   object-fit: cover;
   background: #fff;
 }
+
+.button-cart {
+  background-color: rgb(69, 189, 236);
+  width: 90px;
+}
+
+.inCartIcon {
+  background-color: rgb(240, 92, 92);
+}
+
+.cart-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-group p {
+  height: 40px;
+}
