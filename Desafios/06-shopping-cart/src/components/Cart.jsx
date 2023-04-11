@@ -1,17 +1,19 @@
 // import { useContext } from 'react'
 // import { CartContext } from '../context/cartContext'
+import { useId } from 'react'
 import { useCart } from '../hooks/useCart'
 import './Cart.css'
 import { CartIcon, RemoveFromCartIcon } from './Icons'
 
 export function Cart () {
+  const cartCheckboxId = useId()
   const { cart, addToCart } = useCart()
   return (
     <>
       <label className='cart-button' htmlFor='cart'>
         <CartIcon />
       </label>
-      <input type='checkbox' id='cart' hidden />
+      <input type='checkbox' id={cartCheckboxId} hidden />
 
       <aside className='cart'>
         <ul>
