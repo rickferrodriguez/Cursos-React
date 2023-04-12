@@ -16,6 +16,7 @@ export function FilterProvider ({ children }) {
       )
     })
   }
+
   return (
     <FilterContext.Provider value={{
       filters,
