@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { Cart } from './components/Cart'
 import { Header } from './components/Header'
 import { Products } from './components/Products'
 import { FilterContext } from './context/filterContex'
@@ -10,6 +11,7 @@ function App () {
   return (
     <>
       <Header />
+      <Cart />
       <Products products={filteredProducts} />
     </>
   )
