@@ -1,27 +1,15 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { Header } from './components/Header'
 import { Products } from './components/Products'
+import { FilterContext } from './context/filterContex'
 import { products as initialProducts } from './mocks/withResults.json'
 
 function App () {
-  const [filters, setFilters] = useState({
-    category: 'all',
-    minPrice: 0
-  })
-
-  const filterProducts = (products) => {
-    return products.filter((product) => {
-      return product.price >= filters.minPrice && (
-        filters.category === 'all' ||
-        filters.category === product.category
-      )
-    })
-  }
-
+  const { filterProducts } = useContext(FilterContext)
   const filteredProducts = filterProducts(initialProducts)
   return (
     <>
-      <Header sendFilters={setFilters} />
+      <Header />
       <Products products={filteredProducts} />
     </>
   )
