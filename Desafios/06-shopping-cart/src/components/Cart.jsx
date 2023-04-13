@@ -20,7 +20,7 @@ function CartItem ({ thumbnail, title, price, quantity, addToCart }) {
 }
 
 export function Cart () {
-  const { cart, addToCart } = useContext(CartContext)
+  const { cart, addToCart, clearCart } = useContext(CartContext)
   const cartCheckboxId = useId()
   return (
     <>
@@ -39,7 +39,7 @@ export function Cart () {
             />
           ))}
         </ul>
-        <button>
+        <button onClick={clearCart}>
           <ClearCartIcon />
         </button>
       </aside>
