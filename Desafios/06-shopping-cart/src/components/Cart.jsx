@@ -4,7 +4,7 @@ import { CartIcon, ClearCartIcon } from './Icons'
 
 import { CartContext } from '../context/cartContext'
 
-function CartItem ({ thumbnail, title, price, quantity, addToCart }) {
+function CartItem ({ thumbnail, title, price, quantity, addToCart, reduceItemFromCart }) {
   return (
     <li>
       <img src={thumbnail} alt={title} />
@@ -13,14 +13,16 @@ function CartItem ({ thumbnail, title, price, quantity, addToCart }) {
       </div>
 
       <footer>
-        <span>Qnty: {quantity}</span> <button onClick={addToCart}>+</button>
+        <button onClick={reduceItemFromCart}>-</button>
+        <span>Qnty: {quantity}</span>
+        <button onClick={addToCart}>+</button>
       </footer>
     </li>
   )
 }
 
 export function Cart () {
-  const { cart, addToCart, clearCart } = useContext(CartContext)
+  const { cart, addToCart, clearCart, reduceItemFromCart } = useContext(CartContext)
   const cartCheckboxId = useId()
   return (
     <>
@@ -35,6 +37,7 @@ export function Cart () {
             <CartItem
               key={product.id}
               addToCart={() => addToCart(product)}
+              reduceItemFromCart={() => reduceItemFromCart(product)}
               {...product}
             />
           ))}
