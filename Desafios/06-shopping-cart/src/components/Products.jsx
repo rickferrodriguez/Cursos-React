@@ -5,8 +5,8 @@ import './Products.css'
 
 export function Products ({ products }) {
   const { addToCart, cart, removeFromCart } = useContext(CartContext)
-  const productInCart = product => {
-    return cart.some(item => item.id === product.id)
+  const productInCart = (product) => {
+    return cart.some((item) => item.id === product.id)
   }
   const hasProducts = products?.length > 0
   return (
