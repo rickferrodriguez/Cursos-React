@@ -1,7 +1,29 @@
+import { useContext } from 'react'
+import { CartContext } from '../context/cart'
 import './Cart.css'
 import { CartIcon, ClearCartIcon } from './Icons'
 
+function ItemCart ({ product }) {
+  return (
+    <li>
+      <img
+        src={product.thumbnail}
+        alt={product.title}
+      />
+      <div>
+        <strong>{product.title}</strong> - ${product.price}
+      </div>
+      <footer>
+        <small>Qnty: {product.quantity}</small>
+        <button>+</button>
+      </footer>
+    </li>
+  )
+}
+
 export function Cart () {
+  const { cart } = useContext(CartContext)
+  console.log(cart)
   return (
     <section>
       <label htmlFor='cart' className='cart-button'>
@@ -12,19 +34,9 @@ export function Cart () {
       <aside className='cart'>
         <h2>Your Cart</h2>
         <ul>
-          <li>
-            <img
-              src='https://i.dummyjson.com/data/products/30/thumbnail.jpg'
-              alt='key holder'
-            />
-            <div>
-              <strong>key holder</strong> - $30
-            </div>
-            <footer>
-              <small>Qnty: 1</small>
-              <button>+</button>
-            </footer>
-          </li>
+          {cart.map((product) => (
+            <ItemCart key={product.id} product={product} />
+          ))}
         </ul>
         <button>
           <ClearCartIcon />
