@@ -45,3 +45,11 @@
   object-fit: cover;
   background: #fff;
 }
+
+.button-cart {
+  background-color: skyblue;
+}
+
+.inCart {
+  background-color: rgb(244, 135, 135);
+}

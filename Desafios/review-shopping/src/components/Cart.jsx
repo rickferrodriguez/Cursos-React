@@ -3,7 +3,7 @@ import { CartContext } from '../context/cart'
 import './Cart.css'
 import { CartIcon, ClearCartIcon } from './Icons'
 
-function ItemCart ({ product }) {
+function ItemCart ({ product, addToCart }) {
   return (
     <li>
       <img
@@ -15,14 +15,14 @@ function ItemCart ({ product }) {
       </div>
       <footer>
         <small>Qnty: {product.quantity}</small>
-        <button>+</button>
+        <button onClick={addToCart}>+</button>
       </footer>
     </li>
   )
 }
 
 export function Cart () {
-  const { cart, removeFromCart } = useContext(CartContext)
+  const { cart, removeFromCart, addToCart } = useContext(CartContext)
   console.log(cart)
   return (
     <section>
@@ -35,7 +35,11 @@ export function Cart () {
         <h2>Your Cart</h2>
         <ul>
           {cart.map((product) => (
-            <ItemCart key={product.id} product={product} />
+            <ItemCart
+              key={product.id}
+              product={product}
+              addToCart={() => addToCart(product)}
+            />
           ))}
         </ul>
         <button onClick={removeFromCart}>
