@@ -22,7 +22,7 @@ function ItemCart ({ product }) {
 }
 
 export function Cart () {
-  const { cart } = useContext(CartContext)
+  const { cart, removeFromCart } = useContext(CartContext)
   console.log(cart)
   return (
     <section>
@@ -38,7 +38,7 @@ export function Cart () {
             <ItemCart key={product.id} product={product} />
           ))}
         </ul>
-        <button>
+        <button onClick={removeFromCart}>
           <ClearCartIcon />
         </button>
       </aside>

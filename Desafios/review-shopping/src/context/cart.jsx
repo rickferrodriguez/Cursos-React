@@ -27,12 +27,17 @@ export function CartProvider ({ children }) {
       ])
     }
   }
+
+  const removeFromCart = () => {
+    setCart([])
+  }
   return (
     <CartContext.Provider value={
       {
         cart,
         setCart,
-        addToCart
+        addToCart,
+        removeFromCart
       }
     }
     >
