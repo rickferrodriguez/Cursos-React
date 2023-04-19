@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import { CartContext } from '../context/cart'
 import { AddToCartIcon, RemoveFromCartIcon } from './Icons'
-import './Products.css'
 
 export function Products ({ products }) {
   const { addToCart, cart } = useContext(CartContext)
@@ -9,9 +8,6 @@ export function Products ({ products }) {
     return cart.find((item) => item.id === product.id)
   }
 
-  const doubleParagraph = (text) => {
-    return text.split(' ').slice(0, 5).join(' ')
-  }
   return (
     <main>
       <ul className='grid grid-cols-2 gap-2'>
@@ -21,36 +17,40 @@ export function Products ({ products }) {
             return (
               <li
                 key={product.id}
-                className='bg-white h-[450px] rounded-[2rem]
-                overflow-hidden py-6 px-2 flex flex-col'
+                className='bg-white h-full rounded-[1.5rem]
+                overflow-hidden py-5 px-3 flex flex-col'
               >
-                <img src={product.thumbnail} className='aspect-square object-fill' alt={product.title} />
-                <section>
-                  <span className='block'>{product.brand}</span>
-                  <strong>{product.title}</strong>
-                  <p>{doubleParagraph(product.description)}</p>
-                </section>
-                <div className='flex justify-between items-center'>
-                  <span className='font-semibold text-xs'>
-                    ${product.price}
-                  </span>
-                  <button
-                    className={`rounded-[2rem] px-4 py-2 ${
+                <header className='flex flex-col items-center h-[250px]'>
+                  <strong className='text-center h-[50px] line-clamp-2'>{product.title}</strong>
+                  <img src={product.thumbnail} className='flex-grow aspect-[4/3] object-fill' alt={product.title} />
+                </header>
+                <footer className='flex flex-col'>
+                  <span className='font-bold text-gray-400'>{product.brand}</span>
+                  <strong className='truncate text-xl'>{product.title}</strong>
+                  <p className='text-[13px] h-[60px] line-clamp-3'>{product.description}</p>
+                  <div className='mt-4 flex relative justify-between items-end'>
+                    <small className='absolute top-[-4px] left-0 text-gray-400'>Price</small>
+                    <span className='font-bold text-xl'>
+                      ${product.price}
+                    </span>
+                    <button
+                      className={`rounded-[1.5rem] px-4 py-2 ${
                       productInCart ? 'bg-red-500' : 'bg-blue-950'
                     }`}
-                    onClick={() => addToCart(product)}
-                  >
-                    {productInCart
-                      ? (
-                        <RemoveFromCartIcon />
-                        )
-                      : (
-                        <div className='flex gap-1 text-gray-100'>
-                          <AddToCartIcon /> Buy Now
-                        </div>
-                        )}
-                  </button>
-                </div>
+                      onClick={() => addToCart(product)}
+                    >
+                      {productInCart
+                        ? (
+                          <RemoveFromCartIcon />
+                          )
+                        : (
+                          <div className='flex gap-1 text-gray-100'>
+                            <AddToCartIcon /> Buy Now
+                          </div>
+                          )}
+                    </button>
+                  </div>
+                </footer>
               </li>
             )
           })
