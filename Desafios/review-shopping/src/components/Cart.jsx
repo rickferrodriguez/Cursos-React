@@ -5,8 +5,9 @@ import { CartIcon, ClearCartIcon } from './Icons'
 
 function ItemCart ({ product, addToCart }) {
   return (
-    <li>
+    <li className='bg-gray-100 rounded-[1.5rem] overflow-hidden'>
       <img
+        className='aspect-video w-full'
         src={product.thumbnail}
         alt={product.title}
       />
@@ -26,14 +27,14 @@ export function Cart () {
   console.log(cart)
   return (
     <section>
-      <label htmlFor='cart' className='cart-button'>
+      <label htmlFor='cart' className='cart-button hover:scale-110'>
         <CartIcon />
       </label>
-      <input type='checkbox' id='cart' hidden />
+      <input type='checkbox' className='peer' id='cart' hidden />
 
-      <aside className='cart'>
+      <aside className='peer-checked:block peer-checked:h-full fixed hidden right-0 top-0 p-6 cart w-[250px] bg-gray-800'>
         <h2>Your Cart</h2>
-        <ul>
+        <ul className='flex flex-col gap-2'>
           {cart.map((product) => (
             <ItemCart
               key={product.id}
