@@ -24,11 +24,9 @@ export function Filters () {
   }
 
   return (
-    <section className='filters'>
-      <div>
-        <label className='text-gray-100' htmlFor={minPriceFilterId}>
-          Min Price:
-        </label>
+    <section className='flex gap-4 w-full text-gray-100 font-semibold'>
+      <div className=' flex gap-1'>
+        <label htmlFor={minPriceFilterId}>Min Price:</label>
         <input
           onChange={handlePriceFilterChange}
           value={filters.minPrice}
@@ -37,12 +35,13 @@ export function Filters () {
           min='0'
           max='1000'
         />
-        <span>{filters.minPrice}</span>
+        <span className='w-[30px]'>{filters.minPrice}</span>
       </div>
-      <div>
-        <label className='text-gray-100' htmlFor={categoryFilterId}>Category:</label>
+      <div className='flex gap-1'>
+        <label htmlFor={categoryFilterId}>Category:</label>
         <select
           onChange={handleCategoryFilterChange}
+          className='text-gray-950'
           name='category'
           id={categoryFilterId}
         >
