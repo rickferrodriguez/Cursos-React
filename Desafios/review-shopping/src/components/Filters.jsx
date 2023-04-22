@@ -35,7 +35,7 @@ export function Filters () {
           min='0'
           max='1000'
         />
-        <span className='w-[30px]'>{filters.minPrice}</span>
+        <span className='w-[30px] font-medium'>{filters.minPrice}</span>
       </div>
       <div className='flex gap-1'>
         <label htmlFor={categoryFilterId}>Category:</label>
