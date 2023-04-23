@@ -46,7 +46,7 @@ export function Cart () {
         {cart.length > 0
           ? (
             <button
-              className='cursor-pointer hover:bg-blue-950 flex gap-1 bg-slate-900 p-2 rounded border border-gray-200 font-bold'
+              className='cursor-pointer hover:bg-blue-900 flex gap-1 bg-blue-950 p-2 rounded border border-gray-200 font-bold'
               onClick={clearCart}
             >
               <span>Clear Cart</span>

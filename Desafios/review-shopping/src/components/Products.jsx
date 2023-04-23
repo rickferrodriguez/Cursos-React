@@ -35,7 +35,7 @@ export function Products ({ products }) {
                     </span>
                     <button
                       className={`rounded-[1.5rem] px-4 py-2 z-0 ${
-                      productInCart ? 'bg-red-500' : 'bg-blue-950 hover:bg-blue-800'
+                      productInCart ? 'bg-red-500' : 'bg-blue-950 hover:bg-blue-900'
                     }`}
                       onClick={() => productInCart ? removeFromCart(product) : addToCart(product)}
                     >
