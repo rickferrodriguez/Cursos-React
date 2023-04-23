@@ -24,8 +24,7 @@ function ItemCart ({ product, addToCart }) {
 }
 
 export function Cart () {
-  const { cart, removeFromCart, addToCart } = useContext(CartContext)
-  console.log(cart)
+  const { cart, clearCart, addToCart } = useContext(CartContext)
   return (
     <section>
       <label htmlFor='cart' className='cart-button hover:scale-110'>
@@ -44,13 +43,17 @@ export function Cart () {
             />
           ))}
         </ul>
-        <button
-          className='cursor-pointer hover:bg-blue-950 flex gap-1 bg-slate-900 p-2 rounded border border-gray-200 font-bold'
-          onClick={removeFromCart}
-        >
-          <span>Clear Cart</span>
-          <ClearCartIcon />
-        </button>
+        {cart.length > 0
+          ? (
+            <button
+              className='cursor-pointer hover:bg-blue-950 flex gap-1 bg-slate-900 p-2 rounded border border-gray-200 font-bold'
+              onClick={clearCart}
+            >
+              <span>Clear Cart</span>
+              <ClearCartIcon />
+            </button>
+            )
+          : null}
       </aside>
     </section>
   )

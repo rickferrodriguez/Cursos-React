@@ -3,7 +3,7 @@ import { CartContext } from '../context/cart'
 import { AddToCartIcon, RemoveFromCartIcon } from './Icons'
 
 export function Products ({ products }) {
-  const { addToCart, cart } = useContext(CartContext)
+  const { addToCart, cart, removeFromCart } = useContext(CartContext)
   const isProductInCart = (product) => {
     return cart.find((item) => item.id === product.id)
   }
@@ -35,9 +35,9 @@ export function Products ({ products }) {
                     </span>
                     <button
                       className={`rounded-[1.5rem] px-4 py-2 z-0 ${
-                      productInCart ? 'bg-red-500' : 'bg-blue-950'
+                      productInCart ? 'bg-red-500' : 'bg-blue-950 hover:bg-blue-800'
                     }`}
-                      onClick={() => addToCart(product)}
+                      onClick={() => productInCart ? removeFromCart(product) : addToCart(product)}
                     >
                       {productInCart
                         ? (
