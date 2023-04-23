@@ -24,9 +24,9 @@ export function Filters () {
   }
 
   return (
-    <section className='flex gap-4 w-full text-gray-100 font-semibold'>
+    <section className='flex justify-between w-full text-gray-100 font-semibold'>
       <div className=' flex gap-1'>
-        <label htmlFor={minPriceFilterId}>Min Price:</label>
+        <label htmlFor={minPriceFilterId}>Price:</label>
         <input
           onChange={handlePriceFilterChange}
           value={filters.minPrice}
@@ -35,7 +35,7 @@ export function Filters () {
           min='0'
           max='1000'
         />
-        <span className='w-[30px] font-medium'>{filters.minPrice}</span>
+        <span className='w-[30px]'>{filters.minPrice}</span>
       </div>
       <div className='flex gap-1'>
         <label htmlFor={categoryFilterId}>Category:</label>
