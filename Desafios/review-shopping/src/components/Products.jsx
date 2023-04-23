@@ -25,7 +25,7 @@ export function Products ({ products }) {
                   <img src={product.thumbnail} className='flex-grow aspect-[4/3] object-fill' alt={product.title} />
                 </header>
                 <footer className='flex flex-col'>
-                  <span className='font-bold text-gray-400'>{product.brand}</span>
+                  <span className='font-bold text-gray-400 truncate'>{product.brand}</span>
                   <strong className='truncate text-xl'>{product.title}</strong>
                   <p className='text-[13px] h-[60px] line-clamp-3'>{product.description}</p>
                   <div className='mt-4 flex relative justify-between items-end'>
