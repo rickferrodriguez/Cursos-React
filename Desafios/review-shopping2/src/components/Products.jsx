@@ -1,17 +1,28 @@
+import { AddToCartIcon } from './Icons'
+
 function ItemProduct ({ product }) {
   return (
     <li className='bg-white flex p-1 gap-2'>
       <header className='flex justify-center'>
         <strong className='hidden'>{product.title}</strong>
-        <img className='w-[200px] aspect-square object-contain' src={product.thumbnail} alt={product.title} />
+        <img
+          className='w-[200px] aspect-square object-contain'
+          src={product.thumbnail}
+          alt={product.title}
+        />
       </header>
       <footer className='flex flex-col justify-between h-full w-full'>
         <strong className='font-bold text-base'>{product.title}</strong>
-        <small>by <span className='font-semibold'>{product.brand}</span></small>
+        <small>
+          by <span className='font-semibold'>{product.brand}</span>
+        </small>
         <p className='text-sm line-clamp-3 h-[60px]'>{product.description}</p>
         <section className='flex flex-col'>
           <span className='font-bold'>$ {product.price}</span>
-          <button className='bg-slate-600 py-1 px-2 rounded-lg'>add to cart</button>
+          <button className='bg-slate-600 py-1 px-2 rounded-lg flex justify-evenly'>
+            add to cart
+            <AddToCartIcon />
+          </button>
         </section>
       </footer>
     </li>
