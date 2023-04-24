@@ -1,6 +1,5 @@
 import { useContext, useId } from 'react'
 import { FilterContext } from '../context/filters'
-import './Filters.css'
 
 export function Filters () {
   const { filters, setFilters } = useContext(FilterContext)
@@ -24,20 +23,22 @@ export function Filters () {
   }
 
   return (
-    <section className='flex justify-between w-full text-gray-100 font-semibold'>
-      <div className=' flex gap-1'>
+    <section className='flex gap-7 w-full text-gray-100 font-semibold'>
+      <div className=' flex flex-col gap-1'>
         <label htmlFor={minPriceFilterId}>Price:</label>
-        <input
-          onChange={handlePriceFilterChange}
-          value={filters.minPrice}
-          type='range'
-          id={minPriceFilterId}
-          min='0'
-          max='1000'
-        />
-        <span className='w-[30px]'>{filters.minPrice}</span>
+        <div className='flex gap-2'>
+          <input
+            onChange={handlePriceFilterChange}
+            value={filters.minPrice}
+            type='range'
+            id={minPriceFilterId}
+            min='0'
+            max='1000'
+          />
+          <span className='w-[30px]'>{filters.minPrice}</span>
+        </div>
       </div>
-      <div className='flex gap-1'>
+      <div className='flex flex-col gap-1'>
         <label htmlFor={categoryFilterId}>Category:</label>
         <select
           onChange={handleCategoryFilterChange}

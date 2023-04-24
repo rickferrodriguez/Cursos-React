@@ -9,8 +9,8 @@ export function Products ({ products }) {
   }
 
   return (
-    <main>
-      <ul className='grid grid-cols-2 gap-2'>
+    <main className='flex justify-center'>
+      <ul className='grid grid-cols-1 gap-2'>
         {
           products.map(product => {
             const productInCart = isProductInCart(product)
@@ -18,10 +18,10 @@ export function Products ({ products }) {
               <li
                 key={product.id}
                 className='bg-white h-full rounded-[1.5rem]
-                overflow-hidden py-5 px-3 flex flex-col'
+                overflow-hidden py-5 px-3 flex flex-col w-[260px]'
               >
-                <header className='flex flex-col items-center h-[250px]'>
-                  <strong className='text-center h-[50px] line-clamp-2'>{product.title}</strong>
+                <header className='flex flex-col items-center h-[240px]'>
+                  <strong className='text-center h-[50px] flex items-center line-clamp-2'>{product.title}</strong>
                   <img src={product.thumbnail} className='flex-grow aspect-[4/3] object-fill' alt={product.title} />
                 </header>
                 <footer className='flex flex-col'>
