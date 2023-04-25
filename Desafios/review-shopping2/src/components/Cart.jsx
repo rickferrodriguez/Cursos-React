@@ -12,7 +12,7 @@ export function ItemCart ({ product, addToCart }) {
           <span>$ {product.price}</span>
           <section className='flex gap-2 items-center'>
             quantity: {product.quantity}
-            <button className='bg-slate-700 px-2 py-1' onClick={addToCart}>+</button>
+            <button className='bg-slate-700 px-2 py-1 rounded' onClick={addToCart}>+</button>
           </section>
         </footer>
       </article>
@@ -21,7 +21,7 @@ export function ItemCart ({ product, addToCart }) {
 }
 
 export function Cart () {
-  const { cart, addToCart } = useContext(CartContext)
+  const { cart, addToCart, clearCart } = useContext(CartContext)
   return (
     <section>
       <label
@@ -32,7 +32,7 @@ export function Cart () {
       </label>
       <input type='checkbox' id='cart' hidden className='peer' />
 
-      <aside className='hidden peer-checked:flex absolute z-10 bg-sky-950 top-0 right-0 w-[300px] flex-col items-center h-screen'>
+      <aside className='hidden peer-checked:flex absolute z-10 bg-sky-950 top-0 right-0 w-[300px] flex-col items-center h-screen gap-2'>
         <h3>Your shopping Cart</h3>
 
         <section>
@@ -46,6 +46,12 @@ export function Cart () {
             ))}
           </ul>
         </section>
+
+        <button
+          onClick={() => clearCart()}
+          className='bg-sky-400 p-1 rounded text-white'
+        >Clear Cart
+        </button>
       </aside>
     </section>
   )
