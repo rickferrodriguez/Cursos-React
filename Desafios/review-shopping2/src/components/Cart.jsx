@@ -20,7 +20,7 @@ export function Cart () {
   const { cart } = useContext(CartContext)
   return (
     <section>
-      <label htmlFor='cart' className='absolute top-1 hover:cursor-pointer right-2 rounded-full bg-sky-600 p-2 peer hover:scale-110'>
+      <label htmlFor='cart' className='absolute top-1 hover:cursor-pointer right-2 rounded-full bg-sky-600 p-2 peer hover:scale-110 z-20'>
         <CartIcon />
       </label>
       <input type='checkbox' id='cart' hidden className='peer' />

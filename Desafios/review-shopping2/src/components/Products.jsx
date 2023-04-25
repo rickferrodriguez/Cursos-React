@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import { CartContext } from '../context/cart'
-import { AddToCartIcon } from './Icons'
+import { AddToCartIcon, RemoveFromCartIcon } from './Icons'
 
-function ItemProduct ({ product, addToCart }) {
+function ItemProduct ({ product, addToCart, isProductInCart, removeFromCart }) {
   return (
     <li className='bg-white flex p-1 gap-2'>
       <header className='flex justify-center'>
@@ -22,11 +22,14 @@ function ItemProduct ({ product, addToCart }) {
         <section className='flex flex-col'>
           <span className='font-bold'>$ {product.price}</span>
           <button
-            onClick={addToCart}
-            className='bg-slate-900 text-gray-200 py-1 px-2 rounded-lg flex justify-evenly'
+            onClick={isProductInCart ? removeFromCart : addToCart}
+            className={`${isProductInCart ? 'bg-red-500' : 'bg-slate-900'} text-gray-200 py-1 px-2 rounded-lg flex justify-evenly`}
           >
-            add to cart
-            <AddToCartIcon />
+            {
+              isProductInCart
+                ? <RemoveFromCartIcon />
+                : <AddToCartIcon />
+            }
           </button>
         </section>
       </footer>
@@ -35,15 +38,25 @@ function ItemProduct ({ product, addToCart }) {
 }
 
 export function Products ({ products }) {
-  const { addToCart } = useContext(CartContext)
+  const { cart, addToCart, removeFromCart } = useContext(CartContext)
+  const checkProductInCart = (product) => {
+    return cart.some(item => item.id === product.id)
+  }
   return (
     <main className=' flex justify-center'>
       <ul className='grid grid-cols-1 w-[450px] text-gray-900 gap-5'>
-        {
-          products.map(product => (
-            <ItemProduct key={product.id} product={product} addToCart={() => addToCart(product)} />
-          ))
-        }
+        {products.map((product) => {
+          const isProductInCart = checkProductInCart(product)
+          return (
+            <ItemProduct
+              key={product.id}
+              product={product}
+              addToCart={() => addToCart(product)}
+              removeFromCart={() => removeFromCart(product)}
+              isProductInCart={isProductInCart}
+            />
+          )
+        })}
       </ul>
     </main>
   )
