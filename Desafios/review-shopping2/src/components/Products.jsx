@@ -43,7 +43,7 @@ export function Products ({ products }) {
     return cart.some(item => item.id === product.id)
   }
   return (
-    <main className=' flex justify-center'>
+    <main className='pt-4 flex justify-center'>
       <ul className='grid grid-cols-1 w-[450px] text-gray-900 gap-5'>
         {products.map((product) => {
           const isProductInCart = checkProductInCart(product)
