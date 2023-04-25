@@ -10,13 +10,14 @@ export function CartProvider ({ children }) {
   }
 
   const addToCart = (product) => {
-    if (isProductInCart(product) >= 0) {
+    const productInCartIndex = isProductInCart(product)
+    if (productInCartIndex >= 0) {
       const newCart = structuredClone(cart)
-      newCart[isProductInCart].quantity += 1
-      setCart(newCart)
+      newCart[productInCartIndex].quantity += 1
+      return setCart(newCart)
     }
 
-    return setCart(prevState => ([
+    setCart(prevState => ([
       ...prevState,
       {
         ...product,
