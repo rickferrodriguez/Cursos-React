@@ -1,6 +1,8 @@
+import { useContext } from 'react'
+import { CartContext } from '../context/cart'
 import { AddToCartIcon } from './Icons'
 
-function ItemProduct ({ product }) {
+function ItemProduct ({ product, addToCart }) {
   return (
     <li className='bg-white flex p-1 gap-2'>
       <header className='flex justify-center'>
@@ -19,7 +21,10 @@ function ItemProduct ({ product }) {
         <p className='text-sm line-clamp-3 h-[60px]'>{product.description}</p>
         <section className='flex flex-col'>
           <span className='font-bold'>$ {product.price}</span>
-          <button className='bg-slate-600 py-1 px-2 rounded-lg flex justify-evenly'>
+          <button
+            onClick={addToCart}
+            className='bg-slate-900 text-gray-200 py-1 px-2 rounded-lg flex justify-evenly'
+          >
             add to cart
             <AddToCartIcon />
           </button>
@@ -30,12 +35,13 @@ function ItemProduct ({ product }) {
 }
 
 export function Products ({ products }) {
+  const { addToCart } = useContext(CartContext)
   return (
     <main className=' flex justify-center'>
       <ul className='grid grid-cols-1 w-[450px] text-gray-900 gap-5'>
         {
           products.map(product => (
-            <ItemProduct key={product.id} product={product} />
+            <ItemProduct key={product.id} product={product} addToCart={() => addToCart(product)} />
           ))
         }
       </ul>
