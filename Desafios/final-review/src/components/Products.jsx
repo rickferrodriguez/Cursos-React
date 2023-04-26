@@ -3,7 +3,7 @@ export function ProductItem ({ product }) {
     <li className='bg-sky-900'>
       <article className='flex flex-col justify-center items-center gap-2'>
         <header className='max-w-[200px] text-center'>
-          <strong>{product.title}</strong>
+          <strong className='flex items-center justify-center h-[50px]'>{product.title}</strong>
           <img className='w-[200px] aspect-square object-contain' src={product.thumbnail} alt={product.title} />
         </header>
         <footer className='flex gap-2'>

@@ -9,7 +9,7 @@ Requerimientos:
 
 ✅ Necesita mostrar un input para buscar el producto y un botón para buscar.
 
-. Lista los productos y muestra el precio, el brand  y el thumbnail.
+✅ Lista los productos y muestra el precio, el brand  y el thumbnail.
 
 . Que el formulario funcione
 
