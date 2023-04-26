@@ -1,7 +1,12 @@
-function App() {
+import { FormMovies } from './components/FormMovies'
+import { Header } from './components/Header'
 
+function App () {
   return (
-<p className='text-blue-600 text-3xl'>hola desde app</p>
+    <section className='flex flex-col gap-3 items-center'>
+      <Header />
+      <FormMovies />
+    </section>
   )
 }
 
