@@ -1,9 +1,10 @@
 import { FormMovies } from './components/FormMovies'
 import { Header } from './components/Header'
 import { Products } from './components/Products'
-import { products as Initialproducts } from './mocks/withResults.json'
+import { useProducts } from './hooks/useProducts'
 
 function App () {
+  const { mappedProducts } = useProducts()
   return (
     <>
       <header className='flex flex-col gap-3 items-center'>
@@ -11,7 +12,7 @@ function App () {
         <FormMovies />
       </header>
       <main className='mt-3'>
-        <Products products={Initialproducts} />
+        <Products products={mappedProducts} />
       </main>
     </>
   )

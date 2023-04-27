@@ -20,16 +20,11 @@ export function ProductItem ({ product }) {
 
 export function Products ({ products }) {
   const hasProducts = products?.length > 0
-  const mappedProducts = products.map(product => ({
-    title: product.title,
-    image: product.thumbnail,
-    price: product.price
-  }))
 
   return hasProducts
     ? (
       <ul className='grid grid-cols-2 gap-2'>
-        {mappedProducts.map((item) => (
+        {products.map((item) => (
           <ProductItem key={item.id} product={item} />
         ))}
       </ul>
