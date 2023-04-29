@@ -1,19 +1,4 @@
-import { useEffect, useState } from 'react'
-
-function useSearch () {
-  const [search, setSearch] = useState('')
-  const [error, setError] = useState(null)
-  useEffect(() => {
-    if (search === '') {
-      setError('Ingrese un producto para buscar')
-      return
-    }
-
-    setError(null)
-  }, [search])
-
-  return { search, error, setSearch }
-}
+import { useSearch } from '../hooks/useSearch'
 
 export function FormProducts () {
   const { search, error, setSearch } = useSearch()
