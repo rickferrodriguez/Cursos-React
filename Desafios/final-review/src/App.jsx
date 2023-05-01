@@ -1,4 +1,9 @@
+import { Movies } from './components/Movies'
+import responseMovies from './mocks/withResults.json'
+
 function App () {
+  const movies = responseMovies.Search
+  const hasMovies = movies?.length > 0
   return (
     <>
       <header className='flex flex-col gap-4 items-center'>
@@ -8,6 +13,16 @@ function App () {
           <button type='submit'>Buscar</button>
         </form>
       </header>
+
+      <main>
+        {
+          hasMovies
+            ? (
+              <Movies movies={movies} />
+              )
+            : <p>No hay películas para mostrar</p>
+        }
+      </main>
     </>
   )
 }
