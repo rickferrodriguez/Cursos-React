@@ -11,9 +11,9 @@ Requerimientos:
 
 ✅ Lista los productos y muestra el precio, el brand  y el thumbnail.
 
-. Que el formulario funcione
+✅ Que el formulario funcione
 
-. Haz que los productos se muestren en un grid responsive.
+✅ Haz que los productos se muestren en un grid responsive.
 
 . Hacer el fetching de datos a la API
 

@@ -3,12 +3,12 @@ import { Products } from './components/Products'
 import { useProducts } from './hooks/useProducts'
 
 function App () {
-  const { mappedProducts } = useProducts()
+  const { products, getProducts } = useProducts()
   return (
     <>
       <Header />
       <main className='mt-3'>
-        <Products products={mappedProducts} />
+        <Products products={products} />
       </main>
     </>
   )
