@@ -1,11 +1,10 @@
 import { Movies } from './components/Movies'
-import responseMovies from './mocks/withResults.json'
+import { useMovies } from './hooks/useMovies'
 
 function App () {
-  const movies = responseMovies.Search
-  const hasMovies = movies?.length > 0
+  const { mappedMovies } = useMovies()
   return (
-    <>
+    <section className='flex flex-col gap-8'>
       <header className='flex flex-col gap-4 items-center'>
         <h1 className='text-4xl text-center text-sky-400 font-bold'>Buscador de Películas</h1>
         <form className='flex gap-3'>
@@ -15,15 +14,9 @@ function App () {
       </header>
 
       <main>
-        {
-          hasMovies
-            ? (
-              <Movies movies={movies} />
-              )
-            : <p>No hay películas para mostrar</p>
-        }
+        <Movies movies={mappedMovies} />
       </main>
-    </>
+    </section>
   )
 }
 
