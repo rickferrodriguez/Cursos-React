@@ -10,7 +10,7 @@ export function ItemMovie ({ movie }) {
 }
 
 export function NoMovies () {
-  return (<p>No se encontraron películas</p>)
+  return (<p className='text-center text-red-500'>No se encontraron películas</p>)
 }
 
 export function Movies ({ movies }) {
