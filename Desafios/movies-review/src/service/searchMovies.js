@@ -13,6 +13,6 @@ export async function searchMovies ({ search }) {
       year: movie.Year
     }))
   } catch (error) {
-    throw new Error(error)
+    throw new Error('Title not found')
   }
 }
