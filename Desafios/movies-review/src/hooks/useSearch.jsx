@@ -13,7 +13,10 @@ export function useSearch () {
 
     if (search === '') {
       setError('Please enter a movie to search')
+      return
     }
+
+    return setError(null)
   }, [search])
 
   return { search, setSearch, error }

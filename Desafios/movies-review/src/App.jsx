@@ -9,7 +9,6 @@ export function App () {
   const handleSubmit = (event) => {
     event.preventDefault()
     getMovies()
-    console.log(search)
   }
 
   const handleChange = (event) => {
