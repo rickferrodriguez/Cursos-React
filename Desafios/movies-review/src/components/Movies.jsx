@@ -1,6 +1,6 @@
 export function ListOfMovies ({ movie }) {
   return (
-    <li className='grid justify-center items-center w-full gap-2'>
+    <li className='flex flex-col justify-center items-center w-full gap-2'>
       <strong className='text-center'>{movie.title}</strong>
       <img className='w-[250px] aspect-[3/4] object-contain' src={movie.image} alt={movie.title} />
     </li>
