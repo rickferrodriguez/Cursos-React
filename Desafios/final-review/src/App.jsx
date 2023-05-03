@@ -1,20 +1,27 @@
+import { useState } from 'react'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
 
 function App () {
   const { search, setSearch, error } = useSearch()
-  const { movies, getMovies, loading } = useMovies({ search })
+  const [sort, setSort] = useState(false)
+  const { movies, getMovies, loading } = useMovies({ search, sort })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    getMovies()
+    getMovies(search)
   }
 
   const handleChange = (event) => {
     const newSearch = event.target.value
     if (newSearch.startsWith(' ')) return
     setSearch(newSearch)
+    getMovies(newSearch)
+  }
+
+  const handleSort = () => {
+    setSort(!sort)
   }
 
   return (
@@ -32,6 +39,10 @@ function App () {
             value={search}
             placeholder='Avengers, Hulk, Harry Potter'
           />
+          <div className='flex gap-2 items-center border border-sky-200 px-2 rounded'>
+            <label htmlFor='sort'>Ordenar A-Z</label>
+            <input type='checkbox' id='sort' name='sort' value={sort} onChange={handleSort} />
+          </div>
           <button
             className='bg-sky-400 rounded border border-white px-2 py-1 font-bold'
             type='submit'
