@@ -1,3 +1,4 @@
+import { Cart } from './components/Cart'
 import { Header } from './components/Header'
 import { Products } from './components/Products'
 import { useFilters } from './hooks/useFilters'
@@ -10,6 +11,7 @@ function App () {
   return (
     <>
       <Header />
+      <Cart />
       <Products products={filteredProducts} />
     </>
   )
