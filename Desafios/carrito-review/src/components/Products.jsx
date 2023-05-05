@@ -1,6 +1,7 @@
+import { useCart } from '../hooks/useCart'
 import { AddToCartIcon } from './Icons'
 
-export function ItemProduct ({ item }) {
+export function ItemProduct ({ item, addToCart }) {
   const { title, description, thumbnail, price } = item
   return (
     <li className='flex flex-col gap-2'>
@@ -16,7 +17,7 @@ export function ItemProduct ({ item }) {
           $ {price}
           <small>.00</small>
         </span>
-        <button className='font-bold bg-sky-600 px-2 rounded w-[200px] flex justify-evenly items-center'>
+        <button onClick={addToCart} className='font-bold bg-sky-600 px-2 rounded w-[200px] flex justify-evenly items-center'>
           Add to Cart
           <span>
             <AddToCartIcon />
@@ -28,6 +29,7 @@ export function ItemProduct ({ item }) {
 }
 
 export function Products ({ products }) {
+  const { addToCart } = useCart()
   const hasProducts = products?.length > 0
   return (
     <main className='flex justify-center'>
@@ -37,7 +39,7 @@ export function Products ({ products }) {
           <ul className='w-[320px] grid grid-cols-1 gap-6'>
             {
           products.map(item => (
-            <ItemProduct key={item.id} item={item} />
+            <ItemProduct key={item.id} item={item} addToCart={() => addToCart(item)} />
           ))
         }
           </ul>
