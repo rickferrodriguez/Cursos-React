@@ -1,11 +1,25 @@
 import { useState } from 'react'
 
-export function Filters () {
+export function Filters ({ onChange }) {
   const [minPrice, setMinPrice] = useState(0)
+
   const handleMinPrice = (event) => {
     const newPrice = event.target.value
     setMinPrice(newPrice)
+    onChange(lastState => ({
+      ...lastState,
+      minPrice: newPrice
+    }))
   }
+
+  const handleCategory = (event) => {
+    const newCategory = event.target.value
+    onChange(lastState => ({
+      ...lastState,
+      category: newCategory
+    }))
+  }
+
   return (
     <section className='flex justify-evenly'>
       <div className='flex gap-2'>
@@ -16,7 +30,7 @@ export function Filters () {
 
       <div className='flex gap-3'>
         <label htmlFor='category'>Category</label>
-        <select className='text-gray-900 rounded px-1' name='category' id='category'>
+        <select className='text-gray-900 rounded px-1' onChange={handleCategory} name='category' id='category'>
           <option value='all'>All</option>
           <option value='laptops'>Laptops</option>
           <option value='smartphones'>Smartphones</option>
