@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import { useContext } from 'react'
+import { FilterContext } from '../contexts/filters'
 
-export function Filters ({ onChange }) {
-  const [minPrice, setMinPrice] = useState(0)
+export function Filters () {
+  const { filters, setFilters } = useContext(FilterContext)
 
   const handleMinPrice = (event) => {
     const newPrice = event.target.value
-    setMinPrice(newPrice)
-    onChange(lastState => ({
+    setFilters(lastState => ({
       ...lastState,
       minPrice: newPrice
     }))
@@ -14,7 +14,7 @@ export function Filters ({ onChange }) {
 
   const handleCategory = (event) => {
     const newCategory = event.target.value
-    onChange(lastState => ({
+    setFilters(lastState => ({
       ...lastState,
       category: newCategory
     }))
@@ -24,8 +24,8 @@ export function Filters ({ onChange }) {
     <section className='flex justify-evenly'>
       <div className='flex gap-2'>
         <label htmlFor='price'>Price</label>
-        <input type='range' id='price' min='0' max='1000' value={minPrice} onChange={handleMinPrice} />
-        <span className='w-[50px]'>{minPrice}</span>
+        <input type='range' id='price' min='0' max='1000' value={filters.minPrice} onChange={handleMinPrice} />
+        <span className='w-[50px]'>{filters.minPrice}</span>
       </div>
 
       <div className='flex gap-3'>
