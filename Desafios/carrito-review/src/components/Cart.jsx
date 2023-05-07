@@ -24,7 +24,6 @@ export function ItemCart ({ item }) {
 
 export function Cart () {
   const { cart } = useCart()
-  console.log(cart)
   const cartId = useId()
   return (
     <section>
