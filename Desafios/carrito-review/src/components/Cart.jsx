@@ -1,8 +1,8 @@
 import { useId } from 'react'
 import { useCart } from '../hooks/useCart'
-import { CartIcon, RemoveFromCartIcon } from './Icons'
+import { CartIcon } from './Icons'
 
-export function ItemCart ({ item }) {
+export function ItemCart ({ item, addToCart }) {
   const { thumbnail, quantity, title } = item
   return (
     <li className='flex gap-3 h-[100px] items-center'>
@@ -11,19 +11,19 @@ export function ItemCart ({ item }) {
         src={thumbnail}
         alt={title}
       />
-      <div>
+      <div className='flex flex-col gap-2'>
         <strong>{title}</strong>
-        <p>Qnty: {quantity}</p>
-        <button>
-          <RemoveFromCartIcon />
-        </button>
+        <section className='flex gap-2'>
+          <p>Qnty: {quantity}</p>
+          <button onClick={addToCart} className='bg-slate-600 border border-gray-300 px-2'>+</button>
+        </section>
       </div>
     </li>
   )
 }
 
 export function Cart () {
-  const { cart } = useCart()
+  const { cart, addToCart } = useCart()
   const cartId = useId()
   return (
     <section>
@@ -32,12 +32,12 @@ export function Cart () {
       </label>
       <input type='checkbox' id={cartId} className='peer' hidden />
 
-      <article className='hidden w-[320px] flex-col gap-4 bg-slate-800 absolute right-0 top-0 z-10 pt-[40px] peer-checked:flex h-full px-2'>
+      <article className='hidden w-[250px] flex-col gap-4 bg-slate-800 absolute right-0 top-0 z-10 pt-[40px] peer-checked:flex h-full px-2'>
         <h2 className='text-2xl font-bold text-center'>My Cart</h2>
         <ul>
           {
             cart.map(item => (
-              <ItemCart key={item.id} item={item} />
+              <ItemCart key={item.id} item={item} addToCart={() => addToCart(item)} />
             ))
           }
         </ul>
