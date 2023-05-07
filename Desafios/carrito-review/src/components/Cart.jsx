@@ -27,8 +27,13 @@ export function Cart () {
   const cartId = useId()
   return (
     <section>
-      <label htmlFor={cartId} className='hover:scale-110 hover:bg-sky-700 ease-in duration-100 absolute bg-sky-400 z-40 rounded-full p-1 right-6 top-2'>
+      <label htmlFor={cartId} className='hover:scale-110 hover:bg-sky-700 ease-in duration-100 absolute bg-sky-400 z-40 rounded-full p-2 right-5 top-2'>
         <CartIcon />
+        {
+          cart.length > 0
+            ? <small htmlFor='num-cart' className='absolute rounded-full bg-red-500 px-[5px] bottom-[-4px] left-[-5px]'>{cart.length}</small>
+            : null
+        }
       </label>
       <input type='checkbox' id={cartId} className='peer' hidden />
 
