@@ -1,8 +1,8 @@
-import { useContext, useId } from 'react'
-import { FilterContext } from '../contexts/filters'
+import { useId } from 'react'
+import { useFilters } from '../hooks/useFilters'
 
 export function Filters () {
-  const { filters, setFilters } = useContext(FilterContext)
+  const { filters, setFilters } = useFilters()
   const minPriceFilterId = useId()
   const categoryFilterId = useId()
 
