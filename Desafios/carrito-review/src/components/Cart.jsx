@@ -45,7 +45,7 @@ export function Cart () {
       </label>
       <input type='checkbox' id={cartId} className='peer' hidden />
 
-      <article className='hidden border rounded border-gray-300 w-[250px] flex-col items-center gap-4 bg-slate-800 absolute right-0 top-0 z-10 pt-[40px] peer-checked:flex h-full px-2'>
+      <aside className='hidden border rounded border-gray-300 w-[250px] flex-col items-center gap-4 bg-slate-800 absolute right-0 top-0 z-10 pt-[40px] peer-checked:flex h-full px-2'>
         <h2 className='text-2xl font-bold text-center'>My Cart</h2>
         <ul>
           {cart.map((item) => (
@@ -62,7 +62,7 @@ export function Cart () {
             <ClearCartIcon />
           </span>
         </button>
-      </article>
+      </aside>
     </section>
   )
 }
