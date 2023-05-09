@@ -17,12 +17,15 @@ export function ItemProduct ({ item, addToCart, isProductInCart, removeFromCart 
           $ {price}
           <small>.00</small>
         </span>
-        <button onClick={isProductInCart ? removeFromCart : addToCart} className={`font-bold ${isProductInCart ? 'bg-red-500' : 'bg-sky-600'} px-2 rounded w-[200px] flex justify-evenly items-center`}>
+        <button
+          onClick={isProductInCart ? removeFromCart : addToCart}
+          className={`font-bold ${
+            isProductInCart ? 'bg-red-500' : 'bg-sky-600'
+          } px-2 rounded w-[200px] flex justify-evenly items-center`}
+        >
           {isProductInCart ? 'Remove From Cart' : 'Add to Cart'}
           <span>
-            {isProductInCart
-              ? <RemoveFromCartIcon />
-              : <AddToCartIcon />}
+            {isProductInCart ? <RemoveFromCartIcon /> : <AddToCartIcon />}
           </span>
         </button>
       </section>
