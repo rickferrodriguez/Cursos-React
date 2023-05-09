@@ -1,7 +1,11 @@
+import { useId } from 'react'
 import { useFilters } from '../hooks/useFilters'
 
 export function Filters () {
   const { filter, setFilter } = useFilters()
+
+  const minPriceFilterId = useId()
+  const categoryFilterId = useId()
 
   const handlePriceChange = (event) => {
     const newPrice = event.target.value
@@ -22,10 +26,10 @@ export function Filters () {
   return (
     <section className='flex justify-between'>
       <div className='flex gap-2'>
-        <label htmlFor='price'>Min Price:</label>
+        <label htmlFor={minPriceFilterId}>Min Price:</label>
         <input
           type='range'
-          id='price'
+          id={minPriceFilterId}
           name='price'
           min='0'
           max='1000'
@@ -36,11 +40,17 @@ export function Filters () {
       </div>
 
       <div className='flex gap-2'>
-        <label htmlFor='category'>Category</label>
-        <select onChange={handleFilterCategory} className='rounded text-gray-900 px-1' name='category' id='category'>
+        <label htmlFor={categoryFilterId}>Category</label>
+        <select
+          onChange={handleFilterCategory}
+          className='rounded text-gray-900 px-1'
+          name='category'
+          id={categoryFilterId}
+        >
           <option value='all'>All</option>
           <option value='laptops'>Laptops</option>
           <option value='smartphones'>Smartphones</option>
+          <option value='fragrances'>Fragances</option>
         </select>
       </div>
     </section>
