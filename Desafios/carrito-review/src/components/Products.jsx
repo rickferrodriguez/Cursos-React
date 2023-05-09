@@ -1,7 +1,12 @@
 import { useCart } from '../hooks/useCart'
 import { AddToCartIcon, RemoveFromCartIcon } from './Icons'
 
-export function ItemProduct ({ item, addToCart, isProductInCart, removeFromCart }) {
+export function ItemProduct ({
+  item,
+  addToCart,
+  isProductInCart,
+  removeFromCart
+}) {
   const { title, description, thumbnail, price } = item
   return (
     <li className='flex flex-col gap-2'>
@@ -35,28 +40,32 @@ export function ItemProduct ({ item, addToCart, isProductInCart, removeFromCart 
 
 export function Products ({ products }) {
   const { addToCart, cart, removeFromCart } = useCart()
-  const checkProductInCart = product => {
-    return cart.some(item => item.id === product.id)
+  const checkProductInCart = (product) => {
+    return cart.some((item) => item.id === product.id)
   }
   const hasProducts = products?.length > 0
   return (
     <main className='flex justify-center'>
-      {
-      hasProducts
+      {hasProducts
         ? (
           <ul className='w-[320px] grid grid-cols-1 gap-6'>
-            {
-          products.map(item => {
-            const isProductInCart = checkProductInCart(item)
-            return (
-              <ItemProduct key={item.id} item={item} addToCart={() => addToCart(item)} isProductInCart={isProductInCart} removeFromCart={() => removeFromCart(item)} />
-            )
-          })
-        }
+            {products.map((item) => {
+              const isProductInCart = checkProductInCart(item)
+              return (
+                <ItemProduct
+                  key={item.id}
+                  item={item}
+                  addToCart={() => addToCart(item)}
+                  isProductInCart={isProductInCart}
+                  removeFromCart={() => removeFromCart(item)}
+                />
+              )
+            })}
           </ul>
           )
-        : <p>no hay products</p>
-    }
+        : (
+          <p>no hay products</p>
+          )}
     </main>
   )
 }
