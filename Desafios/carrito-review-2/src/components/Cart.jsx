@@ -47,7 +47,7 @@ export function Cart () {
           ))}
         </ul>
         <button
-          className='bg-red-400 flex justify-evenly rounded w-[150px] p-2 self-center'
+          className='bg-red-400 flex justify-evenly rounded w-[150px] p-2 self-center font-bold'
           onClick={() => clearCart()}
         >
           Clear Cart{' '}

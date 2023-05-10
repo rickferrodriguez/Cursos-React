@@ -22,7 +22,7 @@ function ItemProduct ({ product, addToCart, productInCart, removeFromCart }) {
             onClick={productInCart ? removeFromCart : addToCart}
             className={`${
               productInCart ? 'bg-red-500' : 'bg-sky-500 '
-            } flex items-center gap-4 px-2 rounded`}
+            } flex items-center gap-4 px-2 rounded font-bold`}
           >
             Add to Cart{' '}
             <span>
