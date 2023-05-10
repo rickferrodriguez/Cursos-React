@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import { useCart } from '../hooks/useCart'
-import { CartIcon } from './Icons'
+import { CartIcon, ClearCartIcon } from './Icons'
 
 export function ItemCart ({ item, addToCart }) {
   const { price, thumbnail, title, quantity } = item
@@ -23,21 +23,38 @@ export function ItemCart ({ item, addToCart }) {
 
 export function Cart () {
   const cartToggleId = useId()
-  const { cart, addToCart } = useCart()
+  const { cart, addToCart, clearCart } = useCart()
   return (
     <section>
-      <label className='absolute hover:bg-sky-700 hover:scale-110 hover:cursor-pointer right-4 top-4 z-10 bg-sky-500 p-2 rounded-full' htmlFor={cartToggleId}> <CartIcon /> </label>
+      <label
+        className='absolute hover:bg-sky-700 hover:scale-110 hover:cursor-pointer right-4 top-4 z-10 bg-sky-500 p-2 rounded-full'
+        htmlFor={cartToggleId}
+      >
+        {' '}
+        <CartIcon />{' '}
+      </label>
       <input className='peer' type='checkbox' id={cartToggleId} hidden />
 
       <aside className='absolute hidden top-0 right-0 w-[270px] px-2 py-7 peer-checked:flex flex-col gap-6 bg-slate-700 h-full'>
         <h2 className='text-center text-2xl font-bold'>Cart</h2>
         <ul className='flex flex-col gap-4 '>
-          {
-          cart?.map(item => (
-            <ItemCart key={item.id} item={item} addToCart={() => addToCart(item)} />
-          ))
-        }
+          {cart?.map((item) => (
+            <ItemCart
+              key={item.id}
+              item={item}
+              addToCart={() => addToCart(item)}
+            />
+          ))}
         </ul>
+        <button
+          className='bg-red-400 flex justify-evenly rounded w-[150px] p-2 self-center'
+          onClick={() => clearCart()}
+        >
+          Clear Cart{' '}
+          <span>
+            <ClearCartIcon />
+          </span>
+        </button>
       </aside>
     </section>
   )
