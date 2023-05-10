@@ -1,8 +1,8 @@
-import { useContext, useId } from 'react'
-import { CartContext } from '../context/cart'
+import { useId } from 'react'
+import { useCart } from '../hooks/useCart'
 import { CartIcon } from './Icons'
 
-export function ItemCart ({ item }) {
+export function ItemCart ({ item, addToCart }) {
   const { price, thumbnail, title, quantity } = item
   return (
     <li className='border-b-2 border-slate-400 py-1'>
@@ -13,7 +13,7 @@ export function ItemCart ({ item }) {
           <span>$ {price}.00
           </span>
           <div>
-            Qnty: {quantity} <button className='bg-sky-800 px-1 rounded'>+</button>
+            Qnty: {quantity} <button onClick={addToCart} className='bg-sky-800 px-1 rounded'>+</button>
           </div>
         </section>
       </article>
@@ -23,7 +23,7 @@ export function ItemCart ({ item }) {
 
 export function Cart () {
   const cartToggleId = useId()
-  const { cart } = useContext(CartContext)
+  const { cart, addToCart } = useCart()
   return (
     <section>
       <label className='absolute hover:bg-sky-700 hover:scale-110 hover:cursor-pointer right-4 top-4 z-10 bg-sky-500 p-2 rounded-full' htmlFor={cartToggleId}> <CartIcon /> </label>
@@ -34,7 +34,7 @@ export function Cart () {
         <ul className='flex flex-col gap-4 '>
           {
           cart?.map(item => (
-            <ItemCart key={item.id} item={item} />
+            <ItemCart key={item.id} item={item} addToCart={() => addToCart(item)} />
           ))
         }
         </ul>

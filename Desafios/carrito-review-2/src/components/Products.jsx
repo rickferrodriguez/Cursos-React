@@ -38,7 +38,7 @@ function ItemProduct ({ product, addToCart, productInCart, removeFromCart }) {
 export function Products ({ products }) {
   const { addToCart, cart, removeFromCart } = useCart()
   const checkProductInCart = (product) => {
-    return cart?.some((item) => item.id === product.id)
+    return cart.some((item) => item.id === product.id)
   }
   const hasProducts = products?.length > 0
   return (
@@ -48,7 +48,6 @@ export function Products ({ products }) {
           <ul className='grid grid-cols-1 w-[300px] gap-5'>
             {products?.map((product) => {
               const isProductInCart = checkProductInCart(product)
-              console.log(isProductInCart)
               return (
                 <ItemProduct
                   key={product.id}
