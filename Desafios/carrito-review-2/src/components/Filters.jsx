@@ -24,8 +24,8 @@ export function Filters () {
   }
 
   return (
-    <section className='flex justify-between'>
-      <div className='flex gap-2'>
+    <section className='flex justify-between items-center'>
+      <div className='flex gap-2 items-center'>
         <label htmlFor={minPriceFilterId}>Min Price:</label>
         <input
           type='range'
@@ -39,7 +39,7 @@ export function Filters () {
         <span className='w-[50px]'>{filter.minPrice}</span>
       </div>
 
-      <div className='flex gap-2'>
+      <div className='flex gap-2 items-center'>
         <label htmlFor={categoryFilterId}>Category</label>
         <select
           onChange={handleFilterCategory}
