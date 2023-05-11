@@ -1,15 +1,15 @@
-import { useId, useState } from 'react'
+import { useId } from 'react'
+import { useFilters } from '../hooks/useFilters'
 
-export function Filters ({ onChange }) {
-  const [minPrice, setMinPrice] = useState(0)
+export function Filters () {
+  const { filters, setFilters } = useFilters()
 
   const priceFilterId = useId()
   const categoryFilterId = useId()
 
   const handlePriceFilter = (event) => {
     const newPrice = event.target.value
-    setMinPrice(newPrice)
-    onChange(prevState => ({
+    setFilters(prevState => ({
       ...prevState,
       minPrice: newPrice
     }))
@@ -17,7 +17,7 @@ export function Filters ({ onChange }) {
 
   const handleCategoryFilter = (event) => {
     const newCategory = event.target.value
-    onChange(prevState => ({
+    setFilters(prevState => ({
       ...prevState,
       categories: newCategory
     }))
@@ -30,11 +30,11 @@ export function Filters ({ onChange }) {
         <input
           type='range'
           onChange={handlePriceFilter}
-          value={minPrice}
+          value={filters.minPrice}
           min='0'
           max='1000'
         />
-        <span className='w-[50px]'>{minPrice}</span>
+        <span className='w-[50px]'>{filters.minPrice}</span>
       </div>
 
       <div className='flex gap-2 items-center'>
