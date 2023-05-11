@@ -27,6 +27,26 @@ export function CartProvider ({ children }) {
     ]))
   }
 
+  const reduceItemCartQuantity = (product) => {
+    const productInCartId = findProductInCart(product)
+
+    if (productInCartId >= 0) {
+      const newCart = structuredClone(cart)
+      if (newCart[productInCartId].quantity <= 1) return
+
+      newCart[productInCartId].quantity -= 1
+      return setCart(newCart)
+    }
+
+    return setCart(prevState => ([
+      ...prevState,
+      {
+        ...product,
+        quantity: 1
+      }
+    ]))
+  }
+
   const removeFromCart = (product) => {
     setCart(prevState => prevState.filter(item => item.id !== product.id))
   }
@@ -35,7 +55,8 @@ export function CartProvider ({ children }) {
     <CartContext.Provider value={{
       cart,
       addToCart,
-      removeFromCart
+      removeFromCart,
+      reduceItemCartQuantity
     }}
     >
       {children}

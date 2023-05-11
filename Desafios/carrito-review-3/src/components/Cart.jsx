@@ -2,31 +2,35 @@ import { useId } from 'react'
 import { useCart } from '../hooks/useCart'
 import { CartIcon } from './Icons'
 
-function ItemCart ({ item }) {
+function ItemCart ({ item, addToCart, reduceItemCartQuantity }) {
   const { price, title, thumbnail, quantity } = item
   return (
     <li className='border-b-2 border-slate-400 pb-1'>
       <article className=' flex gap-1'>
-        <img
-          className='w-[120px]'
-          src={thumbnail}
-          alt={title}
-        />
+        <img className='w-[120px]' src={thumbnail} alt={title} />
         <section className='flex flex-col'>
           <strong>{title}</strong>
           <span>$ {price}.00</span>
           <div className='flex gap-3'>
-            Qnty: {quantity} <button className='bg-slate-400 px-1 rounded'>+</button>
+            <button
+              onClick={reduceItemCartQuantity}
+              className='bg-slate-400 px-1 rounded'
+            >
+              -
+            </button>
+            Qnty: {quantity}{' '}
+            <button onClick={addToCart} className='bg-slate-400 px-1 rounded'>
+              +
+            </button>
           </div>
         </section>
       </article>
-
     </li>
   )
 }
 
 export function Cart () {
-  const { cart } = useCart()
+  const { cart, addToCart, reduceItemCartQuantity } = useCart()
   const cartCheckboxId = useId()
   return (
     <section>
@@ -42,7 +46,12 @@ export function Cart () {
         <h2 className='text-center text-2xl font-bold'>Cart</h2>
         <ul className='mt-7 flex flex-col gap-3'>
           {cart?.map((item) => (
-            <ItemCart item={item} key={item.id} />
+            <ItemCart
+              item={item}
+              key={item.id}
+              addToCart={() => addToCart(item)}
+              reduceItemCartQuantity={() => reduceItemCartQuantity(item)}
+            />
           ))}
         </ul>
       </aside>
