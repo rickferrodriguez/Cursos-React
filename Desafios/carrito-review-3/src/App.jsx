@@ -1,6 +1,11 @@
+import { Products } from './components/Products'
+import { products as initialProducts } from './mocks/products.json'
+
 function App () {
   return (
-    <p className='text-red-600'>reset carrito review 3</p>
+    <>
+      <Products products={initialProducts} />
+    </>
   )
 }
 
