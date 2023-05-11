@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import { useCart } from '../hooks/useCart'
-import { CartIcon } from './Icons'
+import { CartIcon, ClearCartIcon } from './Icons'
 
 function ItemCart ({ item, addToCart, reduceItemCartQuantity }) {
   const { price, title, thumbnail, quantity } = item
@@ -30,12 +30,12 @@ function ItemCart ({ item, addToCart, reduceItemCartQuantity }) {
 }
 
 export function Cart () {
-  const { cart, addToCart, reduceItemCartQuantity } = useCart()
+  const { cart, addToCart, reduceItemCartQuantity, clearCart } = useCart()
   const cartCheckboxId = useId()
   return (
     <section>
       <label
-        className='bg-sky-500 rounded-full p-1 hover:scale-125 hover:bg-sky-700 absolute top-3 right-3 z-10'
+        className='bg-sky-500 rounded-full p-2 hover:scale-125 hover:bg-sky-700 absolute top-3 right-3 z-10'
         htmlFor={cartCheckboxId}
       >
         <CartIcon />{' '}
@@ -54,6 +54,22 @@ export function Cart () {
             />
           ))}
         </ul>
+        {
+          cart?.length > 0
+            ? (
+              <button
+                className='bg-red-500 flex rounded justify-center gap-2 w-[200px] self-center mt-4'
+                onClick={() => clearCart()}
+              >
+                Clear Cart{' '}
+                <span>
+                  <ClearCartIcon />
+                </span>
+              </button>
+
+              )
+            : <p className='text-center text-red-500'>No products in cart</p>
+        }
       </aside>
     </section>
   )

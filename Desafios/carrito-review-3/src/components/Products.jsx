@@ -38,7 +38,7 @@ export function ItemProduct ({ product, addToCart, isProductInCart, removeFromCa
 
 export function Products ({ products }) {
   const { addToCart, cart, removeFromCart } = useCart()
-  const findProductInCart = product => cart.some(item => item.id === product.id)
+  const findProductInCart = product => cart?.some(item => item.id === product.id)
   const hasProducts = products?.length > 0
   return (
     <main className='flex justify-center'>
