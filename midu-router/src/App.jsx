@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import { EVENTS } from './constants'
-import { About } from './pages/About'
-import { Home } from './pages/Home'
-
-function navigate (href) {
-  window.history.pushState({}, '', href)
-  const navigationEvent = new Event(EVENTS.PUSHSTATE)
-  window.dispatchEvent(navigationEvent)
-}
+import About from './pages/About'
+import Home from './pages/Home'
 
 function App () {
   // contiene la ruta donde se encuentra actualmente la página
@@ -30,8 +23,8 @@ function App () {
 
   return (
     <main>
-      {currentPath === '/' && <Home navigate={navigate} />}
-      {currentPath === '/about' && <About navigate={navigate} />}
+      {currentPath === '/' && <Home />}
+      {currentPath === '/about' && <About />}
     </main>
   )
 }
