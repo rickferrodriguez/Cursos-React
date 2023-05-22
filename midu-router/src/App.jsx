@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { EVENTS } from './constants'
 import { About } from './pages/About'
 import { Home } from './pages/Home'
 
-const NAVIGATION_EVENT = 'pushstate'
-
 function navigate (href) {
   window.history.pushState({}, '', href)
-  const navigationEvent = new Event(NAVIGATION_EVENT)
+  const navigationEvent = new Event(EVENTS.PUSHSTATE)
   window.dispatchEvent(navigationEvent)
 }
 
@@ -20,10 +19,12 @@ function App () {
       setCurrentPath(window.location.pathname)
     }
 
-    window.addEventListener(NAVIGATION_EVENT, onLocationChange)
+    window.addEventListener(EVENTS.PUSHSTATE, onLocationChange)
+    window.addEventListener(EVENTS.POPSTATE, onLocationChange)
 
     return () => {
-      window.removeEventListener(NAVIGATION_EVENT, onLocationChange)
+      window.removeEventListener(EVENTS.PUSHSTATE, onLocationChange)
+      window.addEventListener(EVENTS.POPSTATE, onLocationChange)
     }
   }, [])
 
