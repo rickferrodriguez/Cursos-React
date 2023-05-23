@@ -1,17 +1,7 @@
 import { useEffect, useState } from 'react'
+import { NAV_EVENTS } from './constants'
 import About from './pages/About'
 import Home from './pages/Home'
-
-const NAV_EVENTS = {
-  PUSH: 'pushstate',
-  POP: 'popstate'
-}
-
-function navigate (href) {
-  window.history.pushState({}, '', href)
-  const navigationEvent = new Event(NAV_EVENTS.PUSH)
-  window.dispatchEvent(navigationEvent)
-}
 
 function App () {
   const [currentPage, setCurrentPage] = useState(window.location.pathname)
@@ -32,8 +22,8 @@ function App () {
 
   return (
     <main>
-      {currentPage === '/' && <Home handleClick={() => { navigate('/about') }} />}
-      {currentPage === '/about' && <About handleClick={() => { navigate('/') }} />}
+      {currentPage === '/' && <Home />}
+      {currentPage === '/about' && <About />}
     </main>
   )
 }
