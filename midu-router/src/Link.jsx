@@ -1,4 +1,4 @@
-import { NAV_EVENTS } from './constants'
+import { NAV_EVENTS } from './constants.js'
 
 export function navigate (href) {
   window.history.pushState({}, '', href)
@@ -8,13 +8,13 @@ export function navigate (href) {
 
 export function Link ({ target, to, ...props }) {
   const handleClick = (event) => {
-    const isPrimaryEvent = event.button === 0
-    const isModifierEvent = event.metaKey || event.ctrlKey || event.altKey || event.shiftKey
-    const isTargetEvent = event.target === undefined || event.target === '_self'
+    const isMainEvent = event.button === 0 // primary click
+    const isModifiedEvent = event.metaKey || event.altKey || event.ctrlKey || event.shiftKey
+    const isManageableEvent = target === undefined || target === '_self'
 
-    if (isPrimaryEvent && !isModifierEvent && isTargetEvent) {
+    if (isMainEvent && isManageableEvent && !isModifiedEvent) {
       event.preventDefault()
-      navigate(to)
+      navigate(to) // navegación con SPA
     }
   }
 
