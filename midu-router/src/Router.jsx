@@ -1,3 +1,4 @@
+import { match } from 'path-to-regexp'
 import { useEffect, useState } from 'react'
 import { NAV_EVENTS } from './constants.js'
 
@@ -18,6 +19,20 @@ export function Router ({ routes = [], defaultComponent: DefaultComponent = () =
     }
   }, [])
 
-  const Page = routes.find(({ path }) => path === currentPage)?.Component
-  return Page ? <Page /> : <DefaultComponent />
+  let routeParams = {}
+
+  const Page = routes.find(({ path }) => {
+    if (path === currentPage) return true
+
+    const matcherUrl = match(path, { decode: decodeURIComponent })
+    const matched = matcherUrl(currentPage)
+    if (!matched) return false
+
+    routeParams = matched.params
+    return true
+  })?.Component
+
+  return Page
+    ? <Page routeParams={routeParams} />
+    : <DefaultComponent routeParams={routeParams} />
 }
