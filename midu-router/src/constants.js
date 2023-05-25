@@ -1,4 +1,4 @@
-export const NAV_EVENTS = {
-  PUSH: 'pushstate',
-  POP: 'popstate'
+export const EVENTS = {
+  PUSHEVENT: 'pushstate',
+  POPEVENT: 'popstate'
 }
