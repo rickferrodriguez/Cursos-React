@@ -1,11 +1,9 @@
-import { Link } from '../Link.jsx'
-
-export default function Home () {
+export function Home () {
   return (
     <section>
       <h1>Home</h1>
-      <p>Página de Inicio para interactuar con el React Router</p>
-      <Link to='/about'>Ir al About</Link>
+      <p>This is the home page for the React Router</p>
+      <a href='/about'>Ir al About</a>
     </section>
   )
 }
