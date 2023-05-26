@@ -5,7 +5,7 @@
 - [✅] Crea una forma de hacer SPAs (Single Page Applications)
 - [✅] Poder navegar entre páginas con el botón de atrás
 - [✅] Crear componente Link para hacerlo declarativo
-- [x] Crear componente Router para hacerlo más declarativo
+- [✅] Crear componente Router para hacerlo más declarativo
 - [x] Soportar ruta por defecto (404)
 - [x] Soportar rutas con parámetros
 - [x] Componente <Route /> para hacerlo declarativo

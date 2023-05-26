@@ -1,6 +1,6 @@
 import { Link } from '../Link'
 
-export function Home () {
+export default function Home () {
   return (
     <section>
       <h1>Home</h1>
