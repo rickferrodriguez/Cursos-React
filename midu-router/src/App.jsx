@@ -22,9 +22,11 @@ function App () {
     }
 
     window.addEventListener(NAV_EVENTS.PUSHSTATE, onLocationChange)
+    window.addEventListener(NAV_EVENTS.POPSTATE, onLocationChange)
 
     return () => {
       window.removeEventListener(NAV_EVENTS.PUSHSTATE, onLocationChange)
+      window.removeEventListener(NAV_EVENTS.POPSTATE, onLocationChange)
     }
   }, [])
 
