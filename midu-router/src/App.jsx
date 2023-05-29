@@ -1,7 +1,13 @@
+import { useState } from 'react'
+import About from './pages/About'
+import Home from './pages/Home'
+
 function App () {
+  const [actualPath, setActualPath] = useState(window.location.pathname)
   return (
     <main>
-      <p>Hola desde App</p>
+      {actualPath === '/' && <Home />}
+      {actualPath === '/about' && <About />}
     </main>
   )
 }

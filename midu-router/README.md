@@ -2,11 +2,11 @@
 
 - [✅] Instalar el linter
 - [✅] Crear una forma de hacer MPAs (Multiple Page Application)
-- [✅] Crea una forma de hacer SPAs (Single Page Applications)
-- [✅] Poder navegar entre páginas con el botón de atrás
-- [✅] Crear componente Link para hacerlo declarativo
-- [✅] Crear componente Router para hacerlo más declarativo
-- [✅] Soportar ruta por defecto (404)
+- [x] Crea una forma de hacer SPAs (Single Page Applications)
+- [x] Poder navegar entre páginas con el botón de atrás
+- [x] Crear componente Link para hacerlo declarativo
+- [x] Crear componente Router para hacerlo más declarativo
+- [x] Soportar ruta por defecto (404)
 - [x] Soportar rutas con parámetros
 - [x] Componente <Route /> para hacerlo declarativo
 - [x] Lazy Loading de las rutas
