@@ -1,17 +1,7 @@
 import { useEffect, useState } from 'react'
+import { EVENTS } from './constants'
 import About from './pages/About'
 import Home from './pages/Home'
-
-const NAV_EVENTS = {
-  PUSHSTATE: 'pushstate',
-  POPSTATE: 'popstate'
-}
-
-export function navigate (href) {
-  window.history.pushState({}, '', href)
-  const navigationEvent = new Event(NAV_EVENTS.PUSHSTATE)
-  window.dispatchEvent(navigationEvent)
-}
 
 function App () {
   const [actualPath, setActualPath] = useState(window.location.pathname)
@@ -21,12 +11,12 @@ function App () {
       setActualPath(window.location.pathname)
     }
 
-    window.addEventListener(NAV_EVENTS.PUSHSTATE, onLocationChange)
-    window.addEventListener(NAV_EVENTS.POPSTATE, onLocationChange)
+    window.addEventListener(EVENTS.PUSHSTATE, onLocationChange)
+    window.addEventListener(EVENTS.POPSTATE, onLocationChange)
 
     return () => {
-      window.removeEventListener(NAV_EVENTS.PUSHSTATE, onLocationChange)
-      window.removeEventListener(NAV_EVENTS.POPSTATE, onLocationChange)
+      window.removeEventListener(EVENTS.PUSHSTATE, onLocationChange)
+      window.removeEventListener(EVENTS.POPSTATE, onLocationChange)
     }
   }, [])
 
