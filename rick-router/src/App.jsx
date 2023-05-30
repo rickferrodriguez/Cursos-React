@@ -22,9 +22,11 @@ function App () {
     }
 
     window.addEventListener(EVENTS.PUSHSTATE, lookForPathChange)
+    window.addEventListener(EVENTS.POPSTATE, lookForPathChange)
 
     return () => {
       window.removeEventListener(EVENTS.PUSHSTATE, lookForPathChange)
+      window.removeEventListener(EVENTS.POPSTATE, lookForPathChange)
     }
   }, [])
 
