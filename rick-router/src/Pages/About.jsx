@@ -1,4 +1,4 @@
-import { navigate } from '../App'
+import { Link } from '../Link'
 
 export default function About () {
   return (
@@ -12,7 +12,7 @@ export default function About () {
         Hi mi name is Richard Rodriguez and this is the about page for the
         Rick-Router
       </p>
-      <button onClick={() => navigate('/')}>Go to the Home Page</button>
+      <Link to='/'> to the Home Page</Link>
     </>
   )
 }
