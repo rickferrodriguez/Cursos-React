@@ -18,9 +18,11 @@ function App () {
     }
 
     window.addEventListener(EVENTS.PUSHSTATE, updatePath)
+    window.addEventListener(EVENTS.POPSTATE, updatePath)
 
     return () => {
       window.removeEventListener(EVENTS.PUSHSTATE, updatePath)
+      window.removeEventListener(EVENTS.POPSTATE, updatePath)
     }
   }, [])
   return (
