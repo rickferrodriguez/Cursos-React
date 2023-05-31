@@ -1,8 +1,11 @@
-import { Page404 } from './Pages/404'
-import About from './Pages/About'
-import Home from './Pages/Home'
+import { lazy, Suspense } from 'react'
+
 import { Route } from './Route'
 import { Router } from './Router'
+
+const Page404 = lazy(() => import('./Pages/404.jsx'))
+const About = lazy(() => import('./Pages/About.jsx'))
+const Home = lazy(() => import('./Pages/Home.jsx'))
 
 const routes = [
   {
@@ -21,12 +24,14 @@ const routes = [
 
 function App () {
   return (
-    <>
-      <Router routes={routes} defaultComponent={Page404}>
-        <Route path='/' Component={Home} />
-        <Route path='/about' Component={About} />
-      </Router>
-    </>
+    <main>
+      <Suspense>
+        <Router routes={routes} defaultComponent={Page404}>
+          <Route path='/' Component={Home} />
+          <Route path='/about' Component={About} />
+        </Router>
+      </Suspense>
+    </main>
   )
 }
 
