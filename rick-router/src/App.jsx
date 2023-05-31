@@ -3,12 +3,6 @@ import About from './Pages/About'
 import Home from './Pages/Home'
 import { EVENTS } from './constants'
 
-export function navigation (href) {
-  window.history.pushState({}, '', href)
-  const navigationEvent = new Event(EVENTS.PUSHSTATE)
-  window.dispatchEvent(navigationEvent)
-}
-
 function App () {
   const [currentPath, setCurrentPath] = useState(window.location.pathname)
 
