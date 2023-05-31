@@ -5,7 +5,8 @@ import { Router } from './Router'
 
 const routes = [
   { path: '/', Component: Home },
-  { path: '/about', Component: About }
+  { path: '/about', Component: About },
+  { path: '/search/:query', Component: () => <h1>Search</h1> }
 ]
 
 function App () {
