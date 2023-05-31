@@ -1,6 +1,7 @@
 import Page404 from './Pages/404'
 import About from './Pages/About'
 import Home from './Pages/Home'
+import { Route } from './Route'
 import { Router } from './Router'
 
 const routes = [
@@ -11,7 +12,10 @@ const routes = [
 
 function App () {
   return (
-    <Router routes={routes} defaultComponent={Page404} />
+    <Router routes={routes} defaultComponent={Page404}>
+      <Route path='/' Component={Home} />
+      <Route path='/about' Component={About} />
+    </Router>
   )
 }
 
