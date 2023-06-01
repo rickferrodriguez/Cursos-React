@@ -25,7 +25,7 @@ const routes = [
 function App () {
   return (
     <main>
-      <Suspense>
+      <Suspense fallback={<p>Loading...</p>}>
         <Router routes={routes} defaultComponent={Page404}>
           <Route path='/' Component={Home} />
           <Route path='/about' Component={About} />
