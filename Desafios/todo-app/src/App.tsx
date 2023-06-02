@@ -1,30 +1,23 @@
 import { useState } from 'react'
-import './App.css'
 
-function App () {
-  const [count, setCount] = useState(0)
+const mockTodos = [
+  {
+    id: '2',
+    title: 'todo 2',
+    completed: false
+  },
+  {
+    id: '3',
+    title: 'todo 3',
+    completed: false
 
+  }
+]
+
+const App = (): JSX.Element => {
+  const [todos, setTodos] = useState(mockTodos)
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => { setCount((count) => count + 1) }}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <h1>Todo mvc</h1>
   )
 }
 
