@@ -19,7 +19,7 @@ const App = (): JSX.Element => {
   const [todos, setTodos] = useState(mockTodos)
   return (
     <>
-    <h1>Todo mvc</h1>
+    <h1>Todo App Typescript</h1>
     <Todos todos={todos} />
     </>
   )
