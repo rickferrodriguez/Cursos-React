@@ -1,13 +1,25 @@
 import { type Todo as TodoType } from '../types'
 
-type Props = TodoType
+interface Props extends TodoType {
+  onRemoveTodos: (id: string) => void
+}
 
-export const Todo: React.FC<Props> = ({ id, title, completed }) => {
+export const Todo: React.FC<Props> = ({
+  id,
+  title,
+  completed,
+  onRemoveTodos
+}) => {
   return (
     <div className='view'>
       <input type='checkbox' className='toggle' checked={completed} />
-      <span>{title}</span>
-      <button className='destroy' onClick={() => {}}></button>
+      <label>{title}</label>
+      <button
+        className='destroy'
+        onClick={() => {
+          onRemoveTodos(id)
+        }}
+      ></button>
     </div>
   )
 }
