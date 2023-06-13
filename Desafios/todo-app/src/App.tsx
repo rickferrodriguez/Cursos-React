@@ -1,12 +1,7 @@
+import { useState } from 'react'
 import { Todos } from './components/Todos'
 
-interface Todo {
-  id: string
-  title: string
-  completed: boolean
-}
-
-const todos: Todo[] = [
+const mockTodos = [
   {
     id: '1',
     title: 'Todo 1',
@@ -25,6 +20,7 @@ const todos: Todo[] = [
 ]
 
 const App = (): JSX.Element => {
+  const [todos, setTodos] = useState(mockTodos)
   return (
     <>
     <h1>Reset Todo App React</h1>
