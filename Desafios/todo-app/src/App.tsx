@@ -28,9 +28,10 @@ const App = (): JSX.Element => {
     setTodos(newTodo)
   }
 
-  const setAsCompleted = (
-    { id, completed }: Pick<TodoTypes, 'id' | 'completed'>
-  ): void => {
+  const setAsCompleted = ({
+    id,
+    completed
+  }: Pick<TodoTypes, 'id' | 'completed'>): void => {
     const newTodos = todos.map((todo) => {
       if (todo.id === id) {
         return {
