@@ -1,5 +1,4 @@
-
-const App = (): JSX.Element => {
+const App = ()  => {
   return (
     <h1>reset todo app</h1>
   )
