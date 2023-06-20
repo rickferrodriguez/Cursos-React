@@ -3,7 +3,7 @@
  [✅] Inicializar proyecto con Vite
  [✅] Añadir linter para TypeScript + React
  [✅] Añadir estilos del TodoMVC
- [] Listar todos los TODOs
+ [✅] Listar todos los TODOs
  [] Poder borrar un TODO
  [] Marcar TODO como completado
  [] Añadir forma de filtrar TODOs (Footer)
