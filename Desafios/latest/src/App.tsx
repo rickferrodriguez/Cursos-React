@@ -4,17 +4,17 @@ import { Todos } from './components/Todos'
 const mocksTodos = [
   {
     id: '1',
-    title: 'todo 1',
+    title: 'Todo 1',
     completed: false
   },
   {
     id: '2',
-    title: 'todo 2',
+    title: 'Todo 2',
     completed: false
   },
   {
     id: '3',
-    title: 'todo 3',
+    title: 'Todo 3',
     completed: false
   }
 ]
@@ -22,10 +22,10 @@ const mocksTodos = [
 const App = (): JSX.Element => {
   const [todos, setTodos] = useState(mocksTodos)
   return (
-    <div className='todoapp'>
-      <h1>Todo App</h1>
+    <>
+      <h1>Reset Todo app</h1>
       <Todos todos={todos} />
-    </div>
+    </>
   )
 }
 
