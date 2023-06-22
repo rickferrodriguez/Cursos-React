@@ -22,10 +22,10 @@ const mocksTodos = [
 const App = (): JSX.Element => {
   const [todos, setTodos] = useState(mocksTodos)
   return (
-    <>
-      <h1>Reset Todo app</h1>
+    <div className='todoapp'>
+      <h1>Todo app</h1>
       <Todos todos={todos} />
-    </>
+    </div>
   )
 }
 
