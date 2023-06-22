@@ -21,10 +21,16 @@ const mocksTodos = [
 
 const App = (): JSX.Element => {
   const [todos, setTodos] = useState(mocksTodos)
+
+  const removeTodo = (id: string): void => {
+    const newTodos = todos.filter(todo => todo.id !== id)
+    setTodos(newTodos)
+  }
+
   return (
     <div className='todoapp'>
       <h1>Todo app</h1>
-      <Todos todos={todos} />
+      <Todos todos={todos} onRemoveTodo={removeTodo} />
     </div>
   )
 }
