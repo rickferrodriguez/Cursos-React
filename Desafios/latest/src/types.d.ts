@@ -4,4 +4,4 @@ export interface Todo {
   completed: boolean
 }
 
-export interface ListOfTodos { todos: Todo[] }
+export type ListOfTodos = Todo[]
