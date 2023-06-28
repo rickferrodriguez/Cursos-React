@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Todos } from './components/Todos'
 import { type TodoId, type Todo as TodoType } from './types'
+import { Footer } from './components/Footer'
 
 const mocksTodos = [
   {
@@ -51,6 +52,7 @@ const App = (): JSX.Element => {
         onRemoveTodos={handleRemoveTodo}
         onCompleteTodo={handleCompleteTodo}
       />
+      <Footer todos={todos}/>
     </div>
   )
 }
