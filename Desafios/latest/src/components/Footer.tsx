@@ -11,14 +11,14 @@ interface Props {
 
 export const Footer: React.FC<Props> = ({
   onClearCompleted,
-  activeCount = 0,
-  completedCount = 0,
+  activeCount,
+  completedCount,
   filterSelected,
   handleFilterChange
 }) => {
   return (
     <footer className='footer'>
-      <span>
+      <span className='todo-count'>
         {activeCount} <strong>Tareas Pendientes</strong>
       </span>
       <Filters

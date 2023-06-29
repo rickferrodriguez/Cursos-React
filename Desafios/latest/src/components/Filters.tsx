@@ -1,17 +1,17 @@
-import { TODO_FILTERS } from '../consts.d.ts'
+import { TODO_FILTERS } from '../consts.ts'
 import { type FilterValue } from '../types'
 
 export const FILTERS_BUTTONS = {
   [TODO_FILTERS.All]: {
-    literal: 'Todos',
+    literal: 'Todas',
     href: `/?filter=${TODO_FILTERS.All}`
   },
   [TODO_FILTERS.ACTIVE]: {
-    literal: 'active',
+    literal: 'Activas',
     href: `/?filter=${TODO_FILTERS.ACTIVE}`
   },
   [TODO_FILTERS.COMPLETED]: {
-    literal: 'completed',
+    literal: 'Completadas',
     href: `/?filter=${TODO_FILTERS.COMPLETED}`
   }
 } as const
