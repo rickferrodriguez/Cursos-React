@@ -2,8 +2,8 @@ import { type filterValue } from '../types'
 import { Filters } from './Filters'
 
 interface Props {
-  filterSelected: (filter: filterValue) => void
-  handleFilter: () => void
+  filterSelected: filterValue
+  handleFilter: (filter: filterValue) => void
   pendingTaskCount: number
 }
 
@@ -14,7 +14,7 @@ export const Footer: React.FC<Props> = ({
 }) => {
   return (
     <footer className='footer'>
-      <span>{pendingTaskCount}</span>
+      <span className="todo-count">Tareas Pendientes {pendingTaskCount}</span>
       <Filters filterSelected={filterSelected} handleFilter={handleFilter} />
     </footer>
   )

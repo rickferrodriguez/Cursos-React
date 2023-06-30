@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Todos } from './components/Todos'
-import { type TodoId, type Todo as TodoType } from './types'
+import { type TodoId, type Todo as TodoType, type filterValue } from './types'
+import { Footer } from './components/Footer'
+import { TODO_FILTERS } from './const'
 
 const mocksTodos = [
   {
@@ -22,6 +24,7 @@ const mocksTodos = [
 
 const App = (): JSX.Element => {
   const [todos, setTodos] = useState(mocksTodos)
+  const [filter, setFilter] = useState<filterValue>(TODO_FILTERS.ALL)
 
   const handleRemoveTodo = ({ id }: TodoId): void => {
     const newTodos = todos.filter(todo => todo.id !== id)
@@ -42,10 +45,23 @@ const App = (): JSX.Element => {
     setTodos(newTodos)
   }
 
+  const handleFilter = (filter: filterValue): void => {
+    setFilter(filter)
+  }
+
+  const pendingTaskCount = todos.filter(todo => !todo.completed).length
+
+  const filteredTodos = todos.filter(todo => {
+    if (filter === TODO_FILTERS.ACTIVE) return !todo.completed
+    if (filter === TODO_FILTERS.COMPLETED) return todo.completed
+    return todo
+  })
+
   return (
     <div className='todoapp'>
       <h1>Reset Todo</h1>
-      <Todos todos={todos} onRemoveTodos={handleRemoveTodo} onCompleteTodos={handleCompleteTodo} />
+      <Todos todos={filteredTodos} onRemoveTodos={handleRemoveTodo} onCompleteTodos={handleCompleteTodo} />
+      <Footer filterSelected={filter} handleFilter={handleFilter} pendingTaskCount={pendingTaskCount}/>
     </div>
   )
 }

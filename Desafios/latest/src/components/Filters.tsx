@@ -8,14 +8,17 @@ interface Props {
 
 export const Filters: React.FC<Props> = ({ filterSelected, handleFilter }) => {
   return (
-    <ul>
+    <ul className="filters">
     {
       Object.entries(FILTERS_BUTTONS).map(([key, { href, literal }]) => {
         const isSelected = key === filterSelected
         const className = isSelected ? 'selected' : ''
         return (
         <li key={key} className={className}>
-        <a href={href} onClick={() => { handleFilter(key as filterValue) }}>{literal}</a>
+        <a href={href} onClick={(event) => {
+          event.preventDefault()
+          handleFilter(key as filterValue)
+        }}>{literal}</a>
         </li>
         )
       })
