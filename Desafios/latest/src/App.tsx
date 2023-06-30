@@ -27,12 +27,15 @@ const App = (): JSX.Element => {
   const [filter, setFilter] = useState<filterValue>(TODO_FILTERS.ALL)
 
   const handleRemoveTodo = ({ id }: TodoId): void => {
-    const newTodos = todos.filter(todo => todo.id !== id)
+    const newTodos = todos.filter((todo) => todo.id !== id)
     setTodos(newTodos)
   }
 
-  const handleCompleteTodo = ({ id, completed }: Pick<TodoType, 'id' | 'completed'>): void => {
-    const newTodos = todos.map(todo => {
+  const handleCompleteTodo = ({
+    id,
+    completed
+  }: Pick<TodoType, 'id' | 'completed'>): void => {
+    const newTodos = todos.map((todo) => {
       if (todo.id === id) {
         return {
           ...todo,
@@ -49,9 +52,15 @@ const App = (): JSX.Element => {
     setFilter(filter)
   }
 
-  const pendingTaskCount = todos.filter(todo => !todo.completed).length
+  const pendingTaskCount = todos.filter((todo) => !todo.completed).length
+  const completedTaskCount = todos.filter((todo) => todo.completed).length
 
-  const filteredTodos = todos.filter(todo => {
+  const handleDeleteCompletedTask = (): void => {
+    const newTodos = todos.filter((todo) => !todo.completed)
+    setTodos(newTodos)
+  }
+
+  const filteredTodos = todos.filter((todo) => {
     if (filter === TODO_FILTERS.ACTIVE) return !todo.completed
     if (filter === TODO_FILTERS.COMPLETED) return todo.completed
     return todo
@@ -60,8 +69,18 @@ const App = (): JSX.Element => {
   return (
     <div className='todoapp'>
       <h1>Reset Todo</h1>
-      <Todos todos={filteredTodos} onRemoveTodos={handleRemoveTodo} onCompleteTodos={handleCompleteTodo} />
-      <Footer filterSelected={filter} handleFilter={handleFilter} pendingTaskCount={pendingTaskCount}/>
+      <Todos
+        todos={filteredTodos}
+        onRemoveTodos={handleRemoveTodo}
+        onCompleteTodos={handleCompleteTodo}
+      />
+      <Footer
+        filterSelected={filter}
+        handleFilter={handleFilter}
+        pendingTaskCount={pendingTaskCount}
+        completedTaskCount={completedTaskCount}
+        onDeletedTasksDone={handleDeleteCompletedTask}
+      />
     </div>
   )
 }
