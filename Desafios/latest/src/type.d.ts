@@ -7,6 +7,7 @@ export interface Todo {
 }
 
 export type TodoId = Pick<Todo, 'id'>
+export type TodoTilte = Pick<Todo, 'title'>
 
 export type TodoList = Todo[]
 

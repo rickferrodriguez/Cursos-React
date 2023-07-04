@@ -19,7 +19,7 @@ export const Footer: React.FC<Props> = ({
   return (
     <footer className='footer'>
       <span className='todo-count'>
-        {completedTaskCount} Tareas Completadas
+        {completedTaskCount} Tareas Pendientes
       </span>
       <Filters
         filterSelected={filterSelected}
