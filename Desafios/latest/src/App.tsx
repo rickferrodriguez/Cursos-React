@@ -60,6 +60,13 @@ const App = (): JSX.Element => {
 
   const completedTaskCount = todos.filter((todo) => !todo.completed).length
 
+  const completedTaskExist = completedTaskCount > 0
+
+  const handleDeleteAllCompletedTodos = (): void => {
+    const newTodos = todos.filter((todo) => !todo.completed)
+    setTodos(newTodos)
+  }
+
   return (
     <div className='todoapp'>
       <h1>Reset todo app</h1>
@@ -72,6 +79,8 @@ const App = (): JSX.Element => {
         completedTaskCount={completedTaskCount}
         filterSelected={filter}
         onHandleFilter={onHandleFilter}
+        onDeleteAllCompletedTodos={handleDeleteAllCompletedTodos}
+        completedTaskExist={completedTaskExist}
       />
     </div>
   )

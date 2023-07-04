@@ -5,12 +5,16 @@ interface Props {
   filterSelected: FilterType
   completedTaskCount: number
   onHandleFilter: (filter: FilterType) => void
+  onDeleteAllCompletedTodos: () => void
+  completedTaskExist: boolean
 }
 
 export const Footer: React.FC<Props> = ({
   filterSelected,
   onHandleFilter,
-  completedTaskCount
+  completedTaskCount,
+  onDeleteAllCompletedTodos,
+  completedTaskExist
 }) => {
   return (
     <footer className='footer'>
@@ -21,6 +25,16 @@ export const Footer: React.FC<Props> = ({
         filterSelected={filterSelected}
         onHandleFilter={onHandleFilter}
       />
+      {completedTaskExist && (
+        <button
+          className='clear-completed'
+          onClick={() => {
+            onDeleteAllCompletedTodos()
+          }}
+        >
+          Delete Completed
+        </button>
+      )}
     </footer>
   )
 }
