@@ -4,13 +4,23 @@ import { Filters } from './Filters'
 interface Props {
   filterSelected: FilterType
   completedTaskCount: number
+  onHandleFilter: (filter: FilterType) => void
 }
 
-export const Footer: React.FC<Props> = ({ filterSelected, onHandelFilter, completedTaskCount }) => {
+export const Footer: React.FC<Props> = ({
+  filterSelected,
+  onHandleFilter,
+  completedTaskCount
+}) => {
   return (
-    <footer>
-      <span>{completedTaskCount} Tareas Completadas</span>
-      <Filters filterSelected={filterSelected} onHandelFilter={onHandelFilter} />
+    <footer className='footer'>
+      <span className='todo-count'>
+        {completedTaskCount} Tareas Completadas
+      </span>
+      <Filters
+        filterSelected={filterSelected}
+        onHandleFilter={onHandleFilter}
+      />
     </footer>
   )
 }
