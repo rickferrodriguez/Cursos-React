@@ -18,6 +18,7 @@ export const CreateTodo: React.FC<Props> = ({ onCreateTodo }) => {
       <input
         className='new-todo'
         type='text'
+        value={typedTask}
         placeholder='¿Qué quieres hacer?'
         autoFocus
         onChange={(event) => {
