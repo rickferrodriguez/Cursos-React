@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { mocksTodos } from './mocks'
 import { Todos } from './components/Todos'
-import { type Todo, type TodoId } from './types'
+import { type FilterType, type Todo, type TodoId } from './types'
+import { Footer } from './components/Footer'
+import { TODO_FILTERS } from './consts'
 
 const App = (): JSX.Element => {
   const [todos, setTodos] = useState(mocksTodos)
+  const [filter, setFilter] = useState<FilterType>(TODO_FILTERS.ALL)
 
   const handleRemoveTodo = ({ id }: TodoId): void => {
     const newTodos = todos.filter((todo) => todo.id !== id)
@@ -26,6 +29,7 @@ const App = (): JSX.Element => {
     })
     setTodos(newTodos)
   }
+
   return (
     <div className='todoapp'>
       <h1>Reset todo</h1>
@@ -34,6 +38,7 @@ const App = (): JSX.Element => {
         onRemoveTodos={handleRemoveTodo}
         onCompleteTodo={handleCompleteTodo}
       />
+      <Footer handleFilter={} filterSelected={filter} />
     </div>
   )
 }
