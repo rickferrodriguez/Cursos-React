@@ -30,15 +30,26 @@ const App = (): JSX.Element => {
     setTodos(newTodos)
   }
 
+  const handlerFilter = (filter: FilterType): void => {
+    setFilter(filter)
+  }
+
+  const filteredTodos = todos.filter(todo => {
+    if (filter === TODO_FILTERS.ACTIVE) return !todo.completed
+    if (filter === TODO_FILTERS.COMPLETED) return todo.completed
+
+    return todo
+  })
+
   return (
     <div className='todoapp'>
       <h1>Reset todo</h1>
       <Todos
-        todos={todos}
+        todos={filteredTodos}
         onRemoveTodos={handleRemoveTodo}
         onCompleteTodo={handleCompleteTodo}
       />
-      <Footer handleFilter={} filterSelected={filter} />
+      <Footer handleFilter={handlerFilter} filterSelected={filter} />
     </div>
   )
 }

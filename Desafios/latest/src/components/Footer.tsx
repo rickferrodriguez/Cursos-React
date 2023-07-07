@@ -9,7 +9,7 @@ interface Props {
 export const Footer: React.FC<Props> = ({ filterSelected, handleFilter }) => {
   return (
     <footer className='footer'>
-      <span>Tareas Pendientes</span>
+      <span className='todo-count'>Tareas Pendientes</span>
       <Filters filterSelected={filterSelected} handleFilter={handleFilter} />
     </footer>
   )
