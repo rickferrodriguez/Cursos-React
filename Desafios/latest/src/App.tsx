@@ -34,12 +34,22 @@ const App = (): JSX.Element => {
     setFilter(filter)
   }
 
-  const filteredTodos = todos.filter(todo => {
+  const filteredTodos = todos.filter((todo) => {
     if (filter === TODO_FILTERS.ACTIVE) return !todo.completed
     if (filter === TODO_FILTERS.COMPLETED) return todo.completed
 
     return todo
   })
+
+  const completedTaskCount = todos.filter((todo) => todo.completed).length
+  const pendingTaskCount = todos.filter((todo) => !todo.completed).length
+
+  const isThereACompletedTask = completedTaskCount > 0
+
+  const handleOnDeleteCompleted = (): void => {
+    const newTodos = todos.filter(todo => !todo.completed)
+    setTodos(newTodos)
+  }
 
   return (
     <div className='todoapp'>
@@ -49,7 +59,13 @@ const App = (): JSX.Element => {
         onRemoveTodos={handleRemoveTodo}
         onCompleteTodo={handleCompleteTodo}
       />
-      <Footer handleFilter={handlerFilter} filterSelected={filter} />
+      <Footer
+        handleFilter={handlerFilter}
+        filterSelected={filter}
+        pendingTaskCount={pendingTaskCount}
+        isThereACompletedTask={isThereACompletedTask}
+        onDeleteCompleted={handleOnDeleteCompleted}
+      />
     </div>
   )
 }
