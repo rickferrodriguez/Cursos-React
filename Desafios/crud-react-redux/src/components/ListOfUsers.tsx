@@ -24,7 +24,7 @@ const users: {
 		id: "2",
 		name: "rickfer",
 		email: "ricfer@mail.com",
-		github: "rickfer",
+		github: "rickferrodriguez",
 	},
 	{
 		id: "3",
@@ -51,6 +51,9 @@ export default function ListOfUsers() {
 					{users.map((item) => (
 						<TableRow key={item.id}>
 							<TableCell>{item.id}</TableCell>
+							<TableCell className="flex items-center ">
+                <img className=" w-[50px] h-[50px] rounded-full" src={`https://unavatar.io/github/${item.github}`} alt={item.name} />
+              </TableCell>
 							<TableCell >{item.name}</TableCell>
 							<TableCell >{item.email}</TableCell>
 							<TableCell >
