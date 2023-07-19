@@ -1,12 +1,9 @@
-export function Books ({ library }) {
+export function Books ({ book }) {
   return (
     <div>
       <ul>
-        {
-          library.foreach(book => (
-            <li>{book.title}</li>
-          ))
-        }
+        {console.log(book)}
+        <li>{book.title}</li>
       </ul>
     </div>
   )
