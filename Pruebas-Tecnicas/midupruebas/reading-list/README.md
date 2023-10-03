@@ -1,8 +1,11 @@
-# React + Vite
+[✅] Visualización de Libros Disponibles
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[] Creación de Lista de Lectura
 
-Currently, two official plugins are available:
+[] Filtrado de Libros por Género
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[] Sincronización de Estado
+
+[] Sincronización entre pestañas
+
+[] Test: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
