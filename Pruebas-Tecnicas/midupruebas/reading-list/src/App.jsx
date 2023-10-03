@@ -6,6 +6,10 @@ import { BookPagesInfo, YearCreatedBook } from './components/Icons'
 function App() {
   const [books, setBooks] = useState(library)
 
+  const isCiFi = (title) => {
+    return title === 'Ciencia ficción' ? 'Sci-Fi' : title
+  }
+
   return (
     <>
       <h1 className='text-2xl font-bold text-gray-200 mb-4'>Reading List</h1>
@@ -22,19 +26,24 @@ function App() {
                   src={book.book.cover}
                   alt={book.book.title}
                 />
-                <section className='flex gap-[2px] m-1 text-sm'>
-                  <div className='flex font-semibold bg-slate-900 pr-1 py-0 items-center rounded-md'>
-                    <label className='scale-75'>
-                      <YearCreatedBook />
-                    </label>
-                    {book.book.year}
+                <section className='flex m-1 text-sm justify-between'>
+                  <div className='flex gap-[2px]'>
+                    <div className='flex font-semibold bg-slate-900 pr-1 py-0 items-center rounded-md'>
+                      <label className='scale-75'>
+                        <YearCreatedBook />
+                      </label>
+                      {book.book.year}
+                    </div>
+                    <div className='flex font-semibold bg-slate-900 pr-1 py-0 rounded-md items-center'>
+                      <label className='scale-75'>
+                        <BookPagesInfo />
+                      </label>
+                      {book.book.pages}
+                    </div>
                   </div>
-                  <div className='flex font-semibold bg-slate-900 pr-1 py-0 rounded-md items-center'>
-                    <label className='scale-75'>
-                      <BookPagesInfo />
-                    </label>
-                    {book.book.pages}
-                  </div>
+                  <span className='justify-self-end text-base'>
+                    {isCiFi(book.book.genre)}
+                  </span>
                 </section>
               </header>
               <h3 className='text-gray-100 text-left'>{book.book.title}</h3>
