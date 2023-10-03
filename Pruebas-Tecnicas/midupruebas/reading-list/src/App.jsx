@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { library } from './mocks/books.json'
 import { BookPagesInfo, YearCreatedBook } from './components/Icons'
+import { Header } from './components/Header'
 
 function App() {
   const [books, setBooks] = useState(library)
@@ -12,7 +13,7 @@ function App() {
 
   return (
     <>
-      <h1 className='text-2xl font-bold text-gray-200 mb-4'>Reading List</h1>
+      <Header />
       <section className='grid grid-cols-5 gap-6'>
         {books.map((book) => {
           return (
