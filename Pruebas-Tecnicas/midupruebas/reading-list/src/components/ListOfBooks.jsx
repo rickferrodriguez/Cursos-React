@@ -1,5 +1,10 @@
-import {YearCreatedBook} from '../components/Icons.jsx'
-export default function Books({ books }) {
+import { YearCreatedBook, BookPagesInfo } from './Icons.jsx'
+
+export function ListOfBooks({ books }) {
+  const isCiFi = (title) => {
+    return title === 'Ciencia ficción' ? 'Sci-Fi' : title
+  }
+
   return (
     <section className='grid grid-cols-5 gap-6'>
       {books.map((book) => {
@@ -18,7 +23,7 @@ export default function Books({ books }) {
                 <div className='flex gap-[2px]'>
                   <div className='flex font-semibold bg-slate-900 pr-1 py-0 items-center rounded-md'>
                     <label className='scale-75'>
-          <Year
+                      <YearCreatedBook />
                     </label>
                     {book.book.year}
                   </div>
