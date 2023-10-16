@@ -1,7 +1,6 @@
 export function Filters() {
   return (
-    <form className='flex gap-3 text-gray-300'>
-      <label htmlFor='searchMovie'>Search</label>
+    <form className='flex align-top gap-3 text-gray-300'>
       <input
         className='h-6 rounded-sm px-1'
         type='text'
@@ -9,7 +8,6 @@ export function Filters() {
       />
 
       <section className='flex flex-col gap-1'>
-        <span>Filters</span>
         <div className='flex gap-2'>
           <input type='checkbox' name='date' id='date' />
           <label htmlFor='date'>Date</label>
@@ -19,7 +17,9 @@ export function Filters() {
           <label htmlFor='series'>Series</label>
         </div>
       </section>
-      <button className='bg-slate-700 px-2 py-1 rounded-md'>Search</button>
+      <button className='bg-slate-700 h-6 w-auto px-4 rounded-md font-bold'>
+        Search
+      </button>
     </form>
   )
 }
