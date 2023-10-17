@@ -1,28 +1,30 @@
 import { MovieIcon, MovieYear, SeriesIcon } from './Icons.jsx'
 
-export function Movies({ movies }) {
+export function RenderMovies({ movies }) {
   return (
     <ul className='grid grid-cols-3 gap-3'>
       {movies.map((movie) => (
-        <li key={movie.imdbID} className=' text-gray-400'>
+        <li key={movie.id} className=' text-gray-400'>
           <header className='rounded-md overflow-hidden'>
             <img
               className='w-auto  aspect-[3/4] object-fill'
-              src={movie.Poster}
-              alt={movie.Title}
+              src={movie.poster}
+              alt={movie.title}
             />
             <section className='flex justify-between font-medium text-sm bg-slate-700 pr-1 py-1'>
               <div className='flex items-center bg-blue-950 ml-1 rounded-md pr-1'>
                 <label className='scale-[65%]'>
                   <MovieYear />
                 </label>
-                <span>{movie.Year.split('', 4)}</span>
+                <time dateTime={movie.year}>{movie.year.split('', 4)}</time>
               </div>
-              <div className='flex items-center'>
+              <div className='flex items-center justify-center'>
                 <label className='scale-[70%]'>
-                  {movie.Type === 'movie' ? <MovieIcon /> : <SeriesIcon />}
+                  {movie.type === 'movie' ? <MovieIcon /> : <SeriesIcon />}
                 </label>
-                <span>{movie.Type}</span>
+                <span className='self-center justify-self-center'>
+                  {movie.type}
+                </span>
               </div>
             </section>
           </header>
@@ -31,4 +33,13 @@ export function Movies({ movies }) {
       ))}
     </ul>
   )
+}
+
+export function NoMovies() {
+  return <p>No hay resultados para esta búsqueda</p>
+}
+
+export function Movies({ movies }) {
+  const hasMovies = movies?.length > 0
+  return hasMovies ? <RenderMovies movies={movies} /> : <NoMovies />
 }

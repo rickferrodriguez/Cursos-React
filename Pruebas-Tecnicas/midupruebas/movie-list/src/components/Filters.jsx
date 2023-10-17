@@ -1,4 +1,4 @@
-export function Filters({ handleFilter }) {
+export function Filters() {
   const submitForm = (env) => {
     env.preventDefault()
   }
@@ -10,17 +10,25 @@ export function Filters({ handleFilter }) {
         placeholder='Avengers, Batman, Avatar, ...'
       />
 
-      <section className='flex flex-col gap-1'>
+      <fieldset className='flex flex-col gap-1'>
+        <legend>Filters</legend>
         <div className='flex gap-2'>
           <input type='checkbox' name='date' id='date' />
-          <label htmlFor='date'>Date</label>
+          <label htmlFor='date'>Order By Date</label>
         </div>
         <div className='flex gap-2'>
           <input type='checkbox' name='series' id='series' />
           <label htmlFor='series'>Series</label>
         </div>
-      </section>
-      <button className='bg-slate-700 h-6 w-auto px-4 rounded-md font-bold'>
+        <div className='flex gap-2'>
+          <input type='checkbox' name='movies' id='movies' />
+          <label htmlFor='movies'>Movies</label>
+        </div>
+      </fieldset>
+      <button
+        type='submit'
+        className='bg-slate-700 h-6 w-auto px-4 rounded-md font-bold'
+      >
         Search
       </button>
     </form>
