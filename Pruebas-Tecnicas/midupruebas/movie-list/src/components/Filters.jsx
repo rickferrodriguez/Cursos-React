@@ -1,12 +1,14 @@
-export function Filters() {
-  const submitForm = (env) => {
-    env.preventDefault()
-  }
+export function Filters({ handleSearch, handleSubmit, search }) {
   return (
-    <form className='flex align-top gap-3 text-gray-300' onSubmit={submitForm}>
+    <form
+      className='flex align-top gap-3 text-gray-300'
+      onSubmit={handleSubmit}
+    >
       <input
-        className='h-6 rounded-sm px-1'
+        className='h-6 rounded-sm px-1 text-gray-800'
         type='text'
+        onChange={handleSearch}
+        value={search}
         placeholder='Avengers, Batman, Avatar, ...'
       />
 
