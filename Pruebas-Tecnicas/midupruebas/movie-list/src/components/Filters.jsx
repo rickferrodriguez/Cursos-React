@@ -1,6 +1,9 @@
-export function Filters() {
+export function Filters({ handleFilter }) {
+  const submitForm = (env) => {
+    env.preventDefault()
+  }
   return (
-    <form className='flex align-top gap-3 text-gray-300'>
+    <form className='flex align-top gap-3 text-gray-300' onSubmit={submitForm}>
       <input
         className='h-6 rounded-sm px-1'
         type='text'
