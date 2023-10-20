@@ -1,9 +1,11 @@
 import { SearchIcon } from './components/Icons'
+import moviesResult from './mocks/withResults.json'
 
 function App() {
+  const movies = moviesResult.Search
   return (
-    <main>
-      <header className='flex flex-col items-center gap-4'>
+    <>
+      <header className='flex flex-col items-center gap-4 mb-9'>
         <h1 className='text-xl text-center text-gray-100 font-bold'>
           Search Movies...
         </h1>
@@ -20,7 +22,23 @@ function App() {
           />
         </form>
       </header>
-    </main>
+      <main>
+        <ul className='grid grid-cols-[repeat(5,_1fr)] gap-5'>
+          {movies.map((movie) => (
+            <li key={movie.imdbID}>
+              <header>
+                <img
+                  className='aspect-[2/3] object-fill '
+                  src={movie.Poster}
+                  alt={movie.Title}
+                />
+              </header>
+              <h3>{movie.Title}</h3>
+            </li>
+          ))}
+        </ul>
+      </main>
+    </>
   )
 }
 
