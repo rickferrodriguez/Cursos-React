@@ -11,7 +11,9 @@ Requerimientos:
 
 [] Que el formulario funcione:
 
-- El input de búsqueda tenga controles ( que no se pueda dejar el input en blanco, que ciertas entradas no se permitan)
+✅ hacer que se mire en un console log lo que se ha puesto en el input
+
+✅ controlar que no se pueda dejar el input en blanco
 
 - Hacer que aparezca la información de las películas cuando se presione la tecla 'enter'
 
