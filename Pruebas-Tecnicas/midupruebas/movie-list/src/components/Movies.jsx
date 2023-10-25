@@ -1,8 +1,10 @@
 import { MovieIcon, SeriesIcon } from '../components/Icons.jsx'
+
 export function ListOfMovies({ movies }) {
   const typeOfData = (type) => {
     return type === 'movie' ? <MovieIcon /> : <SeriesIcon />
   }
+
   return (
     <ul className='grid lg:grid-cols-[repeat(5,_1fr)] grid-cols-[repeat(3,_1fr)] gap-3 text-gray-400'>
       {movies.map((movie) => (
@@ -31,7 +33,11 @@ export function ListOfMovies({ movies }) {
 }
 
 function NoResponseMovies() {
-  return <p>No existen películas para su búsqueda</p>
+  return (
+    <p className='text-center text-gray-300 font-bold'>
+      No existen películas para su búsqueda
+    </p>
+  )
 }
 
 export function Movies({ movies }) {
