@@ -1,14 +1,11 @@
-import { useState } from 'react'
 import { SearchIcon } from './components/Icons'
 import { Movies } from './components/Movies'
-import { useEffect } from 'react'
 import { useMovies } from './hooks/useMovies'
+import { useSearch } from './hooks/useSearch'
 
 function App() {
   const { movies } = useMovies()
-
-  const [search, setSearch] = useState('')
-  const [error, setError] = useState(null)
+  const { setSearch, search, error } = useSearch()
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -18,20 +15,13 @@ function App() {
 
   const handleChange = (event) => {
     const newSearch = event.target.value
+    if (newSearch.startsWith(' ')) return // verificar de forma controlada cuando se ingresa un valor en específico dentro del input
     setSearch(newSearch)
   }
-  useEffect(() => {
-    if (search === '') {
-      setError('Indique el nombre de la película a buscar')
-      return
-    } else {
-      setError('')
-      return
-    }
-  }, [search])
+
   return (
     <>
-      <header className='flex flex-col items-center gap-4 mb-9'>
+      <header className='flex flex-col items-center gap-4 mb-2 h-36'>
         <h1 className='text-xl text-center text-gray-100 font-bold'>
           Search Movies...
         </h1>
@@ -54,7 +44,7 @@ function App() {
             placeholder='Search movies...'
           />
         </form>
-        <span className='text-red-500 h-3'>{error}</span>
+        {error && <span className='text-red-500'>{error}</span>}
       </header>
       <main>
         <Movies movies={movies} />
