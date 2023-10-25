@@ -6,6 +6,13 @@ import { useEffect } from 'react'
 
 function App() {
   const movies = moviesResult.Search
+  const mappedMovies = movies?.map((movie) => ({
+    id: movie.imdbID,
+    title: movie.Title,
+    poster: movie.Poster,
+    date: movie.Year,
+    type: movie.Type
+  }))
   const [search, setSearch] = useState('')
   const [error, setError] = useState(null)
 
@@ -56,7 +63,7 @@ function App() {
         <span className='text-red-500 h-3'>{error}</span>
       </header>
       <main>
-        <Movies movies={movies} />
+        <Movies movies={mappedMovies} />
       </main>
     </>
   )
