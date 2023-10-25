@@ -1,18 +1,12 @@
 import { useState } from 'react'
 import { SearchIcon } from './components/Icons'
 import { Movies } from './components/Movies'
-import moviesResult from './mocks/withResults.json'
 import { useEffect } from 'react'
+import { useMovies } from './hooks/useMovies'
 
 function App() {
-  const movies = moviesResult.Search
-  const mappedMovies = movies?.map((movie) => ({
-    id: movie.imdbID,
-    title: movie.Title,
-    poster: movie.Poster,
-    date: movie.Year,
-    type: movie.Type
-  }))
+  const { movies } = useMovies()
+
   const [search, setSearch] = useState('')
   const [error, setError] = useState(null)
 
@@ -63,7 +57,7 @@ function App() {
         <span className='text-red-500 h-3'>{error}</span>
       </header>
       <main>
-        <Movies movies={mappedMovies} />
+        <Movies movies={movies} />
       </main>
     </>
   )
