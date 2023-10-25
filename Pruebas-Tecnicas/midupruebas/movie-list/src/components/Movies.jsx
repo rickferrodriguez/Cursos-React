@@ -35,13 +35,6 @@ function NoResponseMovies() {
 }
 
 export function Movies({ movies }) {
-  return (
-    <>
-      {movies.length > 0 ? (
-        <ListOfMovies movies={movies} />
-      ) : (
-        <NoResponseMovies />
-      )}
-    </>
-  )
+  const hasMovies = movies?.length > 0 // es mejor crear una constante que tenga resultado que hacer un 'if'
+  return hasMovies ? <ListOfMovies movies={movies} /> : <NoResponseMovies />
 }
