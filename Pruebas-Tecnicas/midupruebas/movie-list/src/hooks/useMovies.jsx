@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import withResults from '../mocks/withResults.json'
+// import withResults from '../mocks/withResults.json'
 import noResultMovies from '../mocks/no-results.json'
 
 export function useMovies({ search }) {
